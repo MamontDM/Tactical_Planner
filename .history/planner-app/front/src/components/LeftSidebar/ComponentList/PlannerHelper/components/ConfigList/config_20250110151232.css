@@ -1,0 +1,51 @@
+.config-summary{
+    text-align: center;
+    background-color: transparent;
+  }
+  
+  .config-summary{
+    padding: 0;
+    margin-top: 10px;
+  }
+  .config-summary h3{
+    padding: 0;
+  }
+  
+  .config-list {
+    display: flex;
+    padding: 5px;
+  }
+  
+  .config-item{
+    display: flex;
+    text-wrap: nowrap;
+    gap: 5px;
+    align-items: center;
+  }
+  .config-input{
+    width: 2rem;
+    height: 1.3rem;
+    text-align: center;
+  }
+
+  .config-item p{
+    color: rgb(56, 240, 240);
+    font-size: 1.5rem;
+    margin: 0;
+  }
+
+  .config-list-icon{
+    width: 50px;
+    height: 50px;
+    align-self: center;
+  }
+
+  .config-list-limitations{
+    margin: 10px 0px 10px 0px;
+  
+  }
+  
+  .limitation-item{
+    background-color: rgba(240, 255, 255, 0.315);
+    border-bottom: 4px double white;
+  }

@@ -1,0 +1,11 @@
+{
+    "name": "planner-app",
+    "version": "1.0.0",
+    "private": true,
+    "scripts": {
+      "start:backend": "cd backend && npm start",
+      "start:frontend": "cd front && npm start",
+      "start": "npm run start:frontend",
+      "build:frontend": "cd front && npm run build"
+    }
+}

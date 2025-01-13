@@ -1,0 +1,41 @@
+
+  .toolbar{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    align-items: center;
+  }
+  .toolbar__row{
+    display: flex;
+    padding: 10px;
+    gap: 50px;
+  }
+  .gap{
+    gap: 65px;
+    padding: 10px;
+  }
+  .toolbar__row-final{
+    display: flex;
+    margin-top: 35px;
+    background-color: coral;
+    justify-content: center;
+  }
+  
+  .toolbar-button{
+    width: 65px;
+    background-color: transparent;
+    border: 2px solid black;
+    border-radius: 8px;
+  }
+  .toolbar-button:hover{
+    scale: 1.1;
+    background-color: rgb(193, 193, 231);
+    border: none;
+  }
+  
+  .toolbar-icon{
+    width: 100%;
+  }
+  .active{
+    background-color: aquamarine;
+  }

@@ -1,0 +1,44 @@
+/* Контейнер для компонента */
+.dropdown-container {
+    position: relative;
+    width: 100%;
+}
+
+/* Стили для инпута */
+.dropdown-input {
+    width: 100%;
+    height: 2rem;
+    border: 1px solid #ccc;
+    padding: 5px;
+    background-color: #d3dceb;
+    /* border-radius: 8px; */
+}
+
+/* Стили для списка */
+.dropdown-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    max-height: 160px;
+    overflow-y: auto;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #d3dceb;
+    position: absolute;
+    width: 100%;
+    z-index: 1000;
+}
+
+/* Стили для элементов списка */
+.dropdown-item {
+    padding: 5px;
+    cursor: pointer;
+    border-bottom: 1px solid #eee;
+    font-size: 1rem;
+}
+
+/* Стили для сообщения "Нет результатов" */
+.dropdown-no-results {
+    padding: 10px;
+    color: #888;
+}

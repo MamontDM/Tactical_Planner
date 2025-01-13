@@ -1,0 +1,8 @@
+.mapSelector-content{
+    padding: 10px;
+}
+
+.mapselector-list{
+    display: flex;
+    flex-flow: column wrap;
+}

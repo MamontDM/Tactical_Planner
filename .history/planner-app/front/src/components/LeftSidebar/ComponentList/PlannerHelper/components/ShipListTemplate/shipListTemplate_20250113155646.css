@@ -1,0 +1,49 @@
+  .input-components{
+    width: 50%;
+  }
+  
+  .ship-template{
+    width: 100%;
+    background-color: rgba(245, 245, 245, 0.536);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 8px;
+    box-shadow: 3px 7px 12px aqua;
+  }
+  .ship-type{
+    display: flex;
+    flex-direction: column;
+    width: 95%;
+    border-bottom: 2px solid black;
+    border-radius: 5px;
+    margin: 10px;
+  
+  }
+  
+  .placeholder{
+    margin-bottom: 5px;
+  }
+  .clear-list{
+    width: 50%;
+    border: none;
+    border-radius: 8px;
+    margin: 10px;
+  }
+
+  .clear-list:hover{
+    box-shadow: 1px 1px 6px rgba(255, 255, 255, 0.959);
+    background-color: rgba(100, 148, 237, 0.486);
+  }
+  
+  .add-list{
+    width: 100%;
+    height: 2rem;
+    background-color: transparent;
+    border: 1px solid black;
+    border-radius: 4px;
+  }
+  
+  
+ 
+  

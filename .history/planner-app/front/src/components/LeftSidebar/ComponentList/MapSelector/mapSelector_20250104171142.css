@@ -1,0 +1,14 @@
+.mapSelector-content{
+    padding: 10px;
+}
+
+.mapselector-list{
+    display: flex;
+    flex-flow: column wrap;
+}
+.clear-button {
+    width: 70%;
+    height: 2rem;
+    align-self: center;
+    background-color: rgba(174, 192, 199, 0.479);
+}

@@ -1,0 +1,36 @@
+import React, { useEffect, useContext, useRef } from 'react';
+import { getCoordinates } from '../../../../utils/commonHelpers';
+import CanvasContext from '../../../contexts/CanvasContext';
+import { useObjects } from '../../../../hooks/useObjects';
+import { findClickedObject } from '../../../../utils/commonHelpers';
+import CanvasRenderer from '../../../../factories/CanvasRender';
+
+const CurveTool = ({isActive}) => {
+    const { canvasRef } = useContext(CanvasContext);
+    const { objects, dispatch } = useObjects();
+    const pointRef = useRef(null);
+    const isDrawing = useRef(false);
+
+
+    useEffect(() => {
+        if (isActive && canvasRef?.current) {
+
+
+            
+       canvasRef.current.addEventListener("mousedown", handleMouseDown);
+            canvasRef.current.addEventListener("mousemove", handleMouseMove);
+            canvasRef.current.addEventListener("mouseup", handleMouseUp);
+
+            return () => {
+                canvasRef.current.removeEventListener("mousedown", handleMouseDown);
+                canvasRef.current.removeEventListener("mousemove", handleMouseMove);
+                canvasRef.current.removeEventListener("mouseup", handleMouseUp);
+                ctx.canvas.style.cursor = "default";
+            };
+        }
+    }, [isActive]);
+};
+
+
+
+export default CurveTool;

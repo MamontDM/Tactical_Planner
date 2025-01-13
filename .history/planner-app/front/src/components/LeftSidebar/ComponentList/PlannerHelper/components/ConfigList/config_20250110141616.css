@@ -1,0 +1,44 @@
+.config-summary{
+    text-align: center;
+    background-color: transparent;
+  }
+  
+  .config-summary{
+    padding: 0;
+    margin-top: 10px;
+  }
+  .config-summary h3{
+    padding: 0;
+  }
+  
+  .config-list {
+    display: flex;
+    grid-template-rows: 2rem 2rem 2rem;
+    padding: 5px;
+  }
+  
+  .config-item{
+    display: flex;
+    text-wrap: nowrap;
+    gap: 5px;
+  }
+  .config-label{
+    color: aliceblue;
+    font-size: 1.2rem;
+    font-weight: 400;
+    text-shadow: 1px 2px aqua;
+  }
+  .config-list-icon{
+    width: 50px;
+    height: 50px;
+  }
+
+  .config-list-limitations{
+    margin: 10px 0px 10px 0px;
+  
+  }
+  
+  .limitation-item{
+    background-color: rgba(240, 255, 255, 0.315);
+    border-bottom: 4px double white;
+  }

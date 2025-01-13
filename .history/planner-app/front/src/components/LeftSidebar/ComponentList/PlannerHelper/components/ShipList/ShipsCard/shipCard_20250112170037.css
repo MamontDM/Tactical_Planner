@@ -1,0 +1,42 @@
+.ship-list-item{
+    position: relative;
+    display: grid;
+    grid-template-columns: auto auto auto;
+    justify-content: space-between;
+  }
+
+  .ship-info{
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 10px;
+  }
+  .ship-name{
+    font-size: 1.2rem;
+    font-weight: bold;
+  }
+  
+  .nation-icon{
+    height: 2rem;
+  }
+  .class-icon{
+    height: 2rem;
+  }
+
+  .remove-button {
+    opacity: 0; 
+    position: absolute;
+    top: 50%;
+    left: 50px;
+    transform: translateY(-50%);
+    background-color: #ff5c5c;
+    color: white;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+.ship-list-item:hover .remove-button {
+  opacity: 1;
+  transform: translateY(-50%) scale(1.1);
+}

@@ -1,0 +1,40 @@
+.planner-sidebar{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .planner-sidebar h3,h4{
+    color: bisque;
+  }
+  
+  .special-limitation{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100% ;
+  }
+  
+  .special-limitation button:hover{
+    background-color: rgb(117, 149, 231);
+    scale: 1.12;
+  }
+  .special-limitation button:active{
+    background-color: rgb(200, 211, 240);
+    scale: 1.12;
+  }
+  
+  .btn-addCondition {
+    width: 80%;
+    height: 2rem;
+  }
+  
+  .btn-complete {
+    width: 50%;
+    height: 2rem;
+    margin-top: 25px;
+    background-color: rgba(90, 221, 97, 0.726);
+  }
+  .limitation-box{
+    width: 100%;
+    margin-top: 15px;
+  }

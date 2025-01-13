@@ -1,0 +1,97 @@
+.app-wrapper{
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background-color: bisque;
+}
+
+header,
+footer {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 3;
+  background-color: aqua;
+}
+footer{
+  position: sticky;
+}
+
+.main-content{
+  display: flex;
+  height: auto;
+  padding-top: 21px;
+}
+
+.canvas-wrapper{
+  position: relative;
+  flex-grow: 1;
+  min-width: 1300px;
+  height: 1250px;
+}
+
+#backgroundCanvas,
+#canvas{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1;
+  background-color: rgb(49, 58, 55);
+}
+#canvas{
+  z-index: 2;
+}
+
+.left-sidebar{
+  flex: 0 0 auto;
+  width: 350px;
+  background-color: azure;
+}
+.right-sidebar{
+  flex: 0 0 auto;
+  width: 400px;
+  background-color: azure;
+}
+/* ToolBAR */
+
+.toolbar{
+  display: none;
+  flex-direction: column;
+  width: 100%;
+  align-items: center;
+}
+.toolbar__row{
+  display: flex;
+  gap: 35px;
+  padding: 10px;
+}
+.gap{
+  gap: 65px;
+  padding: 10px;
+}
+.toolbar__row-final{
+  display: flex;
+  margin-top: 35px;
+  background-color: coral;
+  justify-content: center;
+}
+
+.toolbar-button{
+  width: 65px;
+  background-color: transparent;
+  border: 2px solid black;
+  border-radius: 8px;
+}
+.toolbar-button:hover{
+  scale: 1.1;
+  background-color: rgb(193, 193, 231);
+  border: none;
+}
+
+.toolbar-icon{
+  width: 100%;
+}
+.active{
+  background-color: aquamarine;
+}

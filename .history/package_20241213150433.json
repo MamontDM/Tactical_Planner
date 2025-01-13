@@ -1,0 +1,22 @@
+{
+    "name": "planner-app",
+    "version": "1.0.0",
+    "private": true,
+    "scripts": {
+        "start:backend": "nodemon ./backend/server.js",
+        "start:frontend": "cd front && npm start",
+        "start": "concurrently \"nodemo ./backend/server.js\" \"cd front && npm start\"",
+        "build:frontend": "cd front && npm run build"
+    },
+    "dependencies": {
+        "axios": "^1.7.9",
+        "body-parser": "^1.20.3",
+        "cors": "^2.8.5",
+        "express": "^4.21.2",
+        "mongoose": "^8.8.4"
+    },
+    "devDependencies": {
+        "concurrently": "^9.1.0",
+        "nodemon": "^3.1.9"
+    }
+}

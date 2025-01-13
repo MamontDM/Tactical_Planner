@@ -1,0 +1,7 @@
+.left-sidebar{
+    flex: 0 0 auto;
+    width: 400px;
+    background-color: transparent;
+    box-sizing: border-box;
+    padding: 20px;
+  }

@@ -1,0 +1,8 @@
+.mapSelector-wrapper{
+    padding: 10px;
+    height: auto;
+}
+
+.mapselector-list{
+    display: flex;
+}

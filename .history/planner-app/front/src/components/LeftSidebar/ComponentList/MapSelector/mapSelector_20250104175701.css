@@ -1,0 +1,55 @@
+.mapSelector-content{
+    padding: 10px;
+}
+
+input {
+    height: 2rem;
+    background-color: rgba(240, 248, 255, 0.87);
+}
+input::placeholder {
+   color: rgba(0, 0, 0, 0.596);
+   font-size: 1rem;
+   font-style: italic;
+}
+input:focus::placeholder{
+    opacity: 0;
+}
+
+.mapselector-list{
+    display: flex;
+    flex-flow: column wrap;
+    margin: 10px;
+    align-items: center;
+}
+.list-item{
+    width: 80%;
+    height: 2rem;
+    background-color: rgba(47, 63, 116, 0.733);
+    border: 5px double aqua;
+}
+
+.clearMap-button{
+    width: 30%;
+    height: 1.4rem;
+    margin-top: 10px;
+    background-color: rgba(204, 216, 233, 0.781);
+}
+.clearMap-button:hover{
+    background-color: rgba(255, 121, 121, 0.705);
+}
+
+.clear-list-button {
+    width: 70%;
+    height: 2rem;
+    font-size: 1.2rem;
+    background-color: rgba(37, 114, 133, 0.596);
+    color: aliceblue;
+    border-radius: 8px;
+    margin: 10px 0px 10px 0px;
+}
+
+.clear-list-button:hover{
+    color: black;
+    background-color: rgba(240, 248, 255, 0.692);
+}
+
