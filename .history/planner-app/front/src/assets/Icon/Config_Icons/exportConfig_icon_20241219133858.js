@@ -1,1 +1,0 @@
-import star from './star.png';
