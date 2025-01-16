@@ -1,0 +1,25 @@
+.gradient-section {
+    flex-flow: column nowrap;
+    justify-content: center;    
+    margin: 20px;
+}
+
+.gradient-section input{ 
+    width: 300px;
+    margin: 10px 0;
+    background: linear-gradient(to right, red, yellow, green, blue);
+    border: none;
+    appearance: none;
+    height: 20px;
+    border-radius: 5px;
+    outline: none;
+}
+
+.color-indicator{
+    margin-top: 20px;
+    width: 100px;
+    height: 100px;
+    border: 1px solid #000;
+    border-radius: '5px';
+    display: 'inline-block'; 
+}
