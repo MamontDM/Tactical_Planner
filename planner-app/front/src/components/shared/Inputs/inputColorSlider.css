@@ -1,0 +1,32 @@
+.gradient-section {
+    flex-flow: column nowrap;
+    justify-items: center;    
+    margin: 20px;
+}
+
+.color-gradient { 
+    width: 300px;
+    margin: 10px 0;
+    background: linear-gradient(to right, red, yellow, green, blue);
+    border: 2px solid white;
+    appearance: none;
+    height: 30px;
+    border-radius: 8px;
+    outline: none;
+}
+.color-gradient::-webkit-slider-thumb{
+    -webkit-appearance: none;
+    appearance: none;
+    width: 30px;
+    height: 30px;
+    border: 2px solid #312828;
+    border-radius: 1px;
+    cursor: pointer; 
+}
+.color-gradient:active::-webkit-slider-thumb {
+    width: 50px;
+    height: 50px;
+    transform: scale(1.2);
+    border: 3px solid #312828;
+    background-color: var(--thumb-color);
+}
