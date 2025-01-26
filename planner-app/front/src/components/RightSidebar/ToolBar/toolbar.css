@@ -2,6 +2,7 @@
     display: flex;
     flex-direction: column;
     width: 100%;
+    padding: 5px;
     align-items: center;
   }
   .toolbar__row{
@@ -13,20 +14,86 @@
     gap: 65px;
     padding: 10px;
   }
-  .toolbar__row-final{
-    display: flex;
-    margin-top: 35px;
-    background-color: coral;
-    justify-content: center;
+  .toolbar-button-section{
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-rows: repeat(7, auto);
+    gap: 5px;
+    width: fit-content;
   }
+
+  /* Anchor style */
+
+   /* block 1 */
+.toolbar-button-select {
+  grid-area: 1/3;
+}
+
+/* block 2 */
+.toolbar-button-line {
+  grid-area: 2/1;
+}
+
+.toolbar-button-tech {
+  grid-area: 2/3;
   
-  .toolbar-button{
+}
+.toolbar-button-curve {
+  grid-area: 2/2;
+}
+.toolbar-button-vision {
+  grid-area: 2/4;
+}
+.toolbar-button-radar {
+  grid-area: 2/5;
+}
+/* block 3 */
+.toolbar-button-icon {
+  grid-area: 3/3;
+}
+/* block 4 */
+
+.toolbar-button-undo {
+  grid-area: 4/1;
+}
+.toolbar-button-eraiser {
+  grid-area: 4/3;
+}
+.toolbar-button-redo {
+  grid-area: 4/5;
+}
+/* block 5 */
+.toolbar-button-download {
+  grid-area: 5/3;
+}
+.toolbar-button-text {
+  grid-area: 5/2;
+}
+.toolbar-button-save {
+  grid-area: 5/4;
+}
+/* block 6 */
+.toolbar-button-trash {
+  grid-area: 6/3;
+}
+ /* Anchor style END */
+
+
+
+
+
+
+
+
+
+
+.toolbar-button-section button{
     width: 65px;
     background-color: transparent;
     border: 2px solid black;
     border-radius: 8px;
   }
-  .toolbar-button:hover{
+  .toolbar-button-section button:hover{
     scale: 1.1;
     background-color: rgb(193, 193, 231);
     border: none;
@@ -35,11 +102,11 @@
   .toolbar-icon{
     width: 100%;
   }
-  .active{
-    background-color: aquamarine;
-  }
+.active{
+  background-color: aquamarine;
+ }
 
-  .toolbar-button.disabled {
+  .toolbar-button-section button.disabled {
     pointer-events: none;
     opacity: 0.5;
     cursor: not-allowed;

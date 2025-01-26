@@ -153,23 +153,24 @@ function MapSelector(){
                         className="clearMap-button"
                         onClick={() => handleClearMap(item)}
                         >
-                            Clear map
+                            Delete from List
                      </button>}
                      </React.Fragment>
-
                     ))}
+                    { mapList.length > 0 && 
+                    <button  className="edit-list-button"
+                                onClick={() => setIsEditing((prev) => !prev)}
+                                > 
+                                {isEditing ? "Save" : "Edit"}
+                    </button>}
                 </div>
                 {mapList.length > 0 && 
                     <button className="clear-list-button"
                         onClick={handleClearMapList}
                         >
-                            Clear Map List
+                        Clear Map List
                     </button>}
-                { mapList.length > 0 && <button  className="edit-button"
-                             onClick={() => setIsEditing((prev) => !prev)}> 
-                {isEditing ? "Save" : "Edit"}
-                
-        </button>}
+                 
         </div>
     );
 }

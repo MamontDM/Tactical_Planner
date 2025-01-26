@@ -2,6 +2,7 @@ import {useEffect, useState} from 'react';
 import { IconBattleship, IconCruiser, IconDestroyer, IconAircraft_carrier, IconSubmarine, switch_arrow} from '../../../../../assets/exportIcon';
 import { useShipContext } from '../../../../../hooks/useShipContext';
 import GradiendColorInput from '../../../../shared/Inputs/GradientColorInput';
+import './IconToolSetting.css';
 
 const IconToolSettings = ({ onChangeToolSettings }) => {
 
@@ -54,10 +55,10 @@ const IconToolSettings = ({ onChangeToolSettings }) => {
                
             </div>
             <div className="spec-setting-manual">
-                <h4>Set Label:</h4>
                         <input 
                         type="text"
                         data-type="shipLabel"
+                        placeholder="Set ship name"
                         onChange={(e) => handleSettingChange(e.target.dataset.type, e.target.value)} 
                         />
             </div>
@@ -66,11 +67,10 @@ const IconToolSettings = ({ onChangeToolSettings }) => {
         } else if (settingSource === "list") {
             return (
                 <>
-                    <h3>From list</h3>
+                    <h3>From planner list</h3>
                     <div className="specset-block">
                         {shipList.map((ship, index) => (
-                            <div className="specset-items" key={`${ship.id}-${index}`}>
-                                <button 
+                                <button className="specset-items"
                                     key={ship.id}
                                         onClick={() => handleSettingChange('shipFromList', {
                                             shipType: ship.class,
@@ -80,7 +80,6 @@ const IconToolSettings = ({ onChangeToolSettings }) => {
                                     >
                                         {ship.name}
                                 </button>
-                                </div>
                         ))}
                     </div>
                     </>
@@ -97,7 +96,7 @@ const IconToolSettings = ({ onChangeToolSettings }) => {
                     >
                     Manual Set
                 </button>
-                <img  src={switch_arrow}/>                
+                <img src={switch_arrow}/>                
                 <button 
                     onClick={() => setSettingSource("list")}
                     className={settingSource === "list" ? "toggle-active" : ""}

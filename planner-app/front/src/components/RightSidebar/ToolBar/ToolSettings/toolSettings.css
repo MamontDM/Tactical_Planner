@@ -1,4 +1,11 @@
 .common-settings{
-    flex: 1;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
     margin-top: 35px;
+    
+}
+.common-settings h3, h4{
+    margin-top: 10px;
+    color: antiquewhite;
 }
