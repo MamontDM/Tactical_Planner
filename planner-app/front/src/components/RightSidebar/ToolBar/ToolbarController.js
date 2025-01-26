@@ -20,11 +20,11 @@ const Toolbar = () =>  {
     
       return (  
         <div className={`toolbar ${!isMapActive ? 'blocked' : ''}`}>
-            <div className="toolbar-activation-button">
+            <div className="toolbar-button-section">
                 {toolsConfig.map((tool) => (
                     <ToolbarButton
                         key={tool.id}
-                        className="toolbar-button"
+                        className={`toolbar-button-${tool.id}`}
                         id={tool.id}
                         icon={tool.icon}
                         label={tool.label}

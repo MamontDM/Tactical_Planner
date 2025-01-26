@@ -1,0 +1,75 @@
+.source-switch{
+    display: flex;
+    height: 3rem;
+    align-items: center;
+    justify-content: space-around;
+}
+.source-switch img{
+    height: 3rem;
+    align-items: center;
+}
+.source-switch button{
+    display: flex;
+    height: 2rem;
+    align-items: center;
+    color: white;
+    background-color: rgba(95, 158, 160, 0.664);
+    border-radius: 10px;
+}
+.source-switch button:hover{
+    transform: scale(1.1);
+    background-color: rgba(240, 248, 255, 0.388);
+}
+
+.ship-icon-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap:10px;
+    justify-content: space-around;
+}
+
+.ship-button {
+    width: 190px;
+    background-color: transparent;
+}
+.ship-button:hover {
+  box-shadow: 1px 2px 10px white;
+}
+
+.ship-button:focus {
+    box-shadow: 1px 2px 10px white;
+  }
+.ship-icon{
+    width: 100%;
+    background-color: transparent;
+}
+.spec-setting-manual{
+    margin-top: 10px;
+}
+
+
+.specset-block{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+}
+
+.specset-items{
+    background-color: transparent;
+    border: none;
+    width: 50%;
+    height: 2rem;
+    font-size: 1rem;
+    color: antiquewhite;
+    font-weight: 800;
+    border: 1px solid aqua;
+}
+.specset-items:hover{
+    transform: scale(1.1);
+    text-shadow: 2px 2px 10px rgb(0, 0, 0);
+}
+.specset-items:focus{
+    transform: scale(1.1);
+    background-color: rgba(245, 245, 220, 0.295);
+}
