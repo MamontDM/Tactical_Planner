@@ -1,22 +1,18 @@
 import  { useEffect, useContext, useRef, useState } from 'react';
-import ReactDOM from 'react-dom';
 import { getCoordinates } from '../../../../../utils/commonHelpers';
 import CanvasContext from '../../../../contexts/CanvasContext';
 import { useObjects } from '../../../../../hooks/useObjects';
 import { drawObjects } from '../../../../../factories/CanvasRender';
 import { drawTemporaryIcon} from '../../../../../utils/canvasHelpers';
 import { getSvgTemplate, convertSvgToImage } from '../../../../../factories/IconSVGCreator';
-import { useSettingContext}  from '../../../../../hooks/useSettingContext';
 import ToolSettings from "../../ToolSettings/toolSettings";
 
 
 const IconTool = ({isActive, type}) =>{ 
-    console.log('called Icon tool!')
     const { canvasRef, drawingCanvasRef, getCanvasContext, getDrawingCanvasContext, clearDrawingCanvas } = useContext(CanvasContext);
     const {objects,  dispatch } = useObjects();
     const [currentSetting, setCurrentSetting ] = useState();
 
-    const shipImg = useRef(null);
     const shipType = useRef(null);
     const fillColor = useRef(null);
     const shipLabel = useRef(null);

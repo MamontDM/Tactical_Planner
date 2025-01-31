@@ -1,4 +1,4 @@
-import { useContext, useRef, useEffect, useState} from 'react';
+import { useContext,useEffect, useState} from 'react';
 import CanvasContext from '../../../../contexts/CanvasContext';
 import { useObjects } from '../../../../../hooks/useObjects';
 import { drawObjects } from '../../../../../factories/CanvasRender';
@@ -10,9 +10,10 @@ import ToolSettings from '../../ToolSettings/toolSettings';
 const TextTool = ({isActive, type}) => {
     const { canvasRef, drawingCanvasRef, getCanvasContext, getDrawingCanvasContext, clearDrawingCanvas } = useContext(CanvasContext);
     const {objects, dispatch} = useObjects();
-     const [currentSetting, setCurrentSetting] = useState();
+    const [currentSetting, setCurrentSetting] = useState();
 
     const settingUpdater = (data) => {
+        console.log(data);
         setCurrentSetting(data); 
     }; 
 

@@ -1,4 +1,4 @@
-const Ship = require('../models/ShipDataModel');
+const Ship = require('../../models/ShipDataModel');
 
 const getShipById = async (req, res) =>{ 
     try {

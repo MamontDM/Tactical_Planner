@@ -30,6 +30,8 @@ import IconSubmarine from './Icon/submarine.png';
 import IconAircraft_carrier from './Icon/aircraft_carrier.png';
 import IconSuper_ship from './Icon/super_ship.png';
 import switch_arrow from './Icon/ToolbarIcon/switch_arrow.png';
+import leftLavr from './Icon/ShipCardIcon/leftLavr.png';
+import rightLavr from './Icon/ShipCardIcon/rightLavr.png';
 
 export {
 AliesSword,
@@ -64,4 +66,6 @@ IconSubmarine,
 IconAircraft_carrier,
 IconSuper_ship,
 switch_arrow,
+leftLavr,
+rightLavr,
 };

@@ -1,0 +1,42 @@
+.user-card-wrapper{
+    display: flex;
+    flex-direction: column;
+}
+
+.user-card-wrapper h3{
+    color: whitesmoke;
+    font-style: italic;
+    align-self: flex-end;
+}
+.user-card-content{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+.user-todoList{
+    display: flex;
+    width: 50%;
+    flex-direction: column;
+    align-self: start;
+    gap: 10px;
+}
+
+
+.user-avatar{
+    width: 30%;
+    height: 100%;
+}
+
+.button{
+    width: 100%;
+    color: white;
+    font-size: 1.2rem;
+    background-color: rgba(104, 169, 255, 0.418);
+}
+.login{
+    box-shadow: 1px 2px 8px green;
+}
+.logout{
+    box-shadow: 1px 2px 8px red;
+}

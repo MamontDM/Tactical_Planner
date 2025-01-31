@@ -1,5 +1,5 @@
 const express = require('express');
-const getShipData  = require('../controllers/FromWG/shipDataController')
+const getShipData  = require('../../controllers/externalApiControllers/FromWG/shipDataController')
 
 
 const router = express.Router();

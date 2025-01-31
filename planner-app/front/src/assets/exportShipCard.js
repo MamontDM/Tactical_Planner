@@ -18,6 +18,7 @@ import UK from './Icon/ShipCardIcon/UK.png';
 import USA from './Icon/ShipCardIcon/USA.png';
 import USSR from './Icon/ShipCardIcon/USSR.png';
 
+
 export {
 BB,
 CB,
@@ -37,5 +38,5 @@ SM,
 SP,
 UK,
 USA,
-USSR
+USSR,
 };

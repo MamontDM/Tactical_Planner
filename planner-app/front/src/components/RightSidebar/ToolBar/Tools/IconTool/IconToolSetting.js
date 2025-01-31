@@ -1,16 +1,16 @@
-import {useEffect, useState} from 'react';
-import { IconBattleship, IconCruiser, IconDestroyer, IconAircraft_carrier, IconSubmarine, switch_arrow} from '../../../../../assets/exportIcon';
+import {useState} from 'react';
+import { IconBattleship, IconCruiser, IconDestroyer, IconAircraft_carrier, IconSubmarine, switch_arrow, leftLavr, rightLavr} from '../../../../../assets/exportIcon';
 import { useShipContext } from '../../../../../hooks/useShipContext';
-import GradiendColorInput from '../../../../shared/Inputs/GradientColorInput';
 import './IconToolSetting.css';
 
 const IconToolSettings = ({ onChangeToolSettings }) => {
 
     const [settingSource, setSettingSource] = useState("manual");
     const { ships } = useShipContext();
+    
 
     const shipList = Object.values(ships).flat();
-
+    console.log(shipList);
 
     const handleSettingChange = (type, value) => {
             onChangeToolSettings(type, value);
@@ -57,7 +57,7 @@ const IconToolSettings = ({ onChangeToolSettings }) => {
             <div className="spec-setting-manual">
                         <input 
                         type="text"
-                        data-type="shipLabel"
+                        data-type="label"
                         placeholder="Set ship name"
                         onChange={(e) => handleSettingChange(e.target.dataset.type, e.target.value)} 
                         />
@@ -67,7 +67,7 @@ const IconToolSettings = ({ onChangeToolSettings }) => {
         } else if (settingSource === "list") {
             return (
                 <>
-                    <h3>From planner list</h3>
+                {shipList.lenght}
                     <div className="specset-block">
                         {shipList.map((ship, index) => (
                                 <button className="specset-items"
@@ -78,7 +78,15 @@ const IconToolSettings = ({ onChangeToolSettings }) => {
                                         })
                                     }
                                     >
-                                        {ship.name}
+                                       {ship.tier === 11 ? ( 
+                                        <div className="super-item">
+                                            <img className="super-icon" src={leftLavr} alt="ErrorLavrIMG"></img>
+                                            <p>{ship.name}</p>
+                                            <img className="super-icon" src={rightLavr} alt="ErrorLavrIMG"></img>
+                                            </div>
+                                       ):(
+                                        ship.name
+                                    )}
                                 </button>
                         ))}
                     </div>
@@ -92,14 +100,14 @@ const IconToolSettings = ({ onChangeToolSettings }) => {
             <div className="source-switch">
                 <button 
                     onClick={() => setSettingSource("manual")}
-                    className={settingSource === "manual" ? "toggle-active" : ""}
+                    className={settingSource === "manual" ? "toggle-active" : "toggle-pending"}
                     >
                     Manual Set
                 </button>
-                <img src={switch_arrow}/>                
+                <img src={switch_arrow} alt="ErrorSwitchArrow"/>                
                 <button 
                     onClick={() => setSettingSource("list")}
-                    className={settingSource === "list" ? "toggle-active" : ""}
+                    className={settingSource === "list" ? "toggle-active" : "toggle-pending"}
                     >
                    Planner List
                 </button>

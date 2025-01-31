@@ -1,8 +1,7 @@
 .main-content{
     display: flex;
-    width: 100vw;
-    height: auto;
-    padding-top: 35px;
+    height: 100%;
+    padding-top: 25px;
     justify-content: space-around;
   }
   
@@ -11,21 +10,22 @@
     position: relative;
     flex-grow: 1;
     max-width: 1253px;
-    height: 1250px;
+    height: 1200px;
   }
   
   #backgroundCanvas,
   #canvas,
   #drawingCanvas{
     position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+    top: 0;
+    left: 0;
     z-index: 1;
   }
+
   #canvas{
     z-index: 2;
   }
+  
   #drawingCanvas{
     z-index: 3;
     pointer-events: none;
@@ -44,5 +44,5 @@
     width: 20%;
     background-color: transparent;
     box-sizing: border-box;
-    padding: 20px;
+    padding: 20px 20px 0px 20px;
   }

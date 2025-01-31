@@ -1,7 +1,7 @@
 const querystring = require('querystring');
 const processShipData  = require('./dataProceesor.js');
-const { makeGETRequest }  = require('../../httpservice.js');
-const Ship = require('../../models/ShipDataModel.js');
+const { makeGETRequest }  = require('../../../httpservice.js');
+const Ship = require('../../../models/ShipDataModel.js');
 
 
 const getShipData = async () => {

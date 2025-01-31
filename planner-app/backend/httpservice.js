@@ -10,4 +10,15 @@ const makeGETRequest = async (url) => {
     }
 };
 
-module.exports = { makeGETRequest };
+const makePOSTRequest = async (url) => {
+    try {
+        const response = await axios.post(url);
+        return response.data; 
+    } catch (error) {
+        console.error('Ошибка при выполнении GET-запроса:', error.message);
+        throw error;
+    }
+};
+
+
+module.exports = { makeGETRequest, makePOSTRequest };

@@ -10,7 +10,7 @@ export const SettingProvider = ({children}) => {
         curve: { color: 'rgba(135, 255, 0, 1)', lineWidth: 2 },
         vision:{color: 'rgba(135, 255, 0, 1)', lineWidth: 2 },
         radar: { color: 'rgba(135, 255, 0, 1)', lineWidth: 2, range: null },
-        text:  { textBody: 'test', fontSize: '16', textColor: '#fff000'},
+        text:  { textBody: 'test', fontSize: '16', color: '#fff000'},
     });
     
 

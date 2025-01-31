@@ -1,4 +1,4 @@
-const Ship = require('../../models/ShipDataModel');
+const Ship = require('../../../models/ShipDataModel');
 
 
 function processShipData(apiData) {

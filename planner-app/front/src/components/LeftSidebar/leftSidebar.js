@@ -1,7 +1,8 @@
-import React, {useState, useRef} from 'react';
+import React from 'react';
 import MapSelector from './ComponentList/MapSelector/mapSelector';
 import PlannerHelper from './ComponentList/PlannerHelper/plannerHelper';
 import ComponentList from './ComponentList/componentList';
+import UserCard from './ComponentList/UserCard/UserCard';
 
 const LeftSidebar = () => {
 
@@ -18,9 +19,10 @@ const LeftSidebar = () => {
     ]
 
     return (
-        <div className="left-sidebar">
-            <ComponentList components={components}/>
-        </div>
+            <div className="left-sidebar">
+                <UserCard />
+                <ComponentList components={components}/>
+            </div>
     );
 };
 

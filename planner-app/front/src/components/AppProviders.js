@@ -2,9 +2,11 @@ import { CanvasProvider } from './contexts/CanvasContext';
 import { MapContextProvider } from './contexts/MapSelectorContext';
 import { ShipProvider } from '../components/contexts/ShipContext';
 import { SettingProvider } from './contexts/ToolSettingProvider';
+import  { AuthProvider } from './contexts/AuthContext';
 
 const AppProviders = ({ children }) => {
     return (
+    <AuthProvider >
         <CanvasProvider>
             <MapContextProvider>
                 <ShipProvider>
@@ -12,6 +14,7 @@ const AppProviders = ({ children }) => {
                 </ShipProvider>
             </MapContextProvider>
         </CanvasProvider>
+    </AuthProvider>
     );
 };
 
