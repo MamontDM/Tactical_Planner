@@ -8,35 +8,46 @@ const session = require('express-session');
 
 
 const app_id = process.env.APP_ID;
-console.log('server.js - app_id :', app_id);
+const isProduction = process.env.NODE_ENV === "production";
+
+const mongoUri = isProduction 
+    ? process.env.MONGO_URI_PROD
+    : process.env.MONGO_URI_DEV;
+
+const sessionSecret = process.env.SESSION_SECRET;
+const PORT = process.env.PORT || 5000;
+const ENV = process.env.NODE_ENV || 'development';
+const corsOrigin = process.env.CORS_ORIGIN;
+
+if (!app_id || !mongoUri || !sessionSecret || !PORT || !corsOrigin) {
+    throw new Error("Missing required environment variables. Check your .env file.");
+}
+
 module.exports = { app_id };
-
-
 const requestFromDB = require('./routes/InternalApi/requestFromDB');
 const authRoutes = require('./routes/AuthApi/authRoutes')
 const playerProfile = require('./routes/ExternalWGApi/userDataFromWG')
 
 const app = express();
-const PORT = 5000;
 app.use(cors({
-    origin: 'http://localhost:3000',
+    origin: corsOrigin,
     methods: ['GET', 'POST', 'PUT', 'DELETE'],
     credentials: true
 }));
 
 app.use(session({
-    secret: 'your-secret-key',
+    secret: sessionSecret,
     resave: false,            
     saveUninitialized: false, 
     cookie: {
-        secure: false,        
+        secure: isProduction,        
         maxAge: 3600000,     
     },
 }));
 
 mongoose
-    .connect("mongodb://localhost:27017/ShipsDB")
-    .then(() => console.log('Connected to MongoDB'))
+    .connect(mongoUri)
+    .then(() => console.log('Connected to Atlas MongoDB'))
     .catch((err) => console.error("Error connecting to MongoDB:", err));
 
 
@@ -52,5 +63,5 @@ app.use('/auth', authRoutes);
 app.use('/profile', playerProfile);
 
 app.listen(PORT, () => {
-    console.log(`Server is running on http:/localhost:${PORT}`);
+    console.log(`Server running in ${ENV} mode on port ${PORT}`);
 });
