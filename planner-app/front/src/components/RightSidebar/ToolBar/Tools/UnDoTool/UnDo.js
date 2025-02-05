@@ -1,4 +1,4 @@
-import { useEffect, useState, useRef } from 'react';
+import { useEffect, useRef } from 'react';
 import { useObjects } from '../../../../../hooks/useObjects';
 
 const UndoTool = ({isActive, onDeactivate}) => {

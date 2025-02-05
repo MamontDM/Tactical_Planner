@@ -3,7 +3,6 @@ import { getCoordinates } from '../../../../../utils/commonHelpers';
 import CanvasContext from '../../../../contexts/CanvasContext';
 import { useObjects } from '../../../../../hooks/useObjects';
 import ToolSettings from '../../ToolSettings/toolSettings';
-import { useSettingContext } from '../../../../../hooks/useSettingContext'
 
 
 const LineTool = ({isActive, type}) => {

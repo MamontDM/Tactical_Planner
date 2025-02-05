@@ -17,16 +17,16 @@
 }
 
 
-header,
 footer {
-  position: fixed;
-  top: 0;
-  height: 25px;
-  width: 100%;
+  position: sticky;
+  flex: 1;
+  height: 100%;
   z-index: 3;
 }
-footer{
-  position: sticky;
+
+footer {
+  margin: 8px;
+  border: 2px solid white ;
 }
 
 

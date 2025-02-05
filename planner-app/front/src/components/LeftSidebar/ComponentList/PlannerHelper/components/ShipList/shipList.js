@@ -5,7 +5,7 @@ import ShipListCard from './ShipsCard/shipListCard';
 import { useShipContext } from '../../../../../../hooks/useShipContext';
 
 const ShipList = ({uniqueKey, type, index, clearListFlag}) =>{
-  const { filteredShips, isDataLoaded, addShip, ships, removeShip } = useShipContext();
+  const { filteredShips, addShip, ships, removeShip } = useShipContext();
   const [ shipId, setShipId ] = useState(null);
   const [ isShipSelected, setIsShipSelected] = useState(false);
   const filteredByType = filteredShips[type]; 
@@ -14,7 +14,7 @@ const ShipList = ({uniqueKey, type, index, clearListFlag}) =>{
 
   const fetchSelectedShips = async (id) =>{
       try {
-            const response = await fetch(`api/id-search?id=${encodeURIComponent(id)}`)
+            const response = await fetch(`api/ship/id-search?id=${encodeURIComponent(id)}`)
             if(!response.ok){
               throw new Error("Failed to fetch ships by ID!");
             }
@@ -50,9 +50,11 @@ useEffect(() =>{
 },[shipId]);
 
 useEffect(() => {
+  const currentKey = keyRef.current;
+
     return () => {
-      if (keyRef.current){
-          removeShip(keyRef.current); 
+      if (currentKey){
+          removeShip(currentKey); 
       }
       
   };

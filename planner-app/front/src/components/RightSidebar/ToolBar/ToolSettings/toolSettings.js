@@ -8,7 +8,7 @@ import RadarToolSettings from '../Tools/RadarTool/RadarToolSetting';
 
 const ToolSettings = ({ type, onSettingChange }) => {
     console.log('called Setting tool!')
-    const {  toolSettings, setToolSettings } = useSettingContext();
+    const { toolSettings } = useSettingContext();
     const [ localToolSetting, setLocalToolSetting ] = useState(() => toolSettings[type]);
 
     const handleChange = (type, value) => {

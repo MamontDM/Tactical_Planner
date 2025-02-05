@@ -5,7 +5,6 @@ import './shipListTemplate.css';
 import { cross, minus } from '../../../../../../assets/Icon/Config_Icons/exportConfig_icon';
 
 const ShipTemplate = () => {
-console.log('called')
         const { config, clearSelectedShips, updateConfigField } = useShipContext();
         const types = Object.entries(config).filter(([key]) => key !== 'limitations');
         const [clearListFlag, setClearListFlag] = useState(false);

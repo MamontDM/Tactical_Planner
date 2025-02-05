@@ -2,7 +2,7 @@ import React from 'react';
 import MapSelector from './ComponentList/MapSelector/mapSelector';
 import PlannerHelper from './ComponentList/PlannerHelper/plannerHelper';
 import ComponentList from './ComponentList/componentList';
-import UserCard from './ComponentList/UserCard/UserCard';
+import LogInLogOutButton from './ComponentList/LogInOutSection/LogInLogOutButton';
 
 const LeftSidebar = () => {
 
@@ -20,7 +20,7 @@ const LeftSidebar = () => {
 
     return (
             <div className="left-sidebar">
-                <UserCard />
+                <LogInLogOutButton />
                 <ComponentList components={components}/>
             </div>
     );

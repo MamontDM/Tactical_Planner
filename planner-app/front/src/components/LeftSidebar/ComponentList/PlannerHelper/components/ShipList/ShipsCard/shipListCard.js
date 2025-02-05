@@ -65,7 +65,7 @@ const ShipListCard = ({ship, onRemove, viewType = 'card' }) => {
                 </div>
                 <img src={nationIcons[nation]} alt={`${nation} flag`} className="nation-icon" />
                 <button className="remove-button">
-                    <img className="remove-icon" src={trash_icon} onClick={onRemove}></img>
+                    <img className="remove-icon" src={trash_icon} onClick={onRemove} alt="trashIcon"></img>
                 </button>
             </div>
            

@@ -110,7 +110,7 @@ const ShipProvider = ({ children }) => {
 
     const fetchAllShipsName = async () => {
         try {
-           const response = await fetch('api/name-allships');
+           const response = await fetch('api/ship/name-allships');
            if(!response.ok){
              throw new Error("Failed to fetch all names!");
            }

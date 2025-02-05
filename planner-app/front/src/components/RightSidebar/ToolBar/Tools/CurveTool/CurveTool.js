@@ -4,7 +4,6 @@ import CanvasContext from '../../../../contexts/CanvasContext';
 import { useObjects } from '../../../../../hooks/useObjects';
 import { drawObjects } from '../../../../../factories/CanvasRender';
 import { curveEndDrawArrow , drawSmoothCurve} from '../../../../../utils/canvasHelpers';
-import { useSettingContext}  from '../../../../../hooks/useSettingContext';
 import Toolsetting from '../../ToolSettings/toolSettings'
 
 const CurveTool = ({ isActive, type }) => {

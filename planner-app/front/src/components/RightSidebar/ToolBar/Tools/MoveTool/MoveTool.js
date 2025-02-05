@@ -2,9 +2,7 @@ import { useEffect, useContext } from 'react';
 import { getCoordinates } from '../../../../../utils/commonHelpers';
 import CanvasContext from '../../../../contexts/CanvasContext';
 import { findClickedObject } from '../../../../../utils/commonHelpers';
-import CanvasRenderer from '../../../../../factories/CanvasRender';
 import { useObjects } from '../../../../../hooks/useObjects';
-import { clearCanvas } from '../../../../../factories/CanvasRender';
 import { drawObjects } from '../../../../../factories/CanvasRender';
 
 const MoveTool = ({isActive}) => {
@@ -76,10 +74,6 @@ const MoveTool = ({isActive}) => {
                     id: selectedObject.id,
                     updates: { points: initialPoints.map(point => ({ x: point.x - dx, y: point.y - dy })) },
                 };
-            };
-            const redrawMainCanvas = () => {
-                mainCtx.clearRect(0, 0, canvasRef.current.width, canvasRef.current.height);
-                drawObjects(canvasRef.current, objects);
             };
 
             const handleMouseDown = (event) => {

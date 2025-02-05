@@ -1,4 +1,4 @@
-import React, { useContext, useRef, useEffect, useState } from 'react'
+import React, { useContext, useRef } from 'react'
 import ReactDOM from 'react-dom'
 import CanvasContext from '../../../../contexts/CanvasContext';
 // Complete component!

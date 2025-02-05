@@ -1,10 +1,10 @@
-import React, {useState} from 'react';
+import React from 'react';
 import './config.css';
 import { star, aircraft_carrier, battleship, cruiser, destroyer, submarine, } from '../../../../../../assets/Icon/Config_Icons/exportConfig_icon';
 import { useShipContext } from '../../../../../../hooks/useShipContext';
 
 const ConfigList = () => {
-    const { config, updateConfigField, updateLimitation } = useShipContext();
+    const { config } = useShipContext();
     const { limitations, ...shipCongif } = config;
 
 

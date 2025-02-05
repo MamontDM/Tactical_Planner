@@ -1,11 +1,12 @@
 const axios = require('axios');
+const { app_id } = require('../../server');
 const { getProfileData } = require('./userDataController');
 
 
 
 exports.login = (req, res) =>{ 
     console.log('called')
-    const applicationId = 'dbd5754ce93a204aa7632c155fe229b7'
+    const applicationId = app_id;
     const redirectUri = 'http://localhost:5000/auth/response';
 
     const wargamingAuthUrl = `https://api.worldoftanks.eu/wot/auth/login/?application_id=${applicationId}&redirect_uri=${encodeURIComponent(redirectUri)}`
@@ -21,18 +22,19 @@ exports.response = async (req, res) => {
     }
     req.session.user = { access_token, account_id, nickname };
 
-    getProfileData(req, null).catch((error) => {
-        console.error('Ошибка при загрузке профиля:', error.message);
-    });
+    getProfileData(account_id, nickname);
 
     res.redirect(`http://localhost:3000/`);
     
 };
 
 exports.checkAuthStatus = (req, res) => {
+    console.log('Called request')
     if (req.session.user) {
+        console.log('true')
         res.json({ isAuthenticated: true, user: req.session.user });
     } else {
+        console.log('true') 
         res.json({ isAuthenticated: false });
     }
 };
@@ -41,7 +43,7 @@ exports.checkAuthStatus = (req, res) => {
 exports.logOut = async (req, res) => {
 
     const {access_token} = req.session.user;
-     const applicationId = 'dbd5754ce93a204aa7632c155fe229b7'
+     const applicationId = app_id;
 
     if (!access_token) {
         return res.status(400).json({ error: 'Токен отсутствует' });
