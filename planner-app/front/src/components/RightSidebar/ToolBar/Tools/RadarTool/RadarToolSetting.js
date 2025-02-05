@@ -1,8 +1,6 @@
 import React, { useState } from  'react';
 
 const RadarToolSettings = ({onChangeToolSettings}) =>{
-    const [manualRadius, setManualRadius] = useState('');
-
 
     const handleSettingChange = (type, value) => {
         if(type === 'number'){

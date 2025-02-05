@@ -1,7 +1,6 @@
-import { useState, useEffect } from 'react'; 
+import { useState } from 'react'; 
 import './planner.css';
-import { IconCruiser, IconAircraft_carrier, IconBattleship, IconDestroyer, IconSuper_ship, IconSubmarine } from '../../../../assets/exportIcon';
-import { ShipProvider } from '../../../contexts/ShipContext';
+import { IconCruiser, IconAircraft_carrier, IconBattleship, IconDestroyer, IconSubmarine } from '../../../../assets/exportIcon';
 import { useShipContext } from '../../../../hooks/useShipContext';
 import ConfigList from './components/ConfigList/configList';
 import ShipTemplate from './components/ShipListTemplate/ShipTemplate';
@@ -19,9 +18,6 @@ const PlannerHelper = () =>{
         {id: 4, label: 'Submarine',  icon: IconSubmarine, title: 'Sub Marine'},
         {id: 5, label: 'AirCarrier', icon: IconAircraft_carrier, title: 'Carrier'},
     ];
-    const superShipsTypes = [
-
-    ]
 
     const handleInputChange = (field, value) => {
         if(!isNaN(value) && Number(value) >= 0 && Number(value) <= 8 && value.length <= 1){

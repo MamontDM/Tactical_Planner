@@ -1,12 +1,18 @@
+require('dotenv').config();
 const express = require('express');
-
 const bodyParser = require('body-parser');
 const cors = require('cors');
 const axios = require('axios');
 const mongoose = require('mongoose');
 const session = require('express-session');
 
-const shipRoutes = require('./routes/InternalApi/shipsFromDB');
+
+const app_id = process.env.APP_ID;
+console.log('server.js - app_id :', app_id);
+module.exports = { app_id };
+
+
+const requestFromDB = require('./routes/InternalApi/requestFromDB');
 const authRoutes = require('./routes/AuthApi/authRoutes')
 const playerProfile = require('./routes/ExternalWGApi/userDataFromWG')
 
@@ -41,7 +47,7 @@ app.use((req, res, next) => {
 });
 
 
-app.use('/api', shipRoutes);
+app.use('/api', requestFromDB);
 app.use('/auth', authRoutes);
 app.use('/profile', playerProfile);
 

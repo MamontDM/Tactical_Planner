@@ -4,6 +4,7 @@ const AuthContext = createContext();
 
 export const AuthProvider = ({ children }) => {
 const [isAuthenticated, setIsAuthenticated] = useState(false);
+const [userId, setUserId] = useState(null);
 const [user, setUser] = useState(null);
 
 
@@ -18,6 +19,8 @@ const [user, setUser] = useState(null);
             .then((data) => {
                 if(data.isAuthenticated) {
                     setIsAuthenticated(true);
+                    setUserId(data.user.account_id);
+                    console.log(data);
                 }else{
                     setIsAuthenticated(false);
                 }
@@ -30,28 +33,28 @@ const [user, setUser] = useState(null);
     }, []);
 
     useEffect(() => {
-        console.log(isAuthenticated);
-        if(!isAuthenticated){
+        if(!isAuthenticated || !userId){
             console.log('isAuthenticated === false');
+            console.log(userId);
             return;
         }
-        fetch('profile/playerData')
-        .then((res) => {
-            if(!res.ok){
-                throw new Error(`Http error, status:  ${res.status}`)
-            }
-            return res.json();
-        })
-        .then((data) =>{
-            if(data) {
-                console.log(data);
-                setUser(data);
-            }
-        })
-        .catch((error) => {
-            console.error('Errors in catch block:', error.message)
-        })
-    },[isAuthenticated])
+            fetch(`api/user/profile?id=${userId}`)
+                .then((res) => {
+                    if(!res.ok){
+                        throw new Error(`Http error, status:  ${res.status}`)
+                    }
+                    return res.json();
+                })
+                .then((data) =>{
+                    if(data) {
+                        console.log(data);
+                        setUser(data);
+                    }
+                })
+                .catch((error) => {
+                    console.error('Errors in catch block:', error.message)
+                })
+    },[isAuthenticated, userId])
 
     const login = () => {
         window.location.href = 'http://localhost:5000/auth/login';

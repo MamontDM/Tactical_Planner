@@ -3,7 +3,6 @@ import { getCoordinates } from '../../../../../utils/commonHelpers';
 import { drawCircle } from '../../../../../utils/canvasHelpers';
 import CanvasContext from '../../../../contexts/CanvasContext';
 import { useObjects } from '../../../../../hooks/useObjects';
-import { useSettingContext}  from '../../../../../hooks/useSettingContext';
 import ToolSettings from '../../ToolSettings/toolSettings';
 
 

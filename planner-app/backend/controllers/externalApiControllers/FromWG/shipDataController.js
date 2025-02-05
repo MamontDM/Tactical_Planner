@@ -7,7 +7,7 @@ const Ship = require('../../../models/ShipDataModel.js');
 const getShipData = async () => {
     try {
         const shipDataRequest = querystring.stringify({
-            application_id: 'dbd5754ce93a204aa7632c155fe229b7',
+            application_id: app_id,
             fields: 'name,tier,type,nation,images.medium',
             page_no: 9,
         });
