@@ -6,7 +6,7 @@
   "scripts": {
     "start": " node server.js",
     "start:dev": "nodemon server.js",
-    "start:prod": "cross-env NODE_PROD=production node server.js"
+    "start:prod": "NODE_ENV=production node server.js"
   },
   "dependencies": {
     "axios": "^1.7.9",
@@ -15,11 +15,9 @@
     "dotenv": "^16.4.7",
     "express": "^4.21.2",
     "express-session": "^1.18.1",
-    "mongoose": "^8.8.4",
-    "cross-env": "^7.0.3"
+    "mongoose": "^8.8.4"
   },
   "devDependencies": {
-    
     "dotenv-cli": "^8.0.0",
     "nodemon": "^3.1.9"
   }

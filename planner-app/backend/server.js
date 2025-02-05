@@ -8,15 +8,18 @@ const session = require('express-session');
 
 
 const app_id = process.env.APP_ID;
-const isProduction = process.env.NODE_ENV === "production";
+
+const ENV = process.env.NODE_ENV || 'development';
+const PORT = process.env.PORT || 5000;
+
+const isProduction = ENV === "production";
 
 const mongoUri = isProduction 
     ? process.env.MONGO_URI_PROD
     : process.env.MONGO_URI_DEV;
 
 const sessionSecret = process.env.SESSION_SECRET;
-const PORT = process.env.PORT || 5000;
-const ENV = process.env.NODE_ENV || 'development';
+
 const corsOrigin = process.env.CORS_ORIGIN;
 
 if (!app_id || !mongoUri || !sessionSecret || !PORT || !corsOrigin) {
@@ -47,7 +50,7 @@ app.use(session({
 
 mongoose
     .connect(mongoUri)
-    .then(() => console.log('Connected to Atlas MongoDB'))
+    .then(() => console.log(`Connected to ${mongoUri}`))
     .catch((err) => console.error("Error connecting to MongoDB:", err));
 
 
