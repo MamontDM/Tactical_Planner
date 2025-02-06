@@ -8,8 +8,6 @@ module.exports = {
     sessionSecret: process.env.SESSION_SECRET,
     PORT: process.env.PORT || 5000,
     isProduction: ENV === "production",
-    allowedOrigins: [
-        process.env.CORS_ORIGIN, 
-        process.env.VERCEL_ORIGIN
-    ]
+    prodOrigins: process.env.VERCEL_ORIGIN,
+    devOrigins: process.env.CORS_ORIGIN,
 };

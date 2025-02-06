@@ -8,7 +8,14 @@ const mongoose = require('mongoose');
 
 const config = require('./config');
 
-const { app_id, mongoUri, sessionSecret, PORT, isProduction, allowedOrigins } = config;
+const { app_id, mongoUri, sessionSecret, PORT, isProduction, prodOrigins, devOrigins } = config;
+
+
+const allowedOrigins = isProduction
+    ? [prodOrigins] 
+    : [devOrigins, 'http://localhost:3000'];
+
+
 
 if (!app_id || !mongoUri || !sessionSecret || !PORT) {
     throw new Error("Missing required environment variables. Check your .env file.");
@@ -19,6 +26,8 @@ const authRoutes = require('./routes/AuthApi/authRoutes')
 const playerProfile = require('./routes/ExternalWGApi/userDataFromWG')
 
 const app = express();
+
+
 
 app.use(cors({
     origin: allowedOrigins,
