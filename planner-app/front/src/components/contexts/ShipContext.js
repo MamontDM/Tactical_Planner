@@ -1,4 +1,5 @@
-import {createContext, useState, useEffect, useReducer, useCallback} from 'react'
+import {createContext, useState, useEffect, useReducer, useCallback} from 'react';
+const API_BASE_URL = process.env.REACT_APP_API_BASE_URL;
 
 const defaultConfig = {
     limitations: [],
@@ -110,7 +111,7 @@ const ShipProvider = ({ children }) => {
 
     const fetchAllShipsName = async () => {
         try {
-           const response = await fetch(`${REACT_APP_API_BASE_URL}/api/ship/name-allships`);
+           const response = await fetch(`${API_BASE_URL}/api/ship/name-allships`);
            if(!response.ok){
              throw new Error("Failed to fetch all names!");
            }

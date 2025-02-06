@@ -3,6 +3,7 @@ import './shipList.css';
 import DropdownSearch from '../../../../../shared/DropDownSearch';
 import ShipListCard from './ShipsCard/shipListCard';
 import { useShipContext } from '../../../../../../hooks/useShipContext';
+const API_BASE_URL = process.env.REACT_APP_API_BASE_URL;
 
 const ShipList = ({uniqueKey, type, index, clearListFlag}) =>{
   const { filteredShips, addShip, ships, removeShip } = useShipContext();
@@ -14,7 +15,7 @@ const ShipList = ({uniqueKey, type, index, clearListFlag}) =>{
 
   const fetchSelectedShips = async (id) =>{
       try {
-            const response = await fetch(`${REACT_APP_API_BASE_URL}/api/ship/id-search?id=${encodeURIComponent(id)}`)
+            const response = await fetch(`${API_BASE_URL}/api/ship/id-search?id=${encodeURIComponent(id)}`)
             if(!response.ok){
               throw new Error("Failed to fetch ships by ID!");
             }
