@@ -7,7 +7,7 @@ const RENDER_ORIGIN = process.env.RENDER_ORIGIN;
 
 exports.login = (req, res) =>{ 
     const applicationId = app_id;
-    const redirectUri = `${RENDER_ORIGIN}/api/response`;
+    const redirectUri = `${RENDER_ORIGIN}/auth/response`;
 
     const wargamingAuthUrl = `https://api.worldoftanks.eu/wot/auth/login/?application_id=${applicationId}&redirect_uri=${encodeURIComponent(redirectUri)}`
 
