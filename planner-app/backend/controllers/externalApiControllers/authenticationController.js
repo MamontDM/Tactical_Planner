@@ -2,12 +2,12 @@ const axios = require('axios');
 const { app_id } = require('../../server');
 const { getProfileData } = require('./userDataController');
 const FRONT_URL = process.env.VERCEL_ORIGIN;
+const RENDER_ORIGIN = process.env.RENDER_ORIGIN;
 
 
 exports.login = (req, res) =>{ 
-    console.log('called')
     const applicationId = app_id;
-    const redirectUri = FRONT_URL;
+    const redirectUri = RENDER_ORIGIN;
 
     const wargamingAuthUrl = `https://api.worldoftanks.eu/wot/auth/login/?application_id=${applicationId}&redirect_uri=${encodeURIComponent(redirectUri)}`
 
@@ -24,7 +24,7 @@ exports.response = async (req, res) => {
 
     getProfileData(account_id, nickname);
 
-    res.redirect(`http://localhost:3000/`);
+    res.redirect(FRONT_URL);
     
 };
 
