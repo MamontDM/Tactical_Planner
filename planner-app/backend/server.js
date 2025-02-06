@@ -20,9 +20,9 @@ const mongoUri = isProduction
 
 const sessionSecret = process.env.SESSION_SECRET;
 
-const corsOrigin = process.env.CORS_ORIGIN;
 
-if (!app_id || !mongoUri || !sessionSecret || !PORT || !corsOrigin) {
+
+if (!app_id || !mongoUri || !sessionSecret || !PORT) {
     throw new Error("Missing required environment variables. Check your .env file.");
 }
 
@@ -32,8 +32,14 @@ const authRoutes = require('./routes/AuthApi/authRoutes')
 const playerProfile = require('./routes/ExternalWGApi/userDataFromWG')
 
 const app = express();
+
+const allowedOrigins = [
+    process.env.CORS_ORIGIN, 
+    process.env.VERCEL_ORIGIN, 
+];
+
 app.use(cors({
-    origin: corsOrigin,
+    origin: allowedOrigins,
     methods: ['GET', 'POST', 'PUT', 'DELETE'],
     credentials: true
 }));
@@ -50,7 +56,7 @@ app.use(session({
 
 mongoose
     .connect(mongoUri)
-    .then(() => console.log(`Connected to ${mongoUri}`))
+    .then(() => console.log(`Connected to DB!`))
     .catch((err) => console.error("Error connecting to MongoDB:", err));
 
 
