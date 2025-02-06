@@ -10,13 +10,16 @@ const [user, setUser] = useState(null);
 
 
     useEffect(() => {
-        fetch( `${API_BASE_URL}/auth/status`)
+        fetch( `${API_BASE_URL}/auth/status`, {
+            method: 'GET',
+            credentials: 'include', 
+        })
             .then((res) => {
                 if(!res.ok){
                     throw new Error(`Http error, status:  ${res.status}`)
                 }
                 return res.json();
-    })
+        })
             .then((data) => {
                 if(data.isAuthenticated) {
                     setIsAuthenticated(true);
@@ -62,7 +65,10 @@ const [user, setUser] = useState(null);
     };
 
     const logout = () => {
-        fetch(`${API_BASE_URL}/auth/logout`, { method: 'POST' })
+        fetch(`${API_BASE_URL}/auth/logout`, { 
+            method: 'POST',
+            credentials: 'include', 
+        })
             .then((res) => res.json())
             .then((data) => {
                 if (data.message) {

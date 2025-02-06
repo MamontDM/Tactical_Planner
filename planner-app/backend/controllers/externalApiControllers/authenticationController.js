@@ -38,6 +38,7 @@ exports.response = async (req, res) => {
 };
 
 exports.checkAuthStatus = (req, res) => {
+    console.log('Cookies:', req.cookies);
     const token = req.cookies.token;
     
     if (!token) {
