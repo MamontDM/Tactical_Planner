@@ -31,7 +31,7 @@ exports.response = async (req, res) => {
         maxAge: parseInt(expires_at, 10) * 1000,
     });
 
-    getProfileData(account_id, nickname);
+    await getProfileData(account_id, nickname);
 
     res.redirect(FRONT_URL);
     
@@ -39,6 +39,7 @@ exports.response = async (req, res) => {
 
 exports.checkAuthStatus = (req, res) => {
     const token = req.cookies.token;
+    
     if (!token) {
         console.log('Токен отсутствует');
         return res.json({ isAuthenticated: false });
