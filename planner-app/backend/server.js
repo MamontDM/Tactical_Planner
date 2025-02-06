@@ -1,6 +1,8 @@
 require('dotenv').config();
 const express = require('express');
+const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
+
 const cors = require('cors');
 const axios = require('axios');
 const mongoose = require('mongoose');
@@ -38,28 +40,18 @@ const allowedOrigins = [
     process.env.VERCEL_ORIGIN, 
 ];
 
+
 app.use(cors({
     origin: allowedOrigins,
     methods: ['GET', 'POST', 'PUT', 'DELETE'],
     credentials: true
 }));
 
-app.use(session({
-    secret: sessionSecret,
-    resave: false,            
-    saveUninitialized: false, 
-    cookie: {
-        secure: isProduction,        
-        maxAge: 3600000,     
-    },
-}));
-
+app.use(cookieParser());
 mongoose
     .connect(mongoUri)
     .then(() => console.log(`Connected to DB!`))
     .catch((err) => console.error("Error connecting to MongoDB:", err));
-
-
 app.use(bodyParser.json());
 app.use((req, res, next) => {
     console.log(`Incoming ${req.method} request to ${req.url}`);

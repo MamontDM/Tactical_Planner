@@ -1,5 +1,6 @@
 const axios = require('axios');
 const { app_id } = require('../../server');
+const jwt = require('jsonwebtoken');
 const { getProfileData } = require('./userDataController');
 const FRONT_URL = process.env.VERCEL_ORIGIN;
 const RENDER_ORIGIN = process.env.RENDER_ORIGIN;
