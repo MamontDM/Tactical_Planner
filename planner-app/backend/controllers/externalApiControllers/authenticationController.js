@@ -21,7 +21,15 @@ exports.response = async (req, res) => {
     if (!access_token || !account_id || !expires_at || !nickname) {
         return res.status(400).json({ error: 'Некорректный ответ от API' });
     }
-    req.session.user = { access_token, account_id, nickname };
+    const token = jwt.sign({account_id, nickname}, process.env.JWT_SECRET, {
+        expiresIn: parseInt(expires_at, 10),
+    });
+
+    res.cookie('token', token, {
+        httpOnly: true,
+        secure: process.env.NODE_ENV === 'production',
+        maxAge: parseInt(expires_at, 10) * 1000,
+    });
 
     getProfileData(account_id, nickname);
 
@@ -30,26 +38,42 @@ exports.response = async (req, res) => {
 };
 
 exports.checkAuthStatus = (req, res) => {
-    console.log('Called request')
-    if (req.session.user) {
-        console.log('true')
-        res.json({ isAuthenticated: true, user: req.session.user });
-    } else {
-        console.log('true') 
-        res.json({ isAuthenticated: false });
+    const token = req.cookies.token;
+    if (!token) {
+        console.log('Токен отсутствует');
+        return res.json({ isAuthenticated: false });
+    }
+    try {
+        const decoded = jwt.verify(token, process.env.JWT_SECRET);
+        
+        res.json({
+            isAuthenticated: true,
+            user: {
+                account_id: decoded.account_id,
+                nickname: decoded.nickname,
+            },
+        });
+    } catch (error) {
+        console.error('Error decoding', error.message);
+        res.json({isAuthenticated: false});
     }
 };
 
 
 exports.logOut = async (req, res) => {
 
-    const {access_token} = req.session.user;
+    const token = req.cookies.token;
      const applicationId = app_id;
 
-    if (!access_token) {
+     if (!token) {
         return res.status(400).json({ error: 'Токен отсутствует' });
     }
+
         try {
+            const decoded = jwt.verify(token, process.env.JWT_SECRET);
+            const access_token = decoded.access_token;
+            const applicationId = app_id;
+
             const response = await axios.post('https://api.worldoftanks.eu/wot/auth/logout/', 
                 null,
                 {params: {
@@ -58,9 +82,8 @@ exports.logOut = async (req, res) => {
                 },
             }
         );
-        req.session.destroy(() => {
-            res.status(200).json({message: 'LogOut success'});
-        });
+     res.clearCookie('token');
+     res.status(200).json({message: 'Logout success' });
     } catch (error) {
         console.error('Error:', error.message);
         res.status(500).json({error: 'Error axios req to API'});
