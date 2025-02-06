@@ -58,7 +58,7 @@ const [user, setUser] = useState(null);
     },[isAuthenticated, userId])
 
     const login = () => {
-        window.location.href = API_BASE_URL;
+        window.location.href = `${API_BASE_URL}/auth/login`;
     };
 
     const logout = () => {
