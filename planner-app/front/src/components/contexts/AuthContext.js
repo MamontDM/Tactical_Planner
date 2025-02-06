@@ -9,7 +9,7 @@ const [user, setUser] = useState(null);
 
 
     useEffect(() => {
-        fetch( `${API_BASE_URL}/auth/status`)
+        fetch( `${REACT_APP_API_BASE_URL}/auth/status`)
             .then((res) => {
                 if(!res.ok){
                     throw new Error(`Http error, status:  ${res.status}`)
@@ -38,7 +38,7 @@ const [user, setUser] = useState(null);
             console.log(userId);
             return;
         }
-            fetch(`${API_BASE_URL}/api/user/profile?id=${userId}`)
+            fetch(`${REACT_APP_API_BASE_URL}/api/user/profile?id=${userId}`)
                 .then((res) => {
                     if(!res.ok){
                         throw new Error(`Http error, status:  ${res.status}`)
@@ -57,11 +57,11 @@ const [user, setUser] = useState(null);
     },[isAuthenticated, userId])
 
     const login = () => {
-        window.location.href = API_BASE_URL;
+        window.location.href = REACT_APP_API_BASE_URL;
     };
 
     const logout = () => {
-        fetch(`${API_BASE_URL}/auth/logout`, { method: 'POST' })
+        fetch(`${REACT_APP_API_BASE_URL}/auth/logout`, { method: 'POST' })
             .then((res) => res.json())
             .then((data) => {
                 if (data.message) {

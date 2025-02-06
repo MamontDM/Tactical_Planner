@@ -14,7 +14,7 @@ const ShipList = ({uniqueKey, type, index, clearListFlag}) =>{
 
   const fetchSelectedShips = async (id) =>{
       try {
-            const response = await fetch(`${API_BASE_URL}/api/ship/id-search?id=${encodeURIComponent(id)}`)
+            const response = await fetch(`${REACT_APP_API_BASE_URL}/api/ship/id-search?id=${encodeURIComponent(id)}`)
             if(!response.ok){
               throw new Error("Failed to fetch ships by ID!");
             }
