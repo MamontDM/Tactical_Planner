@@ -30,7 +30,7 @@ const app = express();
 
 
 app.use(cors({
-    origin: allowedOrigins,
+    origin: ['https://your-frontend-app.vercel.app'],
     methods: ['GET', 'POST', 'PUT', 'DELETE'],
     credentials: true
 }));
