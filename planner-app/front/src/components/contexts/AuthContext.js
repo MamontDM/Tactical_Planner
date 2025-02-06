@@ -10,6 +10,7 @@ const [user, setUser] = useState(null);
 
 
     useEffect(() => {
+        console.log(document.cookie);
         fetch( `${API_BASE_URL}/auth/status`, {
             method: 'GET',
             credentials: 'include', 
