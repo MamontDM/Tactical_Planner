@@ -39,7 +39,7 @@ const [user, setUser] = useState(null);
             console.log(userId);
             return;
         }
-            fetch(`${API_BASE_URL}api/user/profile?id=${userId}`)
+            fetch(`${API_BASE_URL}/api/user/profile?id=${userId}`)
                 .then((res) => {
                     if(!res.ok){
                         throw new Error(`Http error, status:  ${res.status}`)
