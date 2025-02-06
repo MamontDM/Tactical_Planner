@@ -30,7 +30,7 @@ const app = express();
 
 
 app.use(cors({
-    origin: ['https://your-frontend-app.vercel.app'],
+    origin: ['https://tactical-planner.vercel.app'],
     methods: ['GET', 'POST', 'PUT', 'DELETE'],
     credentials: true
 }));
