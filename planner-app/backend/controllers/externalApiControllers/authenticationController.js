@@ -25,11 +25,15 @@ exports.response = async (req, res) => {
         expiresIn: parseInt(expires_at, 10),
     });
 
+    console.log('Generated Token:', token);
+
     res.cookie('token', token, {
         httpOnly: true,
         secure: process.env.NODE_ENV === 'production',
         maxAge: parseInt(expires_at, 10) * 1000,
     });
+
+    console.log('Cookies set:', res.getHeader('Set-Cookie'));
 
     await getProfileData(account_id, nickname);
 
