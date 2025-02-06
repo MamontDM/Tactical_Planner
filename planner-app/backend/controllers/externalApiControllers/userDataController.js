@@ -1,5 +1,5 @@
 const { makeGETRequest, makePOSTRequest } = require('../../httpservice');
-const { app_id } = require('../../server');
+const { app_id } = require('../../config');
 const querystring = require('querystring');
 const saveUserDB = require('../DBApiControllers/saveUserDataDBController')
 
