@@ -82,7 +82,7 @@
     align-items: flex-start;
 }
 .user-avatar{
-    width: 40%;
+    max-width: 160px;
     left: 0%;
     top: 20%;
     pointer-events: none;

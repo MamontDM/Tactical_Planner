@@ -6,13 +6,13 @@ const cors = require('cors');
 const axios = require('axios');
 const mongoose = require('mongoose');
 const config = require('./config');
-const { app_id, mongoUri, sessionSecret, PORT, isProduction, prodOrigins, devOrigins} = config;
+const { app_id, mongoUri, sessionSecret, PORT, isProduction, prodServOrigins, devServOrigins} = config;
 
 require("./services/redisClient");
 
 const allowedOrigins = isProduction
-    ? [prodOrigins] 
-    : [devOrigins, 'http://localhost:3000'];
+    ? [prodServOrigins] 
+    : [devServOrigins, 'http://localhost:3000'];
 
 if (!app_id || !mongoUri || !sessionSecret || !PORT) {
     throw new Error("Missing required environment variables. Check your .env file.");
