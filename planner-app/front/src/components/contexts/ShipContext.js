@@ -115,7 +115,11 @@ const ShipProvider = ({ children }) => {
 
     const fetchAllShipsName = async () => {
         try {
-           const response = await fetch(`${API_BASE_URL}/api/ship/name-allships`);
+           const response = await fetch(`${API_BASE_URL}/api/ship/name-allships`, {
+            method: 'GET',
+            credentials: 'include',
+           });
+
            if(!response.ok){
              throw new Error("Failed to fetch all names!");
            }
@@ -129,13 +133,14 @@ const ShipProvider = ({ children }) => {
                 Destroyer: data.filter((ship) => ship.class === 'Destroyer'),
                 Submarine: data.filter((ship) => ship.class === 'Submarine'),
                 AirCarrier: data.filter((ship) => ship.class === 'AirCarrier'),
-              };
+            };
+
             setFilteredShips(newFilteredShips);
 
             setIsDataLoaded(true);
            }catch (error) {
-            console.error('Error fetching ships: ', error.message);
-         }
+                console.error('Error fetching ships: ', error.message);
+            }
       };
 
       
