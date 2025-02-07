@@ -3,7 +3,7 @@
     "version": "1.0.0",
     "private": true,
     "scripts": {
-        "start:backend": "npm start --prefix planner-app/backend",
+        "start:backend": "npm run start:dev --prefix planner-app/backend",
         "start:frontend": "npm start --prefix planner-app/front",
         "start": "concurrently -n \"FRONT,BACK\" -c \"blue,green\" \"npm run start:frontend\" \"npm run start:backend\"",
         "build:frontend": "npm run build --prefix frontend"

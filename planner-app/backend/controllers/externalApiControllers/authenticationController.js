@@ -1,95 +1,126 @@
 const axios = require('axios');
 const { app_id } = require('../../config');
-const jwt = require('jsonwebtoken');
 const { getProfileData } = require('./userDataController');
-const FRONT_URL = process.env.VERCEL_ORIGIN;
-const RENDER_ORIGIN = process.env.RENDER_ORIGIN;
+const { saveToCache, getFromCache, deleteFromCache, cacheHasKey } = require('../../controllers/redisControlers/cacheRedis');
+const { isProduction, prodServOrigins, devServOrigins, domainPROD, domainDEV, devFrontOrigins, prodFrontOrigins  } = require('../../config');
 
 
 exports.login = (req, res) =>{ 
     const applicationId = app_id;
-    const redirectUri = `${RENDER_ORIGIN}/auth/response`;
-
+    const redirectUri = `${isProduction ? prodServOrigins : devServOrigins}/auth/response`;
+    console.log(redirectUri);
     const wargamingAuthUrl = `https://api.worldoftanks.eu/wot/auth/login/?application_id=${applicationId}&redirect_uri=${encodeURIComponent(redirectUri)}`
-
-    return res.redirect(wargamingAuthUrl);
+    res.redirect(wargamingAuthUrl);
 };
 
 exports.response = async (req, res) => {
+
     const { access_token, account_id, expires_at, nickname } = req.query;
 
     if (!access_token || !account_id || !expires_at || !nickname) {
         return res.status(400).json({ error: 'Некорректный ответ от API' });
     }
-    const token = jwt.sign({account_id, nickname}, process.env.JWT_SECRET, {
-        expiresIn: parseInt(expires_at, 10),
-    });
 
-    console.log('Generated Token:', token);
+    getProfileData(account_id, nickname);
 
-    res.cookie('token', token, {
-        httpOnly: true,
-        secure: process.env.NODE_ENV === 'production',
-        maxAge: parseInt(expires_at, 10) * 1000,
-    });
 
-    console.log('Cookies set:', res.getHeader('Set-Cookie'));
+    const cookieData = {
+        access_token,
+        expires_at: parseInt(expires_at, 10) * 1000,
+        account_id,
+        nickname
+    };
 
-    await getProfileData(account_id, nickname);
-
-    res.redirect(FRONT_URL);
+    await saveToCache(`auth:${account_id}`, cookieData, 600)
     
+    
+  console.log(` Cookies сохранены в Redis: cookies:${account_id}`);
+
+  const redirectUrl = `${isProduction ? prodFrontOrigins : devFrontOrigins}?account_id=${account_id}`;
+
+  res.redirect(redirectUrl);
 };
 
-exports.checkAuthStatus = (req, res) => {
-    console.log('Cookies:', req.cookies);
-    const token = req.cookies.token;
-    
-    if (!token) {
-        console.log('Токен отсутствует');
-        return res.json({ isAuthenticated: false });
-    }
+exports.checkAuthStatus = async (req, res) => {
+    const { account_id } = req.query;
+
+        if (!account_id) {
+            return res.status(400).json({ isAuthenticated: false, error: "Не указан account_id" });
+        }
+
     try {
-        const decoded = jwt.verify(token, process.env.JWT_SECRET);
-        
-        res.json({
-            isAuthenticated: true,
-            user: {
-                account_id: decoded.account_id,
-                nickname: decoded.nickname,
-            },
+        const userData = await getFromCache(`auth:${account_id}`);
+        if(!userData){
+            return res.status(401).json({ isAuthenticated: false, error: "Нет данных в Redis" });
+        }
+        console.log(`Data found in Redis: auth:${account_id}`);
+        console.log(isProduction);
+        res.cookie("access_token", userData.access_token, {
+            httpOnly: true,
+            secure: isProduction,
+            sameSite: isProduction ? 'None' : 'Lax',
+            maxAge: userData.expires_at,
+            domain: isProduction ? domainPROD : domainDEV,
+            path: "/",
         });
+
+        res.status(200).json({
+            isAuthenticated: true,
+            account_id: userData.account_id,
+            nickname: userData.nickname,
+        });
+
+
     } catch (error) {
-        console.error('Error decoding', error.message);
-        res.json({isAuthenticated: false});
+        console.error("Ошибка при проверке аутентификации:", error.message);
+        res.status(500).json({ isAuthenticated: false, error: "Ошибка сервера" });
     }
+
 };
 
 
 exports.logOut = async (req, res) => {
-
-    const token = req.cookies.token;
-     const applicationId = app_id;
-
-     if (!token) {
-        return res.status(400).json({ error: 'Токен отсутствует' });
-    }
-
         try {
-            const decoded = jwt.verify(token, process.env.JWT_SECRET);
-            const access_token = decoded.access_token;
+            const access_token = req.cookies.access_token;
             const applicationId = app_id;
+            const { id } = req.query
+            console.log(id);
 
-            const response = await axios.post('https://api.worldoftanks.eu/wot/auth/logout/', 
-                null,
-                {params: {
+            if (!access_token || !applicationId) {
+                return res.status(200).json({ message: 'Already logged out' });
+            }
+            await axios.post('https://api.worldoftanks.eu/wot/auth/logout/', null, {
+            params: {
                     application_id: applicationId,
                     access_token: access_token,
                 },
+        });
+        const cookieOptions = {
+            httpOnly: true,
+            secure: isProduction,
+            sameSite: isProduction ? 'None' : 'Lax',
+            maxAge: 0,
+            domain: isProduction ? domainPROD : domainDEV,
+            path: "/",
+        };
+
+        res.clearCookie('access_token', cookieOptions);
+
+        try {
+            const cacheKey =`auth:${id}`;
+            const cacheExists = await cacheHasKey(cacheKey);
+            if (!cacheExists) {
+                console.warn(`Cache key ${cacheKey} not found.`);
+            } else {
+                await deleteFromCache(cacheKey);
+                console.log(`Cache key ${cacheKey} successfully deleted.`);
             }
-        );
-     res.clearCookie('token');
-     res.status(200).json({message: 'Logout success' });
+        } catch (error) {
+            console.error('Error during Redis cache deletion:', redisError.message);
+            return res.status(500).json({ error: 'Error during cache deletion' });
+        }
+
+        return res.status(200).json({message: "Logout success"});
     } catch (error) {
         console.error('Error:', error.message);
         res.status(500).json({error: 'Error axios req to API'});

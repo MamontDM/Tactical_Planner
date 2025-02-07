@@ -4,7 +4,7 @@
   "private": true,
   "main": "server.js",
   "scripts": {
-    "start": " node server.js",
+    "start": "node server.js",
     "start:dev": "nodemon server.js",
     "start:prod": "NODE_ENV=production node server.js"
   },
@@ -17,7 +17,8 @@
     "express": "^4.21.2",
     "express-session": "^1.18.1",
     "jsonwebtoken": "^9.0.2",
-    "mongoose": "^8.8.4"
+    "mongoose": "^8.8.4",
+    "redis": "^4.7.0"
   },
   "devDependencies": {
     "dotenv-cli": "^8.0.0",

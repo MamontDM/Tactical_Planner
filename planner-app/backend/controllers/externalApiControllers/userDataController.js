@@ -1,4 +1,4 @@
-const { makeGETRequest, makePOSTRequest } = require('../../httpservice');
+const { makeGETRequest, makePOSTRequest } = require('../../services/httpservice');
 const { app_id } = require('../../config');
 const querystring = require('querystring');
 const saveUserDB = require('../DBApiControllers/saveUserDataDBController')

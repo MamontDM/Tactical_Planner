@@ -3,7 +3,11 @@ import './shipList.css';
 import DropdownSearch from '../../../../../shared/DropDownSearch';
 import ShipListCard from './ShipsCard/shipListCard';
 import { useShipContext } from '../../../../../../hooks/useShipContext';
-const API_BASE_URL = process.env.REACT_APP_API_BASE_URL;
+
+const API_BASE_URL =
+  process.env.NODE_ENV === 'development'
+    ? 'http://localhost:5000'
+    : process.env.REACT_APP_API_BASE_URL;
 
 const ShipList = ({uniqueKey, type, index, clearListFlag}) =>{
   const { filteredShips, addShip, ships, removeShip } = useShipContext();

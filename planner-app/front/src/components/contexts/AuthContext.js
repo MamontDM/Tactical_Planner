@@ -1,17 +1,31 @@
 import React, { createContext, useState,  useEffect } from 'react';
-const API_BASE_URL = process.env.REACT_APP_API_BASE_URL;
+
+const API_BASE_URL =
+  process.env.NODE_ENV === 'development'
+    ? 'http://localhost:5000'
+    : process.env.REACT_APP_API_BASE_URL;
 
 const AuthContext = createContext();
-
 export const AuthProvider = ({ children }) => {
+
 const [isAuthenticated, setIsAuthenticated] = useState(false);
 const [userId, setUserId] = useState(null);
 const [user, setUser] = useState(null);
 
+const redirectToStartPage = () => {
+    const cleanUrl = window.location.origin + window.location.pathname;
+    window.location.replace(cleanUrl);
+}
 
-    useEffect(() => {
-        console.log(document.cookie);
-        fetch( `${API_BASE_URL}/auth/status`, {
+useEffect(() => {
+    const urlParams = new URLSearchParams(window.location.search);
+    const idFromUrl = urlParams.get("account_id");
+    
+    if(!idFromUrl) return;
+    
+    setUserId(idFromUrl);
+
+    fetch( `${API_BASE_URL}/auth/status?account_id=${idFromUrl}`, {
             method: 'GET',
             credentials: 'include', 
         })
@@ -22,27 +36,17 @@ const [user, setUser] = useState(null);
                 return res.json();
         })
             .then((data) => {
-                if(data.isAuthenticated) {
-                    setIsAuthenticated(true);
-                    setUserId(data.user.account_id);
-                    console.log(data);
-                }else{
-                    setIsAuthenticated(false);
-                }
+            setIsAuthenticated(data.isAuthenticated || false);
         })
         .catch((error) => {
             console.error('Auth Error:', error.message);
             setIsAuthenticated(false);
             setUser(null);
         });
-    }, []);
+}, []);
 
     useEffect(() => {
-        if(!isAuthenticated || !userId){
-            console.log('isAuthenticated === false');
-            console.log(userId);
-            return;
-        }
+        if(!isAuthenticated || !userId)return;
             fetch(`${API_BASE_URL}/api/user/profile?id=${userId}`)
                 .then((res) => {
                     if(!res.ok){
@@ -52,7 +56,6 @@ const [user, setUser] = useState(null);
                 })
                 .then((data) =>{
                     if(data) {
-                        console.log(data);
                         setUser(data);
                     }
                 })
@@ -61,23 +64,29 @@ const [user, setUser] = useState(null);
                 })
     },[isAuthenticated, userId])
 
-    const login = () => {
+
+    const login = async () => {
         window.location.href = `${API_BASE_URL}/auth/login`;
     };
 
-    const logout = () => {
-        fetch(`${API_BASE_URL}/auth/logout`, { 
-            method: 'POST',
-            credentials: 'include', 
-        })
-            .then((res) => res.json())
-            .then((data) => {
-                if (data.message) {
-                    setIsAuthenticated(false);
-                    setUser(null);
-                }
-            })
-            .catch((err) => console.error('Ошибка логаута:', err));
+    const logout = async () => {
+       try {
+        
+            const response = await fetch(`${API_BASE_URL}/auth/logOut?id=${userId}`, {
+                method: 'POST', 
+                credentials: 'include',
+            });
+            if (response.ok) {
+                setIsAuthenticated(false);
+                setUserId(null);
+                redirectToStartPage();
+                console.log('Logout successful, cookies removed');
+            } else {
+                console.error('Failed to logout');
+            }
+       } catch (error) {
+            console.error('Error network:', error);
+       }
     };
 
     return (
