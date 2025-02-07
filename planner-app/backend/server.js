@@ -14,6 +14,10 @@ const allowedOrigins = isProduction
     ? [prodServOrigins] 
     : [devServOrigins, 'http://localhost:3000'];
 
+
+console.log(allowedOrigins);
+
+
 if (!app_id || !mongoUri || !sessionSecret || !PORT) {
     throw new Error("Missing required environment variables. Check your .env file.");
 }
