@@ -112,7 +112,6 @@ const ShipProvider = ({ children }) => {
             limitations: prevConfig.limitations.filter((lim) => lim.id !== id),
         }));
     },[]);
-
     const fetchAllShipsName = async () => {
         try {
            const response = await fetch(`${API_BASE_URL}/api/ship/name-allships`, {

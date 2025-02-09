@@ -5,8 +5,7 @@ const API_BASE_URL =
     ? 'http://localhost:5000'
     : import.meta.env.VITE_API_BASE_URL;
 
-export const AuthContext = createContext();
-
+const AuthContext = createContext();
 export const AuthProvider = ({ children }) => {
 
 const [isAuthenticated, setIsAuthenticated] = useState(false);
@@ -21,14 +20,13 @@ const redirectToStartPage = () => {
 useEffect(() => {
     const urlParams = new URLSearchParams(window.location.search);
     const idFromUrl = urlParams.get("account_id");
-
     
     if(!idFromUrl) return;
     
     setUserId(idFromUrl);
     
+    console.log(API_BASE_URL);
     
-
     fetch( `${API_BASE_URL}/auth/status?account_id=${idFromUrl}`, {
             method: 'GET',
             credentials: 'include', 
@@ -68,24 +66,21 @@ useEffect(() => {
                 })
     },[isAuthenticated, userId])
 
+
     const login = async () => {
-       try {
-        const response = await fetch(`${API_BASE_URL}/auth/login`,{
-            method: 'GET',
-        });
+        const apiBaseUrl = import.meta.env.VITE_API_BASE_URL;
 
-        const data  = await response.json();
-
-        if(data.redirectUrl){
-            window.location.href = data.redirectUrl
+        if(!apiBaseUrl || API_BASE_URL === apiBaseUrl){
+            alert('Temporary unavailable')
+            return;
+        }else {
+            window.location.href = `${API_BASE_URL}/auth/login`;
         }
-       } catch (error) {
-            console.error('Login error:', error);
-       }
     };
 
     const logout = async () => {
        try {
+        
             const response = await fetch(`${API_BASE_URL}/auth/logOut?id=${userId}`, {
                 method: 'POST', 
                 credentials: 'include',
