@@ -5,7 +5,8 @@ const API_BASE_URL =
     ? 'http://localhost:5173'
     : import.meta.env.VITE_API_BASE_URL;
 
-const AuthContext = createContext();
+export const AuthContext = createContext();
+
 export const AuthProvider = ({ children }) => {
 
 const [isAuthenticated, setIsAuthenticated] = useState(false);
@@ -20,10 +21,13 @@ const redirectToStartPage = () => {
 useEffect(() => {
     const urlParams = new URLSearchParams(window.location.search);
     const idFromUrl = urlParams.get("account_id");
+
     
     if(!idFromUrl) return;
     
     setUserId(idFromUrl);
+    
+    
 
     fetch( `${API_BASE_URL}/auth/status?account_id=${idFromUrl}`, {
             method: 'GET',
