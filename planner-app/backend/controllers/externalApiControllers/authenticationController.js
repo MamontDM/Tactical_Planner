@@ -8,9 +8,11 @@ const { isProduction, prodServOrigins, devServOrigins, domainPROD, domainDEV, de
 exports.login = (req, res) =>{ 
     const applicationId = app_id;
     const redirectUri = `${isProduction ? prodServOrigins : devServOrigins}/auth/response`;
-    console.log(redirectUri);
+
     const wargamingAuthUrl = `https://api.worldoftanks.eu/wot/auth/login/?application_id=${applicationId}&redirect_uri=${encodeURIComponent(redirectUri)}`
+    
     res.redirect(wargamingAuthUrl);
+
 };
 
 exports.response = async (req, res) => {

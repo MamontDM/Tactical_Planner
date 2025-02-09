@@ -1,8 +1,8 @@
 import React, {useState, useContext, useCallback} from 'react';
 import './toolbar.css';
-import ToolbarButton from '../../shared/ToolbarButton.js';
-import toolsConfig from './toolsConfig.js';
-import { MapContext } from '../../contexts/MapSelectorContext';
+import ToolbarButton from '../../shared/ToolbarButton.jsx';
+import toolsConfig from './toolsConfig.jsx';
+import { MapContext } from '../../contexts/MapSelectorContext.jsx';
 
 
 const Toolbar = () =>  {

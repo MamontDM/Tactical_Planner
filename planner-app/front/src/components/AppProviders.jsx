@@ -1,6 +1,6 @@
 import { CanvasProvider } from './contexts/CanvasContext';
 import { MapContextProvider } from './contexts/MapSelectorContext';
-import { ShipProvider } from '../components/contexts/ShipContext';
+import { ShipProvider } from './contexts/ShipContext';
 import { SettingProvider } from './contexts/ToolSettingProvider';
 import  { AuthProvider } from './contexts/AuthContext';
 

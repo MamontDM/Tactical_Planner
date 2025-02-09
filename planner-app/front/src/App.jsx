@@ -1,5 +1,5 @@
-import AppProviders from './components/AppProviders.js';
-import Layout from './components/Layout.js';
+import AppProviders from './components/AppProviders.jsx';
+import Layout from './components/Layout.jsx';
 
 const App = () => {
     return (
