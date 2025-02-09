@@ -8,7 +8,7 @@ module.exports = {
     sessionSecret: process.env.SESSION_SECRET,
     PORT: process.env.PORT || 5000,
     isProduction: ENV === "production",
-    prodFrontOrigins: process.env.VERCEL_ORIGIN,
+    prodFrontOrigins: process.env.RENDER_FRONT_ORIGIN,
     prodServOrigins: process.env.RENDER_ORIGIN,
     devServOrigins: process.env.DEV_BACK,
     devFrontOrigins: process.env.DEV_FRONT,
