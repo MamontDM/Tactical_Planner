@@ -3,7 +3,7 @@ import React, { createContext, useState,  useEffect } from 'react';
 const API_BASE_URL =
   process.env.NODE_ENV === 'development'
     ? 'http://localhost:5173'
-    : import.meta..env.VITE_API_BASE_URL;
+    : import.meta.env.VITE_API_BASE_URL;
 
 const AuthContext = createContext();
 export const AuthProvider = ({ children }) => {
