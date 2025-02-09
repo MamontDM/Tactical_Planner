@@ -2,7 +2,7 @@ import React, { createContext, useState,  useEffect } from 'react';
 
 const API_BASE_URL =
   process.env.NODE_ENV === 'development'
-    ? 'http://localhost:5173'
+    ? 'http://localhost:5000'
     : import.meta.env.VITE_API_BASE_URL;
 
 export const AuthContext = createContext();
@@ -68,14 +68,24 @@ useEffect(() => {
                 })
     },[isAuthenticated, userId])
 
-
     const login = async () => {
-        window.location.href = `${API_BASE_URL}/auth/login`;
+       try {
+        const response = await fetch(`${API_BASE_URL}/auth/login`,{
+            method: 'GET',
+        });
+
+        const data  = await response.json();
+
+        if(data.redirectUrl){
+            window.location.href = data.redirectUrl
+        }
+       } catch (error) {
+            console.error('Login error:', error);
+       }
     };
 
     const logout = async () => {
        try {
-        
             const response = await fetch(`${API_BASE_URL}/auth/logOut?id=${userId}`, {
                 method: 'POST', 
                 credentials: 'include',
