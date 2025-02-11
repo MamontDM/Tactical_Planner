@@ -68,14 +68,7 @@ useEffect(() => {
 
 
     const login = async () => {
-        const apiBaseUrl = import.meta.env.VITE_API_BASE_URL;
-
-        if(!apiBaseUrl || API_BASE_URL === apiBaseUrl){
-            alert('Temporary unavailable')
-            return;
-        }else {
             window.location.href = `${API_BASE_URL}/auth/login`;
-        }
     };
 
     const logout = async () => {

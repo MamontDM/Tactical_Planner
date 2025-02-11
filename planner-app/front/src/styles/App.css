@@ -24,12 +24,6 @@ footer {
   z-index: 3;
 }
 
-footer {
-  margin: 8px;
-  border: 2px solid white ;
-}
-
-
 /* MOdal save window */
 .modal-overlay {
   position: fixed;

@@ -11,7 +11,7 @@ exports.login = (req, res) =>{
 
     const wargamingAuthUrl = `https://api.worldoftanks.eu/wot/auth/login/?application_id=${applicationId}&redirect_uri=${encodeURIComponent(redirectUri)}`
     
-    res.json({ redirectUrl: wargamingAuthUrl });
+    res.redirect( wargamingAuthUrl);
 };
 
 exports.response = async (req, res) => {
