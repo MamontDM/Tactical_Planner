@@ -15,7 +15,6 @@ import IconLeft from './Icon/IconLeft.png';
 import IconRight from './Icon/IconRight.png';
 import line from './Icon/ToolbarIcon/line.png';
 import NeutralSword from './Icon/NeutralSword.png';
-import pencilLine from './Icon/ToolbarIcon/pencilLine.png';
 import radar from './Icon/ToolbarIcon/radar.png';
 import ruler from './Icon/ToolbarIcon/ruler.svg';
 import searchicon from './Icon/searchicon.png';
@@ -32,6 +31,7 @@ import IconSuper_ship from './Icon/super_ship.png';
 import switch_arrow from './Icon/ToolbarIcon/switch_arrow.png';
 import leftLavr from './Icon/ShipCardIcon/leftLavr.png';
 import rightLavr from './Icon/ShipCardIcon/rightLavr.png';
+import baseArea from './Icon/ToolbarIcon/location.png';
 
 export {
 AliesSword,
@@ -51,7 +51,6 @@ IconLeft,
 IconRight,
 line,
 NeutralSword,
-pencilLine,
 radar,
 ruler,
 searchicon,
@@ -68,4 +67,5 @@ IconSuper_ship,
 switch_arrow,
 leftLavr,
 rightLavr,
+baseArea,
 };

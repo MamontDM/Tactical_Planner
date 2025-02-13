@@ -4,7 +4,7 @@ import DropdownWithSearch from '../../../shared/DropDownSearch';
 import CanvasContext from '../../../contexts/CanvasContext';
 import { Archipelago, Atlantic, BigRace, Estuary, FaroeIsland, Greece, Haven, Hotspot, IslandofIce, 
     LandofFire, Loop, MountainRange, Neighbors, NewDawn, North, NorthernWaters, Ring, Riposte, SeaofFortune,
-    Shards, Shatter, SleepingGiant, TearsofDragon, Trap, Trident, WarriorPath, ZoneCrashAlpha} from '../../../../assets/exportMaps';
+    Shards, Shatter, SleepingGiant, Strait, TearsofDragon, Trap, Trident, WarriorPath, ZoneCrashAlpha} from '../../../../assets/exportMaps';
 import { MapContext } from '../../../contexts/MapSelectorContext';
 
 function MapSelector(){
@@ -34,8 +34,9 @@ function MapSelector(){
     'Riposte'         : Riposte,
     'Sea of Fortune'  : SeaofFortune,
     'Shards'          : Shards,
-    'Shatter'          : Shatter,
+    'Shatter'         : Shatter,
     'Sleeping Giant'  : SleepingGiant,
+    'Strait'          : Strait,
     'Tears of Dragon' : TearsofDragon,
     'Trap'            : Trap,
     'Triden'          : Trident,

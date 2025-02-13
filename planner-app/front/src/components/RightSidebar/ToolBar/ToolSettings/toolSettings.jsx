@@ -5,6 +5,7 @@ import GradientColorInput from '../../../shared/Inputs/GradientColorInput'
 import TextToolSettings from '../Tools/TextTool/TextToolSettings';
 import IconToolSettings from '../Tools/IconTool/IconToolSetting';
 import RadarToolSettings from '../Tools/RadarTool/RadarToolSetting';
+import BaseToolSettings from '../Tools/BaseAreaTool/BaseToolSettings';
 
 const ToolSettings = ({ type, onSettingChange }) => {
     console.log('called Setting tool!')
@@ -28,6 +29,7 @@ const ToolSettings = ({ type, onSettingChange }) => {
  
 
     useEffect(() => {
+        console.log(localToolSetting);
         onSettingChange(localToolSetting);
     },[localToolSetting]);
 
@@ -50,6 +52,9 @@ const ToolSettings = ({ type, onSettingChange }) => {
                     onChangeToolSettings={(key, value) => handleChange(key, value)}/>
                 )}
                 {type === 'radar' && ( <RadarToolSettings 
+                    onChangeToolSettings={(key, value) => handleChange(key, value)}/>
+                )}  
+                {type === 'base' && ( <BaseToolSettings 
                     onChangeToolSettings={(key, value) => handleChange(key, value)}/>
                 )}
         </div>

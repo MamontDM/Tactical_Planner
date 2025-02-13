@@ -83,15 +83,15 @@ export const drawTemporaryIcon = (context,  x, y, img, angle, color, label ) => 
 
 
 export const drawingText = (context, text, x, y, fontSize, color) => {
-if(!context) return;
-context.save();
-context.font = `${fontSize}px Oxygen`;
-context.fillStyle = color;
-context.textAlign = 'center';
-context.textBaseline = 'middle';
-context.fillText(text, x , y);
-const textWidth = context.measureText(text).width;
-context.restore();
+    if(!context) return;
+    context.save();
+    context.font = `${fontSize}px Oxygen`;
+    context.fillStyle = color;
+    context.textAlign = 'center';
+    context.textBaseline = 'middle';
+    context.fillText(text, x , y);
+    const textWidth = context.measureText(text).width;
+    context.restore();
 
     return textWidth;
 };
@@ -101,3 +101,27 @@ export const calculateRadius = (startX, startY, currentX, currentY) => {
     const deltaY = currentY - startY;
     return Math.sqrt(deltaX ** 2 + deltaY ** 2);
 };
+
+
+export const getContrastTextColor = (color) => {
+    console.log(color);
+    let r, g, b, a = 1;
+    if(color.startsWith('rgba')){
+        let values = color.match(/\d+(\.\d+)?/g).map(Number);
+        [r, b, g] = values;
+    }else {
+        return "rgba(0,0,0,1)";
+    }
+    console.log(a);
+    const luminance = (0.299 * r + 0.587 * g + 0.114 * b) / 255;
+    console.log(luminance);
+
+    return luminance < 0.299 ? `rgba(0,0,0,${a})` : `rgba(255, 255, 255, ${a})`;
+
+}
+
+export const setAlphaChannel = (color, newAlpha = 0.15) => { 
+    return  color.replace(/rgba\((\d+), (\d+), (\d+), [^)]*\)/, 
+        `rgba($1,$2,$3, ${newAlpha})`
+    ); 
+}

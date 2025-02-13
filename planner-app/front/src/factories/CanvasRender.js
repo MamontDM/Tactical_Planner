@@ -1,6 +1,6 @@
 import  {useContext, useEffect} from 'react';
 import CanvasContext from '../components/contexts/CanvasContext';
-import { curveEndDrawArrow , drawSmoothCurve, drawArea, drawTemporaryIcon, drawingText  } from '../utils/canvasHelpers';
+import { curveEndDrawArrow , drawSmoothCurve, drawArea, drawTemporaryIcon, drawingText, getContrastTextColor  } from '../utils/canvasHelpers';
 import { useObjects } from '../hooks/useObjects';
 
 
@@ -52,17 +52,46 @@ export const drawObject = (canvas, object) => {
             }
             break;
         case 'radar':
+        case 'base':
+            const textColor = getContrastTextColor(object.color);
             const lineWidth = object.lineWidth;    
-            const strokeStyle = object.color;    
+            const strokeStyle = object.type === 'base' ? textColor : object.color;    
             const {x , y} = object.points[0];
             const radius = object.radius;
-
             context.lineWidth = lineWidth;
             context.strokeStyle = strokeStyle;
             context.beginPath();
             context.arc(x, y, radius, 0, 2 * Math.PI);
             context.stroke();
+
+            if(object.type === 'base') { 
+                context.fillStyle = object.color;
+                context.fill();
+                const textWidth = drawingText(context, object.textBody, x, y, object.fontSize, textColor);
+                const textHight = object.fontSize;
+
+                const diamondFigurePoints = [
+                    {x: x, y: y - textHight},
+                    {x: x + textWidth, y: y},
+                    {x: x, y: y + textHight / 0.9},
+                    {x: x - textWidth, y: y}
+                ];
+
+                context.save();
+                context.strokeStyle = textColor;
+                context.lineWidth = 2;
+                context.beginPath();
+                context.moveTo(diamondFigurePoints[0].x, diamondFigurePoints[0].y);
+                diamondFigurePoints.forEach((point, index) => {
+                    if(index !== 0) context.lineTo(point.x, point.y);
+                });
+                context.closePath();
+                context.stroke();
+                context.restore();
+            }
             break;
+
+
         case 'vision':
             drawArea( context ,
                 object.x, 

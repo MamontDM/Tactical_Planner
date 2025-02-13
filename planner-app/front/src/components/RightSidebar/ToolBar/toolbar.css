@@ -18,7 +18,7 @@
     display: grid;
     grid-template-columns: repeat(5, 1fr);
     grid-template-rows: repeat(7, auto);
-    gap: 5px;
+    gap: 10px;
     width: fit-content;
   }
 
@@ -51,30 +51,33 @@
 .toolbar-button-icon {
   grid-area: 3/3;
 }
+.toolbar-button-base{
+  grid-area: 4/3;
+}
 /* block 4 */
 
 .toolbar-button-undo {
-  grid-area: 4/1;
+  grid-area: 5/1;
 }
 .toolbar-button-eraiser {
-  grid-area: 4/3;
+  grid-area: 5/3;
 }
 .toolbar-button-redo {
-  grid-area: 4/5;
+  grid-area: 5/5;
 }
 /* block 5 */
 .toolbar-button-download {
-  grid-area: 5/3;
+  grid-area: 6/3;
 }
 .toolbar-button-text {
-  grid-area: 5/2;
+  grid-area: 6/2;
 }
 .toolbar-button-save {
-  grid-area: 5/4;
+  grid-area: 6/4;
 }
 /* block 6 */
 .toolbar-button-trash {
-  grid-area: 6/3;
+  grid-area: 7/3;
 }
  /* Anchor style END */
 

@@ -1,7 +1,7 @@
 import React, {useContext, useState, useEffect} from 'react';
 import './UserCard.css';
 import AuthContext from '../../../contexts/AuthContext';
-import { defaultAvatar, traun, } from '../../../../assets/exportUserCardIcon';
+import { commander, com_officer, recruiter, executive_officer } from '../../../../assets/exportUserCardIcon';
 
 
 const UserCard = () => {
@@ -21,6 +21,12 @@ useEffect(() => {
     };
 }, [isAuthenticated, user]);
 
+const avatarByRole = {
+    'commander'             : commander,
+    'executive_officer'     : executive_officer,
+    'recruiter'             : recruiter,
+    'commissioned_officer'  : com_officer,
+}
 
 
 return (
@@ -35,7 +41,7 @@ return (
                             <div className="user-role">{user?.role}</div>
                         </div>
                             <div className="user-card-content">
-                                <img className="user-avatar" src={traun} alt={defaultAvatar}></img>
+                                <img className="user-avatar" src={avatarByRole[user?.role]} alt={'Error Avatar'}></img>
                                 <div className="user-todoList">
                                     <button>Map Storage</button>
                                     <button>Join Session(in development)</button>

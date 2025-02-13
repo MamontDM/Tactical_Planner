@@ -11,7 +11,9 @@
  import ClearTool from './Tools/ClearTool/ClearTool.jsx';
  import DownLoadTool from './Tools/DownLoadTool/DownLoadTool.jsx';
  import TextTool from './Tools/TextTool/TextTool.jsx';
- import {battleship, curves, download, eraser, flopik, IconLeft, IconRight, line, radar, select, technical, text, trash, vision} from '../../../assets/exportIcon.js';
+ import BaseAreaTool from './Tools/BaseAreaTool/BaseArea.jsx';
+ import {battleship, curves, baseArea, download, eraser, flopik, IconLeft, IconRight, line, radar, select, technical, text, trash, vision} from '../../../assets/exportIcon.js';
+
  
  
  const toolsConfig = [
@@ -26,6 +28,7 @@
         { id: 'icon', label: 'icon', icon: battleship, component: IconTool},
         { id: 'vision', label: 'Vision', icon: vision, component: VisionTool},
         { id: 'radar', label: 'Radar', icon: radar, component: RadarTool},
+        { id: 'base', label: 'Base', icon: baseArea, component: BaseAreaTool},
         { id: 'save', label: 'Save', icon: flopik, component: MoveTool},
         { id: 'download', label: 'Download', icon: download, component: DownLoadTool},
         { id: 'trash', label: 'Trash', icon: trash, component: ClearTool},

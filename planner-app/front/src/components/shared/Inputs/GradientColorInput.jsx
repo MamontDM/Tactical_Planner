@@ -16,15 +16,10 @@ const GradiendColorInput = ({ onColorChange }) => {
 
     const calculateColor = (value) => {
         const maxIndex = gradientColors.length -1;
-
         const section = Math.min(Math.floor((value / 100) * maxIndex), maxIndex - 1);
-        
         const percentage = (value / 100) * maxIndex - section;
-        
         const start = gradientColors[section];
-        
         const end = gradientColors[section + 1];
-
 
         const r = Math.round(start.r + (end.r - start.r) * percentage);
         const g = Math.round(start.g + (end.g - start.g) * percentage);

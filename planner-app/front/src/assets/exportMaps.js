@@ -25,6 +25,7 @@ import Trap from './maps/Trap.jpg';
 import Trident from './maps/Trident.jpg';
 import WarriorPath from './maps/Warrior_Path.jpg';
 import ZoneCrashAlpha from './maps/Zone_Crash_Alpha.jpg';
+import Strait from './maps/Strait.jpg';
 
 export {
 Archipelago,
@@ -49,9 +50,11 @@ SeaofFortune,
 Shards,
 Shatter,
 SleepingGiant,
+Strait,
 TearsofDragon,
 Trap,
 Trident,
 WarriorPath,
-ZoneCrashAlpha
+ZoneCrashAlpha,
+
 };

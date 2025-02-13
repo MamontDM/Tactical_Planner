@@ -27,7 +27,8 @@ export function findClickedObject(clickX, clickY, objects) {
                   }
               }
           break;
-          case "radar": 
+          case "radar":
+            case "base": 
             if(isPointOnCircle(object, clickX, clickY)){
                 return object;
             }
@@ -79,7 +80,7 @@ export function findClickedObject(clickX, clickY, objects) {
   };
   
     function isPointOnCircle(object, x, y, tolerance = 5) {
-        if (object.type !== 'radar' || !object.radius || !object.points || object.points.length === 0) {
+             if (object.type !== 'radar' && object.type !== 'base' || !object.radius || !object.points || object.points.length === 0) {
       return false;
     }
       const centerX = object.points[0].x;
