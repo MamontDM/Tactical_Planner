@@ -1,5 +1,5 @@
 import React, { useState } from  'react';
-import './BaseArea.css';
+import './baseArea.css';
 
 const BaseToolSettings = ({onChangeToolSettings}) =>{
     const [textBody, setTextBody] = useState("");
