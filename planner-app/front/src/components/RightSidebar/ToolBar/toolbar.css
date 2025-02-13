@@ -82,7 +82,7 @@
  /* Anchor style END */
 
 [class^="toolbar-button-"]{
-    width: 65px;
+    width: 100%;
     background-color: transparent;
     border: 2px solid black;
     border-radius: 8px;
