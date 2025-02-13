@@ -49,7 +49,7 @@ useEffect(() => {
 
     useEffect(() => {
         if(!isAuthenticated || !userId)return;
-            fetch(`${API_BASE_URL}/api/user/profile?id=${userId}`)
+            fetch(`${API_BASE_URL}/api/profile/user?id=${userId}`)
                 .then((res) => {
                     if(!res.ok){
                         throw new Error(`Http error, status:  ${res.status}`)

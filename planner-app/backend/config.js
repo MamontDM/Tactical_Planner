@@ -4,6 +4,7 @@ const ENV = process.env.NODE_ENV || 'development';
 
 module.exports = {
     app_id: process.env.APP_ID,
+    jwt_secret: process.env.JWT_SECRET,
     mongoUri: ENV === "production" ? process.env.MONGO_URI_PROD : process.env.MONGO_URI_DEV,
     sessionSecret: process.env.SESSION_SECRET,
     PORT: process.env.PORT || 5000,

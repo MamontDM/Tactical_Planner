@@ -6,21 +6,23 @@ const cors = require('cors');
 const axios = require('axios');
 const mongoose = require('mongoose');
 const config = require('./config');
+const middlewareValid = require('./middlewareValidator/validationRequests')
+
 const { app_id, mongoUri, sessionSecret, PORT, isProduction, prodFrontOrigins, devFrontOrigins} = config;
 
 require("./services/redisClient");
 
 const allowedOrigins = isProduction ? prodFrontOrigins : devFrontOrigins;
 
-console.log(prodFrontOrigins);
  
 if (!app_id || !mongoUri || !sessionSecret || !PORT) {
     throw new Error("Missing required environment variables. Check your .env file.");
 }
 
-const requestFromDB = require('./routes/InternalApi/requestFromDB');
+const requestToDB = require('./routes/InternalApi/internalApi');
 const authRoutes = require('./routes/AuthApi/authRoutes')
-const playerProfile = require('./routes/ExternalWGApi/userDataFromWG')
+const externalPlayerProfile = require('./routes/ExternalWGApi/userDataFromWG')
+
 
 const app = express();
 
@@ -32,6 +34,7 @@ app.use(cors({
 
 app.use(cookieParser());
 app.use(bodyParser.json());
+app.use(['/profle'], middlewareValid);
 
 mongoose
     .connect(mongoUri)
@@ -44,9 +47,11 @@ app.use((req, res, next) => {
 });
 
 
-app.use('/api', requestFromDB);
+app.use('/api', requestToDB);
 app.use('/auth', authRoutes);
-app.use('/profile', playerProfile);
+
+// app.use('/profile', externalPlayerProfile); for secret reques to WG Api - checked by middleware
+
 
 app.listen(PORT, () => {
     console.log(`Server running in ${isProduction ? 'pdoruction' : 'development'} mode on port ${PORT}`);

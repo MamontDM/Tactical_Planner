@@ -13,30 +13,50 @@ export const CanvasProvider = ({ children }) => {
         
         const backgroundCtx = getBackgroundCanvasContext();
         const bgImage = new Image();
+
         bgImage.src = BgCanvas;
         bgImage.onload = () => {
-            backgroundCtx.drawImage(bgImage, 0, 0, 1253, 1200); 
+            const canvas = backgroundCanvasRef.current;
+            if (!canvas) return;
+            const canvasWidth = canvas.width;
+            const canvasHeight = canvas.height;
+            backgroundCtx.clearRect(0, 0, canvasWidth, canvasHeight);
+            backgroundCtx.drawImage(bgImage, 0, 0, canvasWidth, canvasHeight)
         };
     };
 
 
     useEffect(() => {
+        const canvasWrapper = document.querySelector('.canvas-wrapper');
         const canvas = canvasRef.current;
         const backgroundCanvas = backgroundCanvasRef.current;
         const drawingCanvas = drawingCanvasRef.current;
 
-        if (canvas && backgroundCanvas && drawingCanvas) {
+        if (canvas && backgroundCanvas && drawingCanvas && canvasWrapper) {
             const deviceScale = window.devicePixelRatio;
             setScale(deviceScale);
 
+            const wrapperWidth = canvasWrapper.clientWidth;
+            const wrapperHeight = canvasWrapper.clientHeight;
+
+            const originalWidth = 1253;
+            const originalHeight = 1200;
+            const aspectRatio = originalWidth / originalHeight;
+
+            let width = wrapperWidth;
+            let height = width / aspectRatio; 
+
+            if (height > wrapperHeight) {
+                height = wrapperHeight;
+                width = height * aspectRatio;
+            }
             [canvas, backgroundCanvas, drawingCanvas].forEach((canvasElement) => {
-                canvasElement.width = 1253 * deviceScale;
-                canvasElement.height = 1200 * deviceScale;
-                canvasElement.style.width = "1253px";
-                canvasElement.style.height = "1200px";
+                canvasElement.width = width;
+                canvasElement.height = height;
+                canvasElement.style.width = '100%';
+                canvasElement.style.height = '100%';
 
                 const ctx = canvasElement.getContext("2d");
-                ctx.scale(deviceScale, deviceScale); 
                 ctx.imageSmoothingEnabled = false;
             });
             Object.assign(backgroundCanvas.style, getDefaultBackgroundStyles());
@@ -45,7 +65,6 @@ export const CanvasProvider = ({ children }) => {
 
     const getCanvasContext = useCallback(() => {
         const ctx = canvasRef.current.getContext('2d');
-        ctx.scale(scale, scale);
         ctx.imageSmoothingEnabled = false;
         return ctx;
     }, [canvasRef, scale]);

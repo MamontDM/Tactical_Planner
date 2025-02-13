@@ -14,6 +14,7 @@ const userSchema = new mongoose.Schema({
     damage_dealt: {type: Number, required: true },
     max_damage_dealt: {type: Number, required: true },
     max_plane_killed: {type: Number, required: true },
+    maps: [{type: mongoose.Schema.Types.ObjectId, ref: "Map" }]
 }, {
     timestamps: true
 });

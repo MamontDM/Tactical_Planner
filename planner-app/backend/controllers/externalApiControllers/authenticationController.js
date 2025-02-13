@@ -1,5 +1,6 @@
 const axios = require('axios');
-const { app_id } = require('../../config');
+const jwt = require('jsonwebtoken');
+const { app_id, jwt_secret } = require('../../config');
 const { getProfileData } = require('./userDataController');
 const { saveToCache, getFromCache, deleteFromCache, cacheHasKey } = require('../../controllers/redisControlers/cacheRedis');
 const { isProduction, prodServOrigins, devServOrigins, domainPROD, domainDEV, devFrontOrigins, prodFrontOrigins  } = require('../../config');
@@ -55,12 +56,19 @@ exports.checkAuthStatus = async (req, res) => {
             return res.status(401).json({ isAuthenticated: false, error: "Нет данных в Redis" });
         }
         console.log(`Data found in Redis: auth:${account_id}`);
-        console.log(isProduction);
-        res.cookie("access_token", userData.access_token, {
+
+
+        const secretToken = jwt.sign(
+            { token: userData.access_token, account_id: userData.account_id}, 
+            jwt_secret, 
+            { expiresIn: "1h" }
+        );
+
+        res.cookie("access_token", secretToken, {
             httpOnly: true,
             secure: isProduction,
             sameSite: isProduction ? 'None' : 'Lax',
-            maxAge: userData.expires_at,
+            maxAge: 60*60*1000,
             domain: isProduction ? domainPROD : domainDEV,
             path: "/",
         });
