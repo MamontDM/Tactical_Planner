@@ -58,7 +58,10 @@ useEffect(() => {
                 })
                 .then((data) =>{
                     if(data) {
-                        setUser(data);
+                        setTimeout(() => {
+                            setUser(data);
+                        }, 500)
+                        
                     }
                 })
                 .catch((error) => {

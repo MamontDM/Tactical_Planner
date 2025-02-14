@@ -31,7 +31,6 @@ export const CanvasProvider = ({ children }) => {
         const canvas = canvasRef.current;
         const backgroundCanvas = backgroundCanvasRef.current;
         const drawingCanvas = drawingCanvasRef.current;
-
         if (canvas && backgroundCanvas && drawingCanvas && canvasWrapper) {
             const deviceScale = window.devicePixelRatio;
             setScale(deviceScale);
@@ -42,7 +41,6 @@ export const CanvasProvider = ({ children }) => {
             const originalWidth = 1253;
             const originalHeight = 1200;
             const aspectRatio = originalWidth / originalHeight;
-
             let width = wrapperWidth;
             let height = width / aspectRatio; 
 

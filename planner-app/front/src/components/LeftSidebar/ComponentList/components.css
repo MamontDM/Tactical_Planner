@@ -1,8 +1,12 @@
 
 .components-wrapper{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
     width: 100%;
     background-color: transparent;
     box-sizing: border-box;
+    margin-top: 10px;
   }
   
   .component-list{
@@ -16,10 +20,10 @@
   
   .list-button{
     width: 100%;
-    font-size: 1.4rem;
+    font-size: clamp(1rem, 2vh, 20px);
+    font-weight: 700; 
     background-color: rgba(0, 255, 255, 0.651);
     border-radius: 8px;
-    margin-top: 10px;
   }
   .active{
     background-color: rgb(90, 190, 233);

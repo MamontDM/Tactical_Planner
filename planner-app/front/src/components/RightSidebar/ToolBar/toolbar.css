@@ -83,6 +83,7 @@
 
 [class^="toolbar-button-"]{
     width: 100%;
+    max-width: 65px;
     background-color: transparent;
     border: 2px solid black;
     border-radius: 8px;

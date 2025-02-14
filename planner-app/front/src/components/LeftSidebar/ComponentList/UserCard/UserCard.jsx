@@ -30,24 +30,25 @@ const avatarByRole = {
 
 
 return (
-         <div className={`user-card ${isFlipped ? 'flipped' : ''}`}>
+         <div className={'user-card-wrapper'}>
            {isLoading ? (
-                <div className="user-card-front">
+                <div className="user-card-spinnerBox">
                     <div className="spinner"></div>
                 </div>) : (
-            <div className="user-card-back">
-                        <div className="user-name-tag">
-                            [{user?.clanTag}] {user?.name}
-                            <div className="user-role">{user?.role}</div>
-                        </div>
-                            <div className="user-card-content">
-                                <img className="user-avatar" src={avatarByRole[user?.role]} alt={'Error Avatar'}></img>
-                                <div className="user-todoList">
-                                    <button>Map Storage</button>
-                                    <button>Join Session(in development)</button>
-                                </div>
-                            </div>
-                        </div>
+            <div className="user-card-content">
+                <div className="user-name-tag">
+                    [{user?.clanTag}] {user?.name} 
+                    </div>
+                        <div className="user-card-block">
+                            <img className="user-avatar" src={avatarByRole[user?.role]} alt={'Error Avatar'}></img>
+                        <div className="user-card-nav">
+                            <button>Map Storage</button>
+                            <button>Join Session</button>
+                    </div>
+                </div>
+                <span>{user?.role}</span>
+            </div>
+                       
                     )}
             </div>
     );
