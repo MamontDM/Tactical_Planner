@@ -6,7 +6,6 @@ const cors = require('cors');
 const axios = require('axios');
 const mongoose = require('mongoose');
 const config = require('./config');
-const middlewareValid = require('./middlewareValidator/validationRequests')
 
 const { app_id, mongoUri, sessionSecret, PORT, isProduction, prodFrontOrigins, devFrontOrigins} = config;
 
@@ -19,7 +18,7 @@ if (!app_id || !mongoUri || !sessionSecret || !PORT) {
     throw new Error("Missing required environment variables. Check your .env file.");
 }
 
-const requestToDB = require('./routes/InternalApi/internalApi');
+const requestToDB = require('./routes/InternalApi/internalRouteApi');
 const authRoutes = require('./routes/AuthApi/authRoutes')
 const externalPlayerProfile = require('./routes/ExternalWGApi/userDataFromWG')
 
@@ -34,7 +33,6 @@ app.use(cors({
 
 app.use(cookieParser());
 app.use(bodyParser.json());
-app.use(['/profle'], middlewareValid);
 
 mongoose
     .connect(mongoUri)
@@ -49,6 +47,7 @@ app.use((req, res, next) => {
 
 app.use('/api', requestToDB);
 app.use('/auth', authRoutes);
+
 
 // app.use('/profile', externalPlayerProfile); for secret reques to WG Api - checked by middleware
 

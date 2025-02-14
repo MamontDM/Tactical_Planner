@@ -6,6 +6,14 @@ export function useObjects() {
     if(!context){
         throw new Error("useObjects dont Work");
     }
+
     const {state , dispatch} = context;
-    return { objects: state.currentObjects, dispatch};
+    const selectedMap = state.maps[state.selectedMapId] || {};
+
+console.log(selectedMap);
+    return { 
+        objects: state.currentObjects, 
+        dispatch,
+        snapshot: selectedMap.snapshot,
+    };
 }

@@ -3,11 +3,14 @@ import './toolbar.css';
 import ToolbarButton from '../../shared/ToolbarButton.jsx';
 import toolsConfig from './toolsConfig.jsx';
 import { MapContext } from '../../contexts/MapSelectorContext.jsx';
+import AuthContext from '../../contexts/AuthContext';
 
 
 const Toolbar = () =>  {
     const [activeToolId, setActiveTool] = useState(null); 
     const {isMapActive} = useContext(MapContext);
+    const { isAuthenticated } = useContext(AuthContext);
+    console.log(isAuthenticated);
     
     const handleToolClick = (id) => {
             setActiveTool((prevId) => (prevId === id ? null : id));
@@ -25,7 +28,7 @@ const Toolbar = () =>  {
                     <ToolbarButton
                         key={tool.id}
                         isActive={activeToolId === tool.id}
-                        className={`toolbar-button-${tool.id}`}
+                        className={`toolbar-button-${tool.id} ${tool.id === 'save' &&  !isAuthenticated ? 'blocked' : ''}`}
                         id={tool.id}
                         icon={tool.icon}
                         label={tool.label}

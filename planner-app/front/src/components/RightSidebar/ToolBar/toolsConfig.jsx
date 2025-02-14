@@ -13,6 +13,7 @@
  import TextTool from './Tools/TextTool/TextTool.jsx';
  import BaseAreaTool from './Tools/BaseAreaTool/BaseArea.jsx';
  import {battleship, curves, baseArea, download, eraser, flopik, IconLeft, IconRight, line, radar, select, technical, text, trash, vision} from '../../../assets/exportIcon.js';
+import SaveTool from './Tools/SaveTool/SaveTool.jsx';
 
  
  
@@ -29,7 +30,7 @@
         { id: 'vision', label: 'Vision', icon: vision, component: VisionTool},
         { id: 'radar', label: 'Radar', icon: radar, component: RadarTool},
         { id: 'base', label: 'Base', icon: baseArea, component: BaseAreaTool},
-        { id: 'save', label: 'Save', icon: flopik, component: MoveTool},
+        { id: 'save', label: 'Save', icon: flopik, component: SaveTool},
         { id: 'download', label: 'Download', icon: download, component: DownLoadTool},
         { id: 'trash', label: 'Trash', icon: trash, component: ClearTool},
     ];
