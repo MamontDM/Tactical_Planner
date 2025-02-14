@@ -1,8 +1,8 @@
 import React, { useContext, useState } from 'react';
-import AuthContext from '../../../contexts/AuthContext';
+import AuthContext from '../../../../contexts/AuthContext';
 import './LogInOut.css';
 import UserCard from '../UserCard/UserCard';
-import { downArrow, upArrow } from '../../../../assets/exportUserCardIcon';
+import { downArrow, upArrow } from '../../../../../assets/exportUserCardIcon';
 
 const LogInLogoutButton = () =>{
     const { isAuthenticated, login, logout} = useContext(AuthContext);

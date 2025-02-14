@@ -9,13 +9,15 @@ const MapContext = createContext();
         currentObjects: [],
         future: [],
     };
+    console.log("Init state is:" , initState);
 
 const MapReducer = (state, action) => {
+    console.log(state);
     switch (action.type) {
         case 'ADD_MAP':
-            console.log('ADD MAP');
             return {
                 ...state,
+                selectedMapId: action.payload.mapName,
                 maps: {
                     ...state.maps,
                     [action.payload.mapName]: {
@@ -27,7 +29,6 @@ const MapReducer = (state, action) => {
             };
         
         case 'SELECT_MAP':
-            console.log('selecte MAP');
             return {
                 ...state, 
                 selectedMapId: action.payload,
@@ -134,7 +135,44 @@ const MapReducer = (state, action) => {
                     currentObjects: [],
                     future: [],
                 };
+        case "SAVE_SNAPSHOT": {
+            console.log('called');
+            const {selectedMapId, maps, currentObjects} = state;
+            if (!selectedMapId) return state;
+
+            const snapshot = {
+                timestamp: new Date().toISOString(),
+                objects: [...currentObjects],
+                metadata: {
+                    mapName: maps[selectedMapId]?.mapName || "default",
+                    totalObjects: currentObjects.length,
+                },
+            };
+            console.log(snapshot);
+            return {
+                ...state,
+                maps: {
+                    ...maps,
+                    [selectedMapId]: {
+                        ...maps[selectedMapId],
+                        snapshot,
+                    }
+                }
+            };
+        }
+        case "LOAD_SNAPSHOT": {
+            console.log("Loading saved snapshot");
+            const { selectedMapId, maps } = state;
+            if (!selectedMapId || !maps[selectedMapId]?.snapshot) return state;
+        
+            return {
+                ...state,
+                currentObjects: [...maps[selectedMapId].snapshot.objects],
+                future: [], 
+            };
+        }
         default: 
+        
             return state;
             }
         }

@@ -1,7 +1,7 @@
 import React, {useContext, useState, useEffect} from 'react';
 import './UserCard.css';
-import AuthContext from '../../../contexts/AuthContext';
-import { commander, com_officer, recruiter, executive_officer } from '../../../../assets/exportUserCardIcon';
+import AuthContext from '../../../../contexts/AuthContext';
+import { commander, com_officer, recruiter, executive_officer } from '../../../../../assets/exportUserCardIcon';
 
 
 const UserCard = () => {

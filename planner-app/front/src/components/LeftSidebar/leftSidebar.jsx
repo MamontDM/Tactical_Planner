@@ -2,7 +2,7 @@ import React from 'react';
 import MapSelector from './ComponentList/MapSelector/mapSelector';
 import PlannerHelper from './ComponentList/PlannerHelper/plannerHelper';
 import ComponentList from './ComponentList/componentList';
-import LogInLogOutButton from './ComponentList/LogInOutSection/LogInLogOutButton';
+import LogInLogOutButton from './ComponentList/DashboardSection/AuthButtons/LogInLogOutButton';
 
 const LeftSidebar = () => {
 

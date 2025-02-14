@@ -107,7 +107,9 @@
     opacity: 0.5;
     cursor: not-allowed;
 }
-.toolbar.blocked {
-  opacity: 0.5; 
-  pointer-events: none;
+
+
+.blocked {
+  opacity: 0.5;
+  pointer-events: none;;
 }
