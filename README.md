@@ -1,5 +1,6 @@
 
-![planner](https://github.com/user-attachments/assets/0996c751-ca3c-4f29-b8b8-60655a00f5ff)
+![planner](https://github.com/user-attachments/assets/40471f5e-16d5-4ff9-ba92-cd8ac9960950)
+
 
 # Disclaimer
 This application was created by a novice developer as part of studying the Javascript language, the main mechanics and logic of language interaction in web development. Various approaches and practices are used throughout the project as they are studied. The App does`t have a clear architecture, wich helped highlighting problem web dewelopment and understand why certain frontend solutions exist. 
