@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="[URL_ИЗОБРАЖЕНИЯ](https://github.com/user-attachments/assets/40471f5e-16d5-4ff9-ba92-cd8ac9960950)" alt="Описание изображения">
+  <img src="https://github.com/user-attachments/assets/40471f5e-16d5-4ff9-ba92-cd8ac9960950" alt="Описание изображения">
 </p>
 
 # Disclaimer
