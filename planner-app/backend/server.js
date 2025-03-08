@@ -36,8 +36,21 @@ app.use(bodyParser.json());
 
 mongoose
     .connect(mongoUri)
-    .then(() => console.log(`Connected to DB!`))
+    .then(() => { 
+        console.log(`Connected to DB!`);
+        console.log(mongoUri);
+        setInterval(async () => {
+            try {
+                await mongoose.connection.db.admin().ping();
+                console.log("Mongo keepAlive request seuccessfull");
+            } catch (error) {
+                console.error(" Something go wrong - keepAlive" ,error)
+            }
+        }, 5 * 60 * 1000);
+    })
     .catch((err) => console.error("Error connecting to MongoDB:", err));
+
+
 
 app.use((req, res, next) => {
     console.log(`Incoming ${req.method} request to ${req.url}`);
@@ -49,7 +62,6 @@ app.use('/api', requestToDB);
 app.use('/auth', authRoutes);
 
 
-// app.use('/profile', externalPlayerProfile); for secret reques to WG Api - checked by middleware
 
 
 app.listen(PORT, () => {
