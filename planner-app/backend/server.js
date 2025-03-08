@@ -57,6 +57,9 @@ app.use((req, res, next) => {
     next();
 });
 
+app.get('/health', (req, res) => {
+    res.status(200).json({ status: 'ok' });
+});
 
 app.use('/api', requestToDB);
 app.use('/auth', authRoutes);
