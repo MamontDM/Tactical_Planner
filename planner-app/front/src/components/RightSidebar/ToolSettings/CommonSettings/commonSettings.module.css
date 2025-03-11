@@ -1,7 +1,11 @@
 .gradient-section {
-    flex-flow: column;
-    justify-items: center;    
-    margin: 20px;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    margin-top: 20px;
+    align-items: center;
+    gap: 15px;
+
 }
 
 .color-gradient { 
@@ -29,4 +33,9 @@
     transform: scale(1.2);
     border: 3px solid #312828;
     background-color: var(--thumb-color);
+}
+
+.line-width{
+    width: 60%;
+
 }

@@ -4,6 +4,7 @@
     width: 100%;
     padding: 5px;
     align-items: center;
+    gap: 25px;
   }
   .toolbar__row{
     display: flex;
@@ -18,7 +19,7 @@
     display: grid;
     grid-template-columns: repeat(5, 1fr);
     grid-template-rows: repeat(7, auto);
-    gap: 5px;
+    gap: 10px 25px;
     width: fit-content;
   }
 
@@ -83,7 +84,7 @@
 
 [class^="toolbar-button-"]{
     width: 100%;
-    max-width: 65px;
+    max-width: 55px;
     background-color: transparent;
     border: 2px solid black;
     border-radius: 8px;

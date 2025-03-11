@@ -2,19 +2,22 @@ import {useState} from 'react';
 import { IconBattleship, IconCruiser, IconDestroyer, IconAircraft_carrier, IconSubmarine, switch_arrow, leftLavr, rightLavr} from '../../../../../assets/exportIcon';
 import { useShipContext } from '../../../../../hooks/useShipContext';
 import './IconToolSetting.css';
+import useToolSettings from "../../../../../store/zustand/Toolbar/toolsettingStore";
+import useActiveToolStore from "../../../../../store/zustand/Toolbar/activeToolStore";
 
-const IconToolSettings = ({ onChangeToolSettings }) => {
+const IconToolSettings = () => {
+    const activeTool = useActiveToolStore((state) => state.activeTool);
+    const updateToolSetings = useToolSettings((state) => state.updateSettings);
 
     const [settingSource, setSettingSource] = useState("manual");
     const { ships } = useShipContext();
     
 
     const shipList = Object.values(ships).flat();
-    console.log(shipList);
 
     const handleSettingChange = (type, value) => {
-            onChangeToolSettings(type, value);
-    };
+        updateToolSetings(activeTool, {[type]: value});
+    }
 
     const renderSettings = () => {
         if(settingSource === "manual"){

@@ -35,6 +35,7 @@ const MapReducer = (state, action) => {
                 currentObjects: state.maps[action.payload]?.objects || [],
                 future: [],
             };
+
         case "REMOVE_MAP": {
             console.log('remove MAP');
             const {selectedMapId} = action.payload;
@@ -48,7 +49,7 @@ const MapReducer = (state, action) => {
                 currentObjects: state.selectedMapId === selectedMapId ? [] : state.currentObjects,
                 future: state.selectedMapId === selectedMapId ? [] : state.future,
             }
-        }
+        };
         case 'ADD_OBJECT':{
             console.log('add OBJ');
             const { selectedMapId, maps, future } = state;
@@ -86,28 +87,46 @@ const MapReducer = (state, action) => {
                   }
                 };
 
-            case "UNDO":{
-                console.log('UNDO OBJ');
+        case "UNDO":{
+            console.log('UNDO OBJ');
                 if (state.currentObjects.length === 0) return state;
-                const lastObject = state.currentObjects[state.currentObjects.length - 1];
-                const newObjectsArray = state.currentObjects.slice(0, -1);
+
+                    const lastObject = state.currentObjects[state.currentObjects.length - 1];
+                    const newObjectsArray = state.currentObjects.slice(0, -1);
+
                 return {
                     ...state,
                     currentObjects: newObjectsArray,
                     future: [lastObject, ...state.future],
+                    maps: {
+                        ...state.maps,
+                        [state.selectedMapId]: {
+                            ...state.maps[state.selectedMapId],
+                            objects: newObjectsArray,
+                        },
+                    },
                 };
             }
 
-        case "REDO":
-            console.log('reDo OBJ');
+            case "REDO": {
+                console.log('REDO OBJ');
                 if (state.future.length === 0) return state;
-            const restoredObject = state.future[0];
+            
+                const restoredObject = state.future[0];
+                const newObjectsArray = [...state.currentObjects, restoredObject];
                 return {
                     ...state,
-                    currentObjects: [...state.currentObjects, restoredObject],
+                    currentObjects: newObjectsArray,
                     future: state.future.slice(1),
+                    maps: {
+                        ...state.maps,
+                        [state.selectedMapId]: {
+                            ...state.maps[state.selectedMapId],
+                            objects: newObjectsArray,
+                        },
+                    },
                 };
-       
+            }
             case "UPDATE_OBJECT":
                 return {
                     ...state,
@@ -134,7 +153,15 @@ const MapReducer = (state, action) => {
                     ...state,
                     currentObjects: [],
                     future: [],
+                    maps: {
+                        ...state.maps,
+                        [state.selectedMapId]: {
+                            ...state.maps[state.selectedMapId],
+                            objects: [],
+                        },
+                    },
                 };
+
         case "SAVE_SNAPSHOT": {
             console.log('called');
             const {selectedMapId, maps, currentObjects} = state;

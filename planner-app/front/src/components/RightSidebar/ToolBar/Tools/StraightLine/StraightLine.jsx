@@ -3,30 +3,27 @@ import CanvasContext from "../../../../contexts/CanvasContext";
 import { useObjects } from "../../../../../hooks/useObjects";
 import { getCoordinates } from "../../../../../utils/commonHelpers";
 import { drawObjects } from "../../../../../factories/CanvasRender";
-import ToolSettings from "../../ToolSettings/toolSettings";
+import useToolSettings from '../../../../../store/zustand/Toolbar/toolsettingStore';
 
 const StraightTool = ({ isActive, type}) => {
     console.log('called STRLine tool!')
     const { canvasRef, drawingCanvasRef, getCanvasContext, getDrawingCanvasContext, clearDrawingCanvas } = useContext(CanvasContext);
     const { objects, dispatch } = useObjects();
-    const [currentSetting, setCurrentSetting] = useState();
+    const settings = useToolSettings((state) => state.getSettings(type));
 
     const pointRef = useRef(null);
     const isDrawing = useRef(false);
 
-    const settingUpdater = (data) => {
-        setCurrentSetting(data); 
-    }; 
 
     useEffect(() => {
-        if (isActive && canvasRef?.current && drawingCanvasRef?.current && currentSetting) {
+        if (isActive && canvasRef?.current && drawingCanvasRef?.current && settings) {
             const mainCtx = getCanvasContext();
             const drawingCtx = getDrawingCanvasContext();
             const drawingCanvas = drawingCanvasRef.current;
             drawingCanvas.style.pointerEvents = "auto";
 
-            drawingCtx.lineWidth = currentSetting.lineWidth;
-            drawingCtx.strokeStyle = currentSetting.color;
+            drawingCtx.lineWidth = settings.lineWidth;
+            drawingCtx.strokeStyle = settings.color;
             drawingCtx.canvas.style.cursor = "crosshair";
 
             const redrawMainCanvas = () => {
@@ -52,8 +49,8 @@ const StraightTool = ({ isActive, type}) => {
                 drawingCtx.beginPath();
                 drawingCtx.moveTo(start.x, start.y);
                 drawingCtx.lineTo(x, y);
-                drawingCtx.strokeStyle = currentSetting.color;
-                drawingCtx.lineWidth = currentSetting.lineWidth;
+                drawingCtx.strokeStyle = settings.color;
+                drawingCtx.lineWidth = settings.lineWidth;
                 drawingCtx.stroke();
             };
 
@@ -69,8 +66,8 @@ const StraightTool = ({ isActive, type}) => {
                     id: Date.now(),
                     type: "tech",
                     points: [...pointRef.current.points],
-                    color: currentSetting.color,
-                    lineWidth: currentSetting.lineWidth,
+                    color: settings.color,
+                    lineWidth: settings.lineWidth,
                 };
                 console.log(newObject);
                 dispatch({ type: "ADD_OBJECT", payload: newObject });
@@ -90,11 +87,8 @@ const StraightTool = ({ isActive, type}) => {
                 drawingCanvas.style.pointerEvents = "none";
             };
         }
-    }, [isActive, canvasRef, drawingCanvasRef, dispatch, clearDrawingCanvas, getCanvasContext, getDrawingCanvasContext, currentSetting, objects]);
+    }, [isActive, canvasRef, drawingCanvasRef, dispatch, clearDrawingCanvas, getCanvasContext, settings, getDrawingCanvasContext, objects]);
 
-    return (
-        <ToolSettings type={type} onSettingChange={settingUpdater} />
-    );
 };
 
 export default StraightTool;

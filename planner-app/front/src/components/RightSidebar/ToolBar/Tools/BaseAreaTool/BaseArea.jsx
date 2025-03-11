@@ -3,14 +3,13 @@ import { getCoordinates } from '../../../../../utils/commonHelpers';
 import { drawCircle, setAlphaChannel } from '../../../../../utils/canvasHelpers';
 import CanvasContext from '../../../../contexts/CanvasContext';
 import { useObjects } from '../../../../../hooks/useObjects';
-import ToolSettings from '../../ToolSettings/toolSettings';
-
+import useToolSettings from '../../../../../store/zustand/Toolbar/toolsettingStore';
 
 const BaseAreaTool = ({isActive, type}) => {
     console.log('called Base Area tool!')
     const { canvasRef, drawingCanvasRef, getCanvasContext, getDrawingCanvasContext, clearDrawingCanvas } = useContext(CanvasContext);
     const {objects,  dispatch } = useObjects();
-    const [ currentSetting, setCurrentSetting ] = useState();
+    const settings = useToolSettings((state) => state.getSettings(type));
     const scale = useRef(20);
     const points = useRef([]);
     const radius = useRef(null);
@@ -18,21 +17,18 @@ const BaseAreaTool = ({isActive, type}) => {
     const startY = useRef(null);
     const isCalculatingRadius = useRef(false);
     const colorWithAlpha = useRef(null ||'rgba(136, 255, 0, 1');
-    const settingUpdater = (data) => {
-        console.log(data);
-        setCurrentSetting(data); 
-    }; 
+
     const calculateRadius = (moveX , moveY) => {
            return radius.current = Math.sqrt(((moveX - startX.current) ** 2) + ((moveY - startY.current) ** 2));
     }
 
     useEffect(() => {
-        if (isActive && canvasRef?.current && drawingCanvasRef?.current && currentSetting) {
+        if (isActive && canvasRef?.current && drawingCanvasRef?.current && settings) {
             const drawingCtx = getDrawingCanvasContext(); 
             const drawingCanvas = drawingCanvasRef.current;
             drawingCanvas.style.pointerEvents = 'auto';
-            drawingCtx.lineWidth = currentSetting.lineWidth;
-            drawingCtx.strokeStyle = currentSetting.color;
+            drawingCtx.lineWidth = settings.lineWidth;
+            drawingCtx.strokeStyle = settings.color;
             drawingCtx.canvas.style.cursor = 'crosshair';
 
             
@@ -53,8 +49,8 @@ const BaseAreaTool = ({isActive, type}) => {
                 const {x , y} = getCoordinates(event, drawingCanvas);
                 clearDrawingCanvas();
                 calculateRadius(x, y);
-                colorWithAlpha.current = setAlphaChannel(currentSetting.color);
-                drawCircle(drawingCtx, startX.current, startY.current, radius.current, colorWithAlpha.current, currentSetting.lineWidth, currentSetting.textBody, currentSetting.fontSize);
+                colorWithAlpha.current = setAlphaChannel(settings.color);
+                drawCircle(drawingCtx, startX.current, startY.current, radius.current, colorWithAlpha.current, settings.lineWidth, settings.textBody, settings.fontSize);
             };
 
             
@@ -66,9 +62,9 @@ const BaseAreaTool = ({isActive, type}) => {
                     points: [...points.current],
                     radius: radius.current,
                     color: colorWithAlpha.current,
-                    lineWidth: currentSetting.lineWidth,
-                    textBody: currentSetting.textBody,
-                    fontSize: currentSetting.fontSize,
+                    lineWidth: settings.lineWidth,
+                    textBody: settings.textBody,
+                    fontSize: settings.fontSize,
                 };
                 console.log(newObject);
                 dispatch({ type: "ADD_OBJECT", payload: newObject });
@@ -92,13 +88,10 @@ const BaseAreaTool = ({isActive, type}) => {
         }
     }, [isActive, canvasRef, dispatch, 
         objects, drawingCanvasRef, getCanvasContext, 
-        getDrawingCanvasContext, clearDrawingCanvas, currentSetting
+        getDrawingCanvasContext, clearDrawingCanvas,settings
     ]);
 
-   
-    return (
-        <ToolSettings type={type} onSettingChange={settingUpdater} />
-    );
+    return null;
 };
 
 

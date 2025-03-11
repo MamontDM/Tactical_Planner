@@ -5,13 +5,12 @@ import { useObjects } from '../../../../../hooks/useObjects';
 import { drawObjects } from '../../../../../factories/CanvasRender';
 import { drawTemporaryIcon} from '../../../../../utils/canvasHelpers';
 import { getSvgTemplate, convertSvgToImage } from '../../../../../factories/IconSVGCreator';
-import ToolSettings from "../../ToolSettings/toolSettings";
-
+import useToolSettings from '../../../../../store/zustand/Toolbar/toolsettingStore';
 
 const IconTool = ({isActive, type}) =>{ 
     const { canvasRef, drawingCanvasRef, getCanvasContext, getDrawingCanvasContext, clearDrawingCanvas } = useContext(CanvasContext);
     const {objects,  dispatch } = useObjects();
-    const [currentSetting, setCurrentSetting ] = useState();
+    const settings = useToolSettings((state) => state.getSettings(type));
 
     const shipType = useRef(null);
     const fillColor = useRef(null);
@@ -25,18 +24,18 @@ const IconTool = ({isActive, type}) =>{
     
 
     const settingUpdater = (data) => {
-        setCurrentSetting(data); 
+        setsettings(data); 
     }; 
 
     useEffect(() =>{
-        if(currentSetting){
-            console.log(currentSetting);
-            shipType.current = currentSetting.shipType;
-            fillColor.current = currentSetting.color;
-            shipLabel.current = currentSetting.label;
+        if(settings){
+            console.log(settings);
+            shipType.current = settings.shipType;
+            fillColor.current = settings.color;
+            shipLabel.current = settings.label;
         }
         generateImage();
-    },[currentSetting])
+    },[settings])
 
 
     const generateImage = () =>{
@@ -48,7 +47,7 @@ const IconTool = ({isActive, type}) =>{
   
 
     useEffect(() => {
-        if (isActive && canvasRef?.current && drawingCanvasRef?.current && currentSetting) {
+        if (isActive && canvasRef?.current && drawingCanvasRef?.current && settings) {
             const mainCtx = getCanvasContext();
             const drawingCtx = getDrawingCanvasContext(); 
             const drawingCanvas = drawingCanvasRef.current;
@@ -124,13 +123,10 @@ const IconTool = ({isActive, type}) =>{
         }
     },[isActive, canvasRef, dispatch, objects, 
         drawingCanvasRef, getCanvasContext, 
-        getDrawingCanvasContext, clearDrawingCanvas, img, currentSetting
+        getDrawingCanvasContext, clearDrawingCanvas, img,
     ]);
 
 
-        return (
-            <ToolSettings  type={type} onSettingChange={settingUpdater} />
-        );
 };
 
 export default IconTool;

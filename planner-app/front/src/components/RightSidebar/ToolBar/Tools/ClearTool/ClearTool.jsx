@@ -14,6 +14,7 @@ const ClearTool = ({isActive, onDeactivate})=> {
             if(isActive && !isCompleted.current) {
                 dispatch({type: "CLEAR_OBJECTS"});
                 clearMainCanvas();
+                
                 isCompleted.current = true;
                 onDeactivate();
             }

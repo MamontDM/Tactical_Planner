@@ -11,7 +11,8 @@ function ToolbarButton({id, icon, label, onClick, isActive, className = '', disa
             }}
             >
                 {icon && <img src={icon} alt={label} className="toolbar-icon"/>}
-            </button>
+                <span><strong>{label}</strong></span>
+        </button>
     );
 }
     ToolbarButton.propTypes = {

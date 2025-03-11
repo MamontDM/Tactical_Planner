@@ -1,24 +1,32 @@
-import React, {useState, useContext, useCallback} from 'react';
+import React, {useContext, useCallback} from 'react';
 import './toolbar.css';
 import ToolbarButton from '../../shared/ToolbarButton.jsx';
 import toolsConfig from './toolsConfig.jsx';
 import { MapContext } from '../../contexts/MapSelectorContext.jsx';
 import AuthContext from '../../contexts/AuthContext';
+import ToolSettings from '../ToolSettings/ToolSetting';
+import useActiveToolStore from '../../../store/zustand/Toolbar/activeToolStore';
 
 
 const Toolbar = () =>  {
-    const [activeToolId, setActiveTool] = useState(null); 
-    const {isMapActive} = useContext(MapContext);
+    const activeToolId = useActiveToolStore((state) => state.activeTool);
+    const setActiveTool = useActiveToolStore((state) => state.setActiveTool);
+    const clearActiveTool = useActiveToolStore((state) => state.clearActiveTool);
+
     const { isAuthenticated } = useContext(AuthContext);
-    console.log(isAuthenticated);
+    const {isMapActive } = useContext(MapContext);
     
     const handleToolClick = (id) => {
-            setActiveTool((prevId) => (prevId === id ? null : id));
+        if(id === activeToolId){
+            clearActiveTool();
+        }else{
+            setActiveTool(id);
+        }
+            
     };
 
     const handleToolDeactivation = useCallback(() => {
-        console.log('razmontaj')
-        setActiveTool(null);
+        clearActiveTool();
     },[]);
     
       return (  
@@ -45,6 +53,7 @@ const Toolbar = () =>  {
                         onDeactivate={handleToolDeactivation}
             />
             ))}
+            {activeToolId && <ToolSettings />}
         </div>
     );
 };

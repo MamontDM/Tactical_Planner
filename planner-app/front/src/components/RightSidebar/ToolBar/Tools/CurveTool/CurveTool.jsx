@@ -4,31 +4,29 @@ import CanvasContext from '../../../../contexts/CanvasContext';
 import { useObjects } from '../../../../../hooks/useObjects';
 import { drawObjects } from '../../../../../factories/CanvasRender';
 import { curveEndDrawArrow , drawSmoothCurve} from '../../../../../utils/canvasHelpers';
-import Toolsetting from '../../ToolSettings/toolSettings'
+import useToolSettings from '../../../../../store/zustand/Toolbar/toolsettingStore';
+
+
 
 const CurveTool = ({ isActive, type }) => {
     console.log('called Curve tool!')
     const { canvasRef, drawingCanvasRef, getCanvasContext, getDrawingCanvasContext, clearDrawingCanvas } = useContext(CanvasContext);
     const { objects, dispatch } = useObjects();
-    const [currentSetting, setCurrentSetting] = useState();
+    const settings = useToolSettings((state) => state.getSettings(type));
     const isDrawing = useRef(false);
     const points = useRef([]);
     const temporaryPoints = useRef([]);
 
-    const settingUpdater = (data) => {
-        setCurrentSetting(data); 
-    }; 
 
     useEffect(() => {
-        console.log('useEffect called twice')
-        if (isActive && canvasRef?.current && drawingCanvasRef?.current && currentSetting) {
+        if (isActive && canvasRef?.current && drawingCanvasRef?.current && settings) {
             const mainCtx = getCanvasContext();
             const drawingCtx = getDrawingCanvasContext(); 
             const drawingCanvas = drawingCanvasRef.current;
             drawingCanvas.style.pointerEvents = 'auto';
 
-            drawingCtx.lineWidth = currentSetting.lineWidth;
-            drawingCtx.strokeStyle = currentSetting.color;
+            drawingCtx.lineWidth = settings.lineWidth;
+            drawingCtx.strokeStyle = settings.color;
             drawingCtx.canvas.style.cursor = 'crosshair';
 
             const redrawMainCanvas = () => {
@@ -57,7 +55,7 @@ const CurveTool = ({ isActive, type }) => {
                 }
                 temporaryPoints.current.push({ x, y });
                 clearDrawingCanvas();
-                drawSmoothCurve(temporaryPoints.current, points.current, currentSetting.lineWidth, currentSetting.color, drawingCtx);
+                drawSmoothCurve(temporaryPoints.current, points.current, settings.lineWidth, settings.color, drawingCtx);
             };
 
             const handleMouseUp = () => {
@@ -73,14 +71,14 @@ const CurveTool = ({ isActive, type }) => {
                     const toY = points.current[lastIndex].y;
                     const angle = Math.atan2(toY - fromY, toX - fromX);
 
-                    curveEndDrawArrow(drawingCtx, fromX, fromY, toX, toY, angle, headLength, currentSetting.lineWidth, currentSetting.color);
+                    curveEndDrawArrow(drawingCtx, fromX, fromY, toX, toY, angle, headLength, settings.lineWidth, settings.color);
                     const newObject = {
                         id: Date.now(),
                         type: "curve",
                         temporaryPoints: [...temporaryPoints.current],
                         points: [...points.current],
-                        color: currentSetting.color,
-                        lineWidth: currentSetting.lineWidth,
+                        color: settings.color,
+                        lineWidth: settings.lineWidth,
                         arrow: {
                             fromX,
                             fromY,
@@ -113,13 +111,9 @@ const CurveTool = ({ isActive, type }) => {
         }
     }, [isActive, canvasRef, dispatch, 
         objects, drawingCanvasRef, getCanvasContext, 
-        getDrawingCanvasContext, clearDrawingCanvas,
-        currentSetting
+        getDrawingCanvasContext, clearDrawingCanvas, settings
     ]);
-
-    return (
-        <Toolsetting type={type} onSettingChange={settingUpdater} />
-    );
+    return null;
 };
 
 export default CurveTool;

@@ -2,29 +2,31 @@ import  { useEffect, useRef, useContext, useState} from 'react';
 import { getCoordinates } from '../../../../../utils/commonHelpers';
 import CanvasContext from '../../../../contexts/CanvasContext';
 import { useObjects } from '../../../../../hooks/useObjects';
-import ToolSettings from '../../ToolSettings/toolSettings';
+import useToolSettings from '../../../../../store/zustand/Toolbar/toolsettingStore';
 
 
 const LineTool = ({isActive, type}) => {
     console.log('called Line tool!')
     const { canvasRef, drawingCanvasRef, getCanvasContext, getDrawingCanvasContext, clearDrawingCanvas } = useContext(CanvasContext);
-    const [currentSetting, setCurrentSetting] = useState();
+    const settings = useToolSettings((state) => state.getSettings(type));
+
     const { dispatch } = useObjects();
     const isDrawing = useRef(false);
     const pointRef = useRef([]);
 
     const settingUpdater = (data) => {
-        setCurrentSetting(data); 
+        setsettings(data); 
     };    
 
 
     useEffect(() => {
-        if (isActive && canvasRef?.current && drawingCanvasRef?.current && currentSetting) {
+        if (isActive && canvasRef?.current && drawingCanvasRef?.current && settings) {
             const drawingCtx = getDrawingCanvasContext(); 
             const drawingCanvas = drawingCanvasRef.current;
             drawingCanvas.style.pointerEvents = 'auto';
-            drawingCtx.lineWidth = currentSetting.lineWidth;
-            drawingCtx.strokeStyle = currentSetting.color;
+            drawingCtx.canvas.style.cursor = 'crosshair';
+            drawingCtx.lineWidth = settings.lineWidth;
+            drawingCtx.strokeStyle = settings.color;
 
 
             const handleMouseDown = (event) => {
@@ -54,8 +56,8 @@ const LineTool = ({isActive, type}) => {
                         id: Date.now(),
                         type: 'line',
                         points: [...pointRef.current],
-                        lineWidth: currentSetting.lineWidth,
-                        color: currentSetting.color,
+                        lineWidth: settings.lineWidth,
+                        color: settings.color,
                     };
                     console.log(newObject)
                     dispatch({type: 'ADD_OBJECT', payload: newObject});
@@ -75,10 +77,7 @@ const LineTool = ({isActive, type}) => {
                 drawingCanvas.style.pointerEvents = "none";
             };
         }
-    }, [isActive, canvasRef, drawingCanvasRef, getCanvasContext, getDrawingCanvasContext, clearDrawingCanvas, currentSetting, dispatch]);
-
-    return (
-        <ToolSettings type={type} onSettingChange={settingUpdater} />
-    );
+    }, [isActive, canvasRef, drawingCanvasRef, getCanvasContext, getDrawingCanvasContext, clearDrawingCanvas, settings, dispatch]);
+   
 };
 export default LineTool;
