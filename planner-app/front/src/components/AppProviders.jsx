@@ -10,7 +10,7 @@ const AppProviders = ({ children }) => {
         <CanvasProvider>
             <MapContextProvider>
                 <ShipProvider>
-                    <SettingProvider>{children}</SettingProvider>
+                    {children}
                 </ShipProvider>
             </MapContextProvider>
         </CanvasProvider>

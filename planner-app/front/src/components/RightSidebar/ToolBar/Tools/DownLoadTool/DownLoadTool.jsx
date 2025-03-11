@@ -1,7 +1,7 @@
 import React, { useContext, useRef } from 'react'
 import ReactDOM from 'react-dom'
 import CanvasContext from '../../../../contexts/CanvasContext';
-// Complete component!
+
 const DownLoadTool = ({onDeactivate, isActive}) => {
     console.log('ya rendernulsa', isActive );
     const { canvasRef, backgroundCanvasRef, drawingCanvasRef, getDrawingCanvasContext } = useContext(CanvasContext);

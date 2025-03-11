@@ -19,8 +19,8 @@ import SaveTool from './Tools/SaveTool/SaveTool.jsx';
  
  const toolsConfig = [
         { id: 'select', label: 'Select', icon: select, component: MoveTool },
-        { id: 'line', label: 'Line', icon: line, component: LineTool },
-        { id: 'tech', label: 'Tech', icon: technical, component: StraightLine},
+        { id: 'line', label: 'Pen', icon: line, component: LineTool },
+        { id: 'tech', label: 'Ruler', icon: technical, component: StraightLine},
         { id: 'curve', label: 'Curve', icon: curves, component: CurveTool },
         { id: 'text', label: 'Text', icon: text, component: TextTool },
         { id: 'undo', label: 'Undo', icon: IconLeft, component: UndoTool},
@@ -31,7 +31,7 @@ import SaveTool from './Tools/SaveTool/SaveTool.jsx';
         { id: 'radar', label: 'Radar', icon: radar, component: RadarTool},
         { id: 'base', label: 'Base', icon: baseArea, component: BaseAreaTool},
         { id: 'save', label: 'Save', icon: flopik, component: SaveTool},
-        { id: 'download', label: 'Download', icon: download, component: DownLoadTool},
+        { id: 'download', label: 'Load', icon: download, component: DownLoadTool},
         { id: 'trash', label: 'Trash', icon: trash, component: ClearTool},
     ];
 

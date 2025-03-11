@@ -4,15 +4,15 @@ import CanvasContext from '../../../../contexts/CanvasContext';
 import { useObjects } from '../../../../../hooks/useObjects';
 import { drawObjects } from '../../../../../factories/CanvasRender';
 import { drawArea} from '../../../../../utils/canvasHelpers';
-import ToolSettings from '../../ToolSettings/toolSettings';
+import useToolSettings from '../../../../../store/zustand/Toolbar/toolsettingStore';
 
 
 const VisionTool = ({ isActive, type}) => {
 
     const { canvasRef, drawingCanvasRef, getCanvasContext, getDrawingCanvasContext, clearDrawingCanvas } = useContext(CanvasContext);
     const { objects, dispatch } = useObjects();
-    const [currentSetting, setCurrentSetting] = useState();
-
+   const settings = useToolSettings((state) => state.getSettings(type));
+   console.log(settings);
     const isDrawing = useRef(false);
     const area = useRef(45);
     const radius = useRef(350);
@@ -22,16 +22,11 @@ const VisionTool = ({ isActive, type}) => {
     const endAngle = useRef(null);
     const rotationAngle = useRef(null);
 
-    const settingUpdater = (data) => {
-        setCurrentSetting(data); 
-    }; 
-
-
     useEffect(() => {
-        if (isActive && canvasRef?.current && drawingCanvasRef?.current && currentSetting) {
+        if (isActive && canvasRef?.current && drawingCanvasRef?.current && settings) {
             const mainCtx = getCanvasContext();
             const drawingCtx = getDrawingCanvasContext(); 
-            const redefinitionAlpha = currentSetting.color.replace(/rgba\((\d+), (\d+), (\d+), [^)]*\)/, 'rgba($1,$2,$3, 0.15)'); 
+            const redefinitionAlpha = settings.color.replace(/rgba\((\d+), (\d+), (\d+), [^)]*\)/, 'rgba($1,$2,$3, 0.15)'); 
             const drawingCanvas = drawingCanvasRef.current;
             drawingCanvas.style.pointerEvents = 'auto';
             drawingCtx.canvas.style.cursor = 'crosshair';
@@ -53,7 +48,7 @@ const VisionTool = ({ isActive, type}) => {
             endAngle.current = startAngle.current + angleInRadians;
             clearDrawingCanvas();
             redrawMainCanvas();
-            drawArea(drawingCtx , x, y, radius.current, startAngle.current, endAngle.current, rotationAngle.current, currentSetting.lineWidth, redefinitionAlpha);
+            drawArea(drawingCtx , x, y, radius.current, startAngle.current, endAngle.current, rotationAngle.current, settings.lineWidth, redefinitionAlpha);
         };
 
             const handleMouseMove = (event) => {
@@ -64,7 +59,7 @@ const VisionTool = ({ isActive, type}) => {
                rotationAngle.current = Math.atan2(endY - startY.current, endX - startX.current);
                clearDrawingCanvas();
                redrawMainCanvas();
-               drawArea(drawingCtx , startX.current, startY.current, radius.current, startAngle.current, endAngle.current, rotationAngle.current, currentSetting.lineWidth, redefinitionAlpha)
+               drawArea(drawingCtx , startX.current, startY.current, radius.current, startAngle.current, endAngle.current, rotationAngle.current, settings.lineWidth, redefinitionAlpha)
             };
 
             const handleMouseUp = () => {
@@ -80,7 +75,7 @@ const VisionTool = ({ isActive, type}) => {
                 startAngle: startAngle.current,
                 endAngle: endAngle.current,
                 rotationAngle: rotationAngle.current,
-                strokeWidth: currentSetting.lineWidth,
+                strokeWidth: settings.lineWidth,
                 fillStyle: redefinitionAlpha,
                 };
                 dispatch({type: "ADD_OBJECT", payload: newObject});
@@ -101,11 +96,8 @@ const VisionTool = ({ isActive, type}) => {
                 drawingCanvas.style.pointerEvents = "none";
             };
         }
-    }, [isActive, objects, canvasRef, drawingCanvasRef, getCanvasContext, getDrawingCanvasContext, clearDrawingCanvas, dispatch, currentSetting]);
+    }, [isActive, objects, canvasRef, drawingCanvasRef, getCanvasContext, getDrawingCanvasContext, clearDrawingCanvas, settings,  dispatch]);
 
-    return (
-        <ToolSettings type={type} onSettingChange={settingUpdater} />
-    );
 };
 
 export default VisionTool;

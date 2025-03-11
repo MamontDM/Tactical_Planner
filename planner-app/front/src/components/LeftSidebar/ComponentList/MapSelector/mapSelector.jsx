@@ -103,6 +103,7 @@ function MapSelector(){
     const handleClearMapList = () =>{
         setmaplist((prev) => []);
         dispatch({ type: 'CLEAR_MAPLIST'});
+        clearBackground();
     };
 
     const addMapToList = (item) =>{
