@@ -1,18 +1,17 @@
 import { useContext, useEffect, useRef } from 'react';
-import { useObjects } from '../../../../../hooks/useObjects';
 import CanvasContext from '../../../../contexts/CanvasContext';
- 
+import { useMapStore } from '../../../../../store/zustand/MapStore/mapStore';
 
 const ClearTool = ({isActive, onDeactivate})=> {
-   
+    const clearObjects = useMapStore((state) => state.clearObjects);
+
     console.log('called Clear tool!')
-    const { dispatch } = useObjects();
     const isCompleted = useRef(false);
     const { clearMainCanvas } = useContext(CanvasContext);
 
         useEffect (() =>  {
             if(isActive && !isCompleted.current) {
-                dispatch({type: "CLEAR_OBJECTS"});
+                clearObjects();
                 clearMainCanvas();
                 
                 isCompleted.current = true;

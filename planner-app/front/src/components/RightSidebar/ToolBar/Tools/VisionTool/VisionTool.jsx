@@ -1,18 +1,19 @@
 import  { useEffect, useContext, useRef, useState } from 'react';
 import { getCoordinates } from '../../../../../utils/commonHelpers';
 import CanvasContext from '../../../../contexts/CanvasContext';
-import { useObjects } from '../../../../../hooks/useObjects';
 import { drawObjects } from '../../../../../factories/CanvasRender';
 import { drawArea} from '../../../../../utils/canvasHelpers';
 import useToolSettings from '../../../../../store/zustand/Toolbar/toolsettingStore';
-
+import { useMapStore } from "../../../../../store/zustand/MapStore/mapStore"
 
 const VisionTool = ({ isActive, type}) => {
-
     const { canvasRef, drawingCanvasRef, getCanvasContext, getDrawingCanvasContext, clearDrawingCanvas } = useContext(CanvasContext);
-    const { objects, dispatch } = useObjects();
-   const settings = useToolSettings((state) => state.getSettings(type));
-   console.log(settings);
+
+    const settings = useToolSettings((state) => state.getSettings(type));
+    const addObject = useMapStore((state) => state.addObject);
+    const currentObjects = useMapStore((state) => state.getCurrentObjects());
+
+
     const isDrawing = useRef(false);
     const area = useRef(45);
     const radius = useRef(350);
@@ -33,20 +34,23 @@ const VisionTool = ({ isActive, type}) => {
 
             const redrawMainCanvas = () => {
                 mainCtx.clearRect(0, 0, canvasRef.current.width, canvasRef.current.height);
-                drawObjects(canvasRef.current, objects);
+                drawObjects(canvasRef.current, currentObjects);
             };
 
         const handleMouseDown = (event) => {
+            console.log(currentObjects);
             const {x, y} = getCoordinates(event, drawingCanvas);
             isDrawing.current  = true;
             startX.current = x;
             startY.current = y;
             clearDrawingCanvas();
+            console.log("inside is:", currentObjects);
             rotationAngle.current = 0;
             startAngle.current = 0;
             const angleInRadians = (area.current * Math.PI / 180 );
             endAngle.current = startAngle.current + angleInRadians;
             clearDrawingCanvas();
+            console.log("outside is:",currentObjects);
             redrawMainCanvas();
             drawArea(drawingCtx , x, y, radius.current, startAngle.current, endAngle.current, rotationAngle.current, settings.lineWidth, redefinitionAlpha);
         };
@@ -78,7 +82,8 @@ const VisionTool = ({ isActive, type}) => {
                 strokeWidth: settings.lineWidth,
                 fillStyle: redefinitionAlpha,
                 };
-                dispatch({type: "ADD_OBJECT", payload: newObject});
+                console.log(newObject);
+                addObject(newObject);
                 clearDrawingCanvas();
                 redrawMainCanvas();
             };
@@ -96,7 +101,7 @@ const VisionTool = ({ isActive, type}) => {
                 drawingCanvas.style.pointerEvents = "none";
             };
         }
-    }, [isActive, objects, canvasRef, drawingCanvasRef, getCanvasContext, getDrawingCanvasContext, clearDrawingCanvas, settings,  dispatch]);
+    }, [isActive, canvasRef, drawingCanvasRef, getCanvasContext, getDrawingCanvasContext, clearDrawingCanvas, settings, currentObjects]);
 
 };
 

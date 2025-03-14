@@ -17,6 +17,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    box-shadow: 0px 0px 25px rgb(14, 8, 8);
 }
   
 #backgroundCanvas,

@@ -16,8 +16,16 @@ const IconToolSettings = () => {
     const shipList = Object.values(ships).flat();
 
     const handleSettingChange = (type, value) => {
-        updateToolSetings(activeTool, {[type]: value});
-    }
+            updateToolSetings(activeTool, { [type]: value });
+    };
+
+
+    const handleFromListChange = (type1, value1, type2, value2) => {
+        updateToolSetings(activeTool, {
+            [type1]: value1,
+            [type2]: value2
+        });
+    };
 
     const renderSettings = () => {
         if(settingSource === "manual"){
@@ -75,11 +83,9 @@ const IconToolSettings = () => {
                         {shipList.map((ship, index) => (
                                 <button className="specset-items"
                                     key={ship.id}
-                                        onClick={() => handleSettingChange('shipFromList', {
-                                            shipType: ship.class,
-                                            label: ship.name,
-                                        })
-                                    }
+                                    data-type="shipType"
+                                    data-label="label"
+                                        onClick={(e) => handleFromListChange(e.target.dataset.type, ship.class, e.target.dataset.label,  ship.name)}
                                     >
                                        {ship.tier === 11 ? ( 
                                         <div className="super-item">

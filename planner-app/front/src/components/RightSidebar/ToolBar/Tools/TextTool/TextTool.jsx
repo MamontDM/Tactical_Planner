@@ -1,14 +1,15 @@
 import { useContext,useEffect, useState} from 'react';
 import CanvasContext from '../../../../contexts/CanvasContext';
-import { useObjects } from '../../../../../hooks/useObjects';
 import { drawObjects } from '../../../../../factories/CanvasRender';
 import { getCoordinates } from '../../../../../utils/commonHelpers';
 import { drawingText } from '../../../../../utils/canvasHelpers';
 import useToolSettings from '../../../../../store/zustand/Toolbar/toolsettingStore';
+import { useMapStore } from "../../../../../store/zustand/MapStore/mapStore";
 
 const TextTool = ({isActive, type}) => {
     const { canvasRef, drawingCanvasRef, getCanvasContext, getDrawingCanvasContext, clearDrawingCanvas } = useContext(CanvasContext);
-    const {objects, dispatch} = useObjects();
+
+    const addObject = useMapStore((state) => state.addObject);
     const settings = useToolSettings((state) => state.getSettings(type));
 
     useEffect(() => {
@@ -50,7 +51,7 @@ const newObject = {
         textColor: textColor,
     };
     console.log(newObject);
-    dispatch({ type: 'ADD_OBJECT', payload: newObject });
+    addObject(newObject);
     clearDrawingCanvas();
     redrawMainCanvas();
 };
@@ -65,8 +66,7 @@ const newObject = {
                 drawingCanvas.style.pointerEvents = "none";
             };
         }
-    }, [ isActive, canvasRef, dispatch, objects, 
-        drawingCanvasRef, getCanvasContext, settings,
+    }, [ isActive, canvasRef, drawingCanvasRef, getCanvasContext, settings,
         getDrawingCanvasContext, clearDrawingCanvas]);
 
 };

@@ -1,8 +1,7 @@
 import  {useContext, useEffect} from 'react';
 import CanvasContext from '../components/contexts/CanvasContext';
 import { curveEndDrawArrow , drawSmoothCurve, drawArea, drawTemporaryIcon, drawingText, getContrastTextColor  } from '../utils/canvasHelpers';
-import { useObjects } from '../hooks/useObjects';
-
+import { useMapStore } from "../store/zustand/MapStore/mapStore"
 
 export const drawObject = (canvas, object) => {
     if(!canvas || !object){
@@ -16,7 +15,6 @@ export const drawObject = (canvas, object) => {
     }
     switch (object.type){
         case 'line': 
-        case 'tech':
             context.beginPath();
             context.lineWidth = object.lineWidth;
             context.strokeStyle = object.color;
@@ -30,6 +28,34 @@ export const drawObject = (canvas, object) => {
             context.stroke();
             context.closePath();
             break;
+        case 'tech':
+            if (object.points.length < 2) break;
+
+        const [start, end] = object.points;
+        const midX = (start.x + end.x) / 2;
+        const midY = (start.y + end.y) / 2;
+
+       
+        context.beginPath();
+        context.lineWidth = object.lineWidth;
+        context.strokeStyle = object.color;
+        context.moveTo(start.x, start.y);
+        context.lineTo(end.x, end.y);
+        context.stroke();
+        context.closePath();
+
+        if (object.distanceKm) {
+            const textOffsetY = -10;
+            
+            context.font = "14px Arial";
+            context.fillStyle = object.color;
+            context.textAlign = "center";
+            context.textBaseline = "bottom";
+            context.fillText(`${object.distanceKm} км`, midX, midY + textOffsetY);
+        }
+        break;
+
+        break;
         case 'curve': 
             context.lineWidth = object.lineWidth;
             context.strokeStyle = object.color;
@@ -133,6 +159,9 @@ export const drawObject = (canvas, object) => {
 };
 
 export const drawObjects = (canvas, objects) =>{
+    if(!objects){
+        return;
+    }
     const context = canvas.getContext('2d');
     context.clearRect(0, 0, canvas.width, canvas.height);
     objects.forEach((object) => drawObject(canvas, object));
@@ -141,7 +170,7 @@ export const drawObjects = (canvas, objects) =>{
 
 const CanvasRenderer = () =>  {
     const { canvasRef } = useContext(CanvasContext);
-    const { objects } = useObjects();
+    const objects = useMapStore((state) => state.maps[state.selectedMapId]?.objects);
 
     useEffect(() => {
         const canvas = canvasRef.current;

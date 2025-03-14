@@ -1,13 +1,21 @@
 import React, { useState } from  'react';
 import useActiveToolStore from '../../../../../store/zustand/Toolbar/activeToolStore';
 import useToolSettings from '../../../../../store/zustand/Toolbar/toolsettingStore';
+import { useMapStore } from "../../../../../store/zustand/MapStore/mapStore"
+import { kmToPixels } from '../../../../../utils/mapScale';
 
 const RadarToolSettings = () =>{
     const activeTool = useActiveToolStore((state) => state.activeTool);
     const updateSettings = useToolSettings((state) => state.updateSettings);
+    const mapSize = useMapStore((state) => state.getMapSize)
+    const size = mapSize();
+    
 
     const handleSettingChange = (name, value) => {
-        updateSettings(activeTool, {[name]: value})
+        const radius = kmToPixels(value, size)
+        if(radius){
+            updateSettings(activeTool, {[name]: radius})
+        }
     }
 
     return (

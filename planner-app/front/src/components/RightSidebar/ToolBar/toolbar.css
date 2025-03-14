@@ -60,7 +60,7 @@
 .toolbar-button-undo {
   grid-area: 5/1;
 }
-.toolbar-button-eraiser {
+.toolbar-button-eraser {
   grid-area: 5/3;
 }
 .toolbar-button-redo {

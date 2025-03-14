@@ -38,7 +38,7 @@ export const CanvasProvider = ({ children }) => {
             const wrapperWidth = canvasWrapper.clientWidth;
             const wrapperHeight = canvasWrapper.clientHeight;
 
-            const originalWidth = 1253;
+            const originalWidth = 1200;
             const originalHeight = 1200;
             const aspectRatio = originalWidth / originalHeight;
             let width = wrapperWidth;

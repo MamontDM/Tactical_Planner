@@ -22,8 +22,8 @@ const ToolSettings = () => {
 
     return  ( 
         <>
-          {activeTool !== "icon" &&  <CommonSettings />}
-            {SpecificSettings && <SpecificSettings />}
+          {!["icon", "select", "eraser", "save", "download"].includes(activeTool) && <CommonSettings />}
+          {SpecificSettings && <SpecificSettings />}
         </>
     )
 

@@ -1,14 +1,24 @@
-import { useEffect, useContext } from 'react';
+import { useEffect, useContext, useState } from 'react';
 import { getCoordinates } from '../../../../../utils/commonHelpers';
 import CanvasContext from '../../../../contexts/CanvasContext';
 import { findClickedObject } from '../../../../../utils/commonHelpers';
-import { useObjects } from '../../../../../hooks/useObjects';
 import { drawObjects } from '../../../../../factories/CanvasRender';
+import { useMapStore } from '../../../../../store/zustand/MapStore/mapStore';
 
 const MoveTool = ({isActive}) => {
     console.log('called MoveTool tool!')
+    const [objects, setObjects] = useState([]);
     const { canvasRef, getCanvasContext } = useContext(CanvasContext);
-    const { objects , dispatch } = useObjects();
+    const currentObjects = useMapStore.getState().getCurrentObjects;
+    const updateObject = useMapStore.getState().updateObject;
+
+    useEffect(() => {
+        if (isActive) {
+            setObjects(currentObjects()); 
+        }
+    }, [isActive, objects]);
+
+
     useEffect(() =>{
        if (isActive && canvasRef?.current){
             let isDragging = false;
@@ -19,10 +29,10 @@ const MoveTool = ({isActive}) => {
             let initialY = 0;
             let initialPoints = [];
             let selectedObject = null;
+            let animationFrame = null;
 
 
             const calculateInitialData = (event) => {
-                
                 const { x, y } = getCoordinates(event, canvasRef.current);
                 selectedObject = findClickedObject(x, y, objects);
                 if (selectedObject) {
@@ -70,10 +80,15 @@ const MoveTool = ({isActive}) => {
 
             const prepareDispatchPayload = (dx, dy) => {
                 if (!selectedObject) return null;
-                return {
-                    id: selectedObject.id,
-                    updates: { points: initialPoints.map(point => ({ x: point.x - dx, y: point.y - dy })) },
+                const updatedObject = {
+                    ...selectedObject,
+                    points: selectedObject.points 
+                        ? initialPoints.map(point => ({ x: point.x - dx, y: point.y - dy }))
+                        : undefined,
+                    x: selectedObject.x !== undefined ? initialPoints[0].x - dx : undefined,
+                    y: selectedObject.y !== undefined ? initialPoints[0].y - dy : undefined,
                 };
+            return updatedObject;
             };
 
             const handleMouseDown = (event) => {
@@ -81,16 +96,16 @@ const MoveTool = ({isActive}) => {
             };
 
             const handleMouseMove = (event) => {
-                if (isDragging && selectedObject) {
-                    const { x, y } = getCoordinates(event, canvasRef.current);
-                  
-                    const dx = initialX - x;
-                    const dy = initialY - y;
-                    updateObjectPosition(dx, dy);
-                    const canvas = canvasRef.current;
-                    drawObjects(canvas, objects);
-                    
-                }
+                if (!isDragging || !selectedObject) return;
+                
+               
+                        const { x, y } = getCoordinates(event, canvasRef.current);
+                        const dx = initialX - x;
+                        const dy = initialY - y;
+                        updateObjectPosition(dx, dy);
+                        drawObjects(canvasRef.current, objects);
+
+                 
             };
 
             const handleMouseUp = (event) => {
@@ -98,13 +113,13 @@ const MoveTool = ({isActive}) => {
                     const { x, y } = getCoordinates(event, canvasRef.current);
                     const dx = initialX - x;
                     const dy = initialY - y;
-
-                    const payload = prepareDispatchPayload(dx, dy);
-                    if (payload) {
-                        dispatch({ type: 'UPDATE_OBJECT', payload });
+            
+                    const updatingObject = prepareDispatchPayload(dx, dy);
+                    console.log(updatingObject);
+                    if (updatingObject) {
+                        updateObject(updatingObject);
                     }
                 }
-
                 isDragging = false;
                 selectedObject = null;
             };
@@ -119,7 +134,7 @@ const MoveTool = ({isActive}) => {
                 document.removeEventListener('mouseup', handleMouseUp);
             };
         }
-    }, [isActive, objects, canvasRef, dispatch]);
+    }, [isActive, currentObjects, objects, canvasRef]);
 
     return null;
 };

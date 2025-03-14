@@ -3,8 +3,6 @@
  import MoveTool from './Tools/MoveTool/MoveTool.jsx';
  import StraightLine from './Tools/StraightLine/StraightLine.jsx';
  import CurveTool from './Tools/CurveTool/CurveTool.jsx';
- import UndoTool from './Tools/UnDoTool/UnDo.jsx';
- import ReDoTool from './Tools/ReDoTool/ReDo.jsx';
  import VisionTool from './Tools/VisionTool/VisionTool.jsx';
  import RadarTool from './Tools/RadarTool/RadarTool.jsx';
  import IconTool from './Tools/IconTool/IconTool.jsx';
@@ -23,9 +21,7 @@ import SaveTool from './Tools/SaveTool/SaveTool.jsx';
         { id: 'tech', label: 'Ruler', icon: technical, component: StraightLine},
         { id: 'curve', label: 'Curve', icon: curves, component: CurveTool },
         { id: 'text', label: 'Text', icon: text, component: TextTool },
-        { id: 'undo', label: 'Undo', icon: IconLeft, component: UndoTool},
-        { id: 'eraiser', label: 'Eraiser', icon: eraser, component: EraiserTool},
-        { id: 'redo', label: 'Redo', icon: IconRight, component: ReDoTool},
+        { id: 'eraser', label: 'Eraser', icon: eraser, component: EraiserTool},
         { id: 'icon', label: 'icon', icon: battleship, component: IconTool},
         { id: 'vision', label: 'Vision', icon: vision, component: VisionTool},
         { id: 'radar', label: 'Radar', icon: radar, component: RadarTool},

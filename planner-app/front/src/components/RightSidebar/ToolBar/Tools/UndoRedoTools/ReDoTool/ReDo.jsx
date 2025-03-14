@@ -1,14 +1,13 @@
 import { useEffect, useRef } from 'react';
-import { useObjects } from '../../../../../hooks/useObjects';
+import { useMapStore } from "../../../../../../store/zustand/MapStore/mapStore";
 
 const ReDoTool = ({ isActive,  onDeactivate }) => {
-    const { dispatch } = useObjects(); 
     const isCompleted = useRef(false)
-
+    const redo = useMapStore((state) => state.redo);
     useEffect (() =>  {
         if(isActive && !isCompleted.current) {
             isCompleted.current = true;
-            dispatch({type: "REDO"});
+            redo();
             onDeactivate();
         }
     }, [isActive]);
