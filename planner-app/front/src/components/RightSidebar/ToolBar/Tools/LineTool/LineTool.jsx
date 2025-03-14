@@ -1,16 +1,16 @@
 import  { useEffect, useRef, useContext, useState} from 'react';
-import { getCoordinates } from '../../../../../utils/commonHelpers';
-import CanvasContext from '../../../../contexts/CanvasContext';
-import { useObjects } from '../../../../../hooks/useObjects';
-import useToolSettings from '../../../../../store/zustand/Toolbar/toolsettingStore';
+import { getCoordinates } from "../../../../../utils/commonHelpers";
+import CanvasContext from "../../../../contexts/CanvasContext";
+import useToolSettings from "../../../../../store/zustand/Toolbar/toolsettingStore";
+import { useMapStore } from  "../../../../../store/zustand/MapStore/mapStore";
 
 
 const LineTool = ({isActive, type}) => {
     console.log('called Line tool!')
     const { canvasRef, drawingCanvasRef, getCanvasContext, getDrawingCanvasContext, clearDrawingCanvas } = useContext(CanvasContext);
     const settings = useToolSettings((state) => state.getSettings(type));
+    const addObject = useMapStore((state) => state.addObject);
 
-    const { dispatch } = useObjects();
     const isDrawing = useRef(false);
     const pointRef = useRef([]);
 
@@ -60,7 +60,7 @@ const LineTool = ({isActive, type}) => {
                         color: settings.color,
                     };
                     console.log(newObject)
-                    dispatch({type: 'ADD_OBJECT', payload: newObject});
+                    addObject(newObject);
                 }
                 clearDrawingCanvas();
             };
@@ -77,7 +77,7 @@ const LineTool = ({isActive, type}) => {
                 drawingCanvas.style.pointerEvents = "none";
             };
         }
-    }, [isActive, canvasRef, drawingCanvasRef, getCanvasContext, getDrawingCanvasContext, clearDrawingCanvas, settings, dispatch]);
+    }, [isActive, canvasRef, drawingCanvasRef, getCanvasContext, getDrawingCanvasContext, clearDrawingCanvas, settings]);
    
 };
 export default LineTool;

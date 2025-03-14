@@ -1,17 +1,22 @@
 import { useEffect, useContext, useRef, useState } from "react";
 import CanvasContext from "../../../../contexts/CanvasContext";
-import { useObjects } from "../../../../../hooks/useObjects";
 import { getCoordinates } from "../../../../../utils/commonHelpers";
 import { drawObjects } from "../../../../../factories/CanvasRender";
 import useToolSettings from '../../../../../store/zustand/Toolbar/toolsettingStore';
+import { useMapStore } from "../../../../../store/zustand/MapStore/mapStore";
+import {pixelsToKilometers} from "../../../../../utils/mapScale";
 
 const StraightTool = ({ isActive, type}) => {
     console.log('called STRLine tool!')
     const { canvasRef, drawingCanvasRef, getCanvasContext, getDrawingCanvasContext, clearDrawingCanvas } = useContext(CanvasContext);
-    const { objects, dispatch } = useObjects();
+
     const settings = useToolSettings((state) => state.getSettings(type));
+    const addObject = useMapStore((state) => state.addObject);
+    const getMapSize = useMapStore((state) => state.getMapSize);
+    const mapSize = getMapSize();
 
     const pointRef = useRef(null);
+    const distance = useRef(null);
     const isDrawing = useRef(false);
 
 
@@ -25,11 +30,6 @@ const StraightTool = ({ isActive, type}) => {
             drawingCtx.lineWidth = settings.lineWidth;
             drawingCtx.strokeStyle = settings.color;
             drawingCtx.canvas.style.cursor = "crosshair";
-
-            const redrawMainCanvas = () => {
-                mainCtx.clearRect(0, 0, canvasRef.current.width, canvasRef.current.height);
-                drawObjects(canvasRef.current, objects);
-            };
 
             const handleMouseDown = (event) => {
                 isDrawing.current = true;
@@ -45,6 +45,17 @@ const StraightTool = ({ isActive, type}) => {
                 const start = pointRef.current.points[0];
 
                 clearDrawingCanvas();
+                const midX = (start.x + x) / 2;
+                const midY = (start.y + y) / 2;
+                
+                const dx = x - start.x;
+                const dy = y - start.y;
+                const lengthPixels = Math.sqrt(dx * dx + dy * dy);
+
+             
+                const { xKm, yKm } = pixelsToKilometers(lengthPixels, 0, mapSize);
+                const distanceKm = xKm.toFixed(2);
+                distance.current = distanceKm;
 
                 drawingCtx.beginPath();
                 drawingCtx.moveTo(start.x, start.y);
@@ -52,6 +63,14 @@ const StraightTool = ({ isActive, type}) => {
                 drawingCtx.strokeStyle = settings.color;
                 drawingCtx.lineWidth = settings.lineWidth;
                 drawingCtx.stroke();
+
+                const textOffsetY = -10;
+
+                drawingCtx.font = "14px Arial";
+                drawingCtx.fillStyle = settings.color;
+                drawingCtx.textAlign = "center";
+                drawingCtx.textBaseline = "bottom";
+                drawingCtx.fillText(`${distanceKm} км`, midX, midY + textOffsetY);
             };
 
             const handleMouseUp = (event) => {
@@ -68,11 +87,12 @@ const StraightTool = ({ isActive, type}) => {
                     points: [...pointRef.current.points],
                     color: settings.color,
                     lineWidth: settings.lineWidth,
+                    distanceKm: distance.current,
                 };
                 console.log(newObject);
-                dispatch({ type: "ADD_OBJECT", payload: newObject });
+                distance.current = null;
+                addObject(newObject);
                 clearDrawingCanvas();
-                redrawMainCanvas();
             };
 
             drawingCanvas.addEventListener("mousedown", handleMouseDown);
@@ -87,8 +107,8 @@ const StraightTool = ({ isActive, type}) => {
                 drawingCanvas.style.pointerEvents = "none";
             };
         }
-    }, [isActive, canvasRef, drawingCanvasRef, dispatch, clearDrawingCanvas, getCanvasContext, settings, getDrawingCanvasContext, objects]);
-
+    }, [isActive, canvasRef, drawingCanvasRef, clearDrawingCanvas, getCanvasContext, settings, getDrawingCanvasContext, mapSize]);
+    
 };
 
 export default StraightTool;

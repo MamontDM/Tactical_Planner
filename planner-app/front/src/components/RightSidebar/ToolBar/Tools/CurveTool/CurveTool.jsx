@@ -1,18 +1,20 @@
 import  { useEffect, useContext, useRef, useState } from 'react';
 import { getCoordinates } from '../../../../../utils/commonHelpers';
 import CanvasContext from '../../../../contexts/CanvasContext';
-import { useObjects } from '../../../../../hooks/useObjects';
 import { drawObjects } from '../../../../../factories/CanvasRender';
 import { curveEndDrawArrow , drawSmoothCurve} from '../../../../../utils/canvasHelpers';
 import useToolSettings from '../../../../../store/zustand/Toolbar/toolsettingStore';
+import { useMapStore } from '../../../../../store/zustand/MapStore/mapStore';
 
 
 
 const CurveTool = ({ isActive, type }) => {
     console.log('called Curve tool!')
     const { canvasRef, drawingCanvasRef, getCanvasContext, getDrawingCanvasContext, clearDrawingCanvas } = useContext(CanvasContext);
-    const { objects, dispatch } = useObjects();
+
     const settings = useToolSettings((state) => state.getSettings(type));
+    const addObject = useMapStore((state) => state.addObject);
+
     const isDrawing = useRef(false);
     const points = useRef([]);
     const temporaryPoints = useRef([]);
@@ -20,6 +22,7 @@ const CurveTool = ({ isActive, type }) => {
 
     useEffect(() => {
         if (isActive && canvasRef?.current && drawingCanvasRef?.current && settings) {
+            console.log("called");
             const mainCtx = getCanvasContext();
             const drawingCtx = getDrawingCanvasContext(); 
             const drawingCanvas = drawingCanvasRef.current;
@@ -29,10 +32,6 @@ const CurveTool = ({ isActive, type }) => {
             drawingCtx.strokeStyle = settings.color;
             drawingCtx.canvas.style.cursor = 'crosshair';
 
-            const redrawMainCanvas = () => {
-                mainCtx.clearRect(0, 0, canvasRef.current.width, canvasRef.current.height);
-                drawObjects(canvasRef.current, objects);
-            };
 
             const pointStep = (x, y) => {
                 if (points.current.length === 0) return true;
@@ -70,8 +69,7 @@ const CurveTool = ({ isActive, type }) => {
                     const toX = points.current[lastIndex].x;
                     const toY = points.current[lastIndex].y;
                     const angle = Math.atan2(toY - fromY, toX - fromX);
-
-                    curveEndDrawArrow(drawingCtx, fromX, fromY, toX, toY, angle, headLength, settings.lineWidth, settings.color);
+                curveEndDrawArrow(drawingCtx, fromX, fromY, toX, toY, angle, headLength, settings.lineWidth, settings.color);
                     const newObject = {
                         id: Date.now(),
                         type: "curve",
@@ -88,11 +86,10 @@ const CurveTool = ({ isActive, type }) => {
                             headLength,
                         },
                     };
-                    dispatch({ type: "ADD_OBJECT", payload: newObject });
+                    addObject(newObject);
                     points.current = [];
                 }
                 clearDrawingCanvas();
-                redrawMainCanvas();
             };
 
             drawingCanvas.addEventListener("mousedown", handleMouseDown);
@@ -109,8 +106,7 @@ const CurveTool = ({ isActive, type }) => {
                 drawingCanvas.style.pointerEvents = "none";
             };
         }
-    }, [isActive, canvasRef, dispatch, 
-        objects, drawingCanvasRef, getCanvasContext, 
+    }, [isActive, canvasRef, drawingCanvasRef, getCanvasContext, 
         getDrawingCanvasContext, clearDrawingCanvas, settings
     ]);
     return null;

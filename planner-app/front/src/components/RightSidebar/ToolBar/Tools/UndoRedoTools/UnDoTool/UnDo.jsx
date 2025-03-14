@@ -1,15 +1,14 @@
 import { useEffect, useRef } from 'react';
-import { useObjects } from '../../../../../hooks/useObjects';
+import { useMapStore } from "../../../../../../store/zustand/MapStore/mapStore";
 
 const UndoTool = ({isActive, onDeactivate}) => {
-
-    const { dispatch } = useObjects();
     const isCompleted = useRef(false)
-       
+    const undo = useMapStore.getState().undo;
+    
     useEffect (() =>  {
             if(isActive && !isCompleted.current) {
-
-                dispatch({type: "UNDO"});
+                console.log('called')
+;                undo();
                 isCompleted.current = true;
                 onDeactivate();
             }

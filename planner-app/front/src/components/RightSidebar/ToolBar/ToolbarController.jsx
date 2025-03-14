@@ -2,19 +2,19 @@ import React, {useContext, useCallback} from 'react';
 import './toolbar.css';
 import ToolbarButton from '../../shared/ToolbarButton.jsx';
 import toolsConfig from './toolsConfig.jsx';
-import { MapContext } from '../../contexts/MapSelectorContext.jsx';
 import AuthContext from '../../contexts/AuthContext';
 import ToolSettings from '../ToolSettings/ToolSetting';
 import useActiveToolStore from '../../../store/zustand/Toolbar/activeToolStore';
+import { useMapStore } from '../../../store/zustand/MapStore/mapStore';
+import UndoRedoControls from './Tools/UndoRedoTools/UndoRedo';
 
 
 const Toolbar = () =>  {
     const activeToolId = useActiveToolStore((state) => state.activeTool);
     const setActiveTool = useActiveToolStore((state) => state.setActiveTool);
     const clearActiveTool = useActiveToolStore((state) => state.clearActiveTool);
-
+    const isMapActive = useMapStore((state) => state.selectedMapId);
     const { isAuthenticated } = useContext(AuthContext);
-    const {isMapActive } = useContext(MapContext);
     
     const handleToolClick = (id) => {
         if(id === activeToolId){
@@ -43,6 +43,7 @@ const Toolbar = () =>  {
                         onClick={() => handleToolClick(tool.id)}
                     />
                 ))}
+                 <UndoRedoControls />
             </div>
             {toolsConfig.map((tool) => activeToolId === tool.id &&  (
                 <tool.component
@@ -54,6 +55,7 @@ const Toolbar = () =>  {
             />
             ))}
             {activeToolId && <ToolSettings />}
+           
         </div>
     );
 };

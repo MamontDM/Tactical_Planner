@@ -2,14 +2,15 @@ import { useEffect, useContext, useRef, useState } from 'react';
 import { getCoordinates } from '../../../../../utils/commonHelpers';
 import { drawCircle, setAlphaChannel } from '../../../../../utils/canvasHelpers';
 import CanvasContext from '../../../../contexts/CanvasContext';
-import { useObjects } from '../../../../../hooks/useObjects';
 import useToolSettings from '../../../../../store/zustand/Toolbar/toolsettingStore';
+import {useMapStore} from "../../../../../store/zustand/MapStore/mapStore";
 
 const BaseAreaTool = ({isActive, type}) => {
     console.log('called Base Area tool!')
     const { canvasRef, drawingCanvasRef, getCanvasContext, getDrawingCanvasContext, clearDrawingCanvas } = useContext(CanvasContext);
-    const {objects,  dispatch } = useObjects();
     const settings = useToolSettings((state) => state.getSettings(type));
+    const addObject = useMapStore((state)  => state.addObject);
+    
     const scale = useRef(20);
     const points = useRef([]);
     const radius = useRef(null);
@@ -67,7 +68,7 @@ const BaseAreaTool = ({isActive, type}) => {
                     fontSize: settings.fontSize,
                 };
                 console.log(newObject);
-                dispatch({ type: "ADD_OBJECT", payload: newObject });
+                addObject(newObject);
                 points.current = [];
                 clearDrawingCanvas();
             }; 
@@ -86,8 +87,7 @@ const BaseAreaTool = ({isActive, type}) => {
                 drawingCanvas.style.pointerEvents = "none";
             }
         }
-    }, [isActive, canvasRef, dispatch, 
-        objects, drawingCanvasRef, getCanvasContext, 
+    }, [isActive, canvasRef, drawingCanvasRef, getCanvasContext, 
         getDrawingCanvasContext, clearDrawingCanvas,settings
     ]);
 

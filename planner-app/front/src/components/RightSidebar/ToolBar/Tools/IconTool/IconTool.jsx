@@ -1,16 +1,18 @@
 import  { useEffect, useContext, useRef, useState } from 'react';
 import { getCoordinates } from '../../../../../utils/commonHelpers';
 import CanvasContext from '../../../../contexts/CanvasContext';
-import { useObjects } from '../../../../../hooks/useObjects';
 import { drawObjects } from '../../../../../factories/CanvasRender';
 import { drawTemporaryIcon} from '../../../../../utils/canvasHelpers';
 import { getSvgTemplate, convertSvgToImage } from '../../../../../factories/IconSVGCreator';
 import useToolSettings from '../../../../../store/zustand/Toolbar/toolsettingStore';
+import { useMapStore } from '../../../../../store/zustand/MapStore/mapStore';
 
 const IconTool = ({isActive, type}) =>{ 
     const { canvasRef, drawingCanvasRef, getCanvasContext, getDrawingCanvasContext, clearDrawingCanvas } = useContext(CanvasContext);
-    const {objects,  dispatch } = useObjects();
+    
+    const addObject = useMapStore((state) => state.addObject);
     const settings = useToolSettings((state) => state.getSettings(type));
+    const currentObjects = useMapStore((state) => state.getCurrentObjects());
 
     const shipType = useRef(null);
     const fillColor = useRef(null);
@@ -56,7 +58,7 @@ const IconTool = ({isActive, type}) =>{
 
             const redrawMainCanvas = () => {
                 mainCtx.clearRect(0, 0, canvasRef.current.width, canvasRef.current.height);
-                drawObjects(canvasRef.current, objects);
+                drawObjects(canvasRef.current, currentObjects);
             };
             
             
@@ -101,7 +103,7 @@ const IconTool = ({isActive, type}) =>{
                     color: fillColor.current,
                     label: shipLabel.current,
                 };
-                dispatch({ type: 'ADD_OBJECT', payload: newObject });
+                addObject(newObject);
                 isPlacing.current = false;
                 clearDrawingCanvas();
                 redrawMainCanvas();
@@ -121,8 +123,7 @@ const IconTool = ({isActive, type}) =>{
                 drawingCanvas.style.pointerEvents = "none";
             };
         }
-    },[isActive, canvasRef, dispatch, objects, 
-        drawingCanvasRef, getCanvasContext, 
+    },[isActive, canvasRef, drawingCanvasRef, getCanvasContext,currentObjects, 
         getDrawingCanvasContext, clearDrawingCanvas, img,
     ]);
 

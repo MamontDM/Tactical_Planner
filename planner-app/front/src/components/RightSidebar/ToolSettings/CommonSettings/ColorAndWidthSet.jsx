@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useRef} from 'react';
 import styles from './commonSettings.module.css';
 import useToolSettings from '../../../../store/zustand/Toolbar/toolsettingStore';
 import useActiveToolStore from '../../../../store/zustand/Toolbar/activeToolStore';
@@ -6,11 +6,14 @@ import useActiveToolStore from '../../../../store/zustand/Toolbar/activeToolStor
 
 const ColorAndWidthSettings = ({  }) => {
     const activeTool = useActiveToolStore((state) => state.activeTool);
-    const updateSettings = useToolSettings((state) => state.updateSettings);
-    const color = useToolSettings((state) => state.settings[activeTool]?.color || "rgba(135, 255, 0, 1)");
-    const lineWidth = useToolSettings((state) => state.settings[activeTool]?.lineWidth || 2);
-    const [sliderValue, setSliderValue] = useState(50);
+
+    const {updateSettings , settings} = useToolSettings();
     const [alpha, setAlpha] = useState(1);
+    
+    const toolSettings = settings[activeTool] || {};
+    const color = toolSettings.color || "rgba(135, 255, 0, 1)";
+    const lineWidth = toolSettings.lineWidth || 2;
+    const sliderValue = toolSettings.sliderValue || 50;
 
     const gradientColors = [
         { r: 255, g: 0, b: 0, a: 1},
@@ -35,7 +38,8 @@ const ColorAndWidthSettings = ({  }) => {
 
     const handleSliderChange = (e) => {
         const newValue = e.target.value;
-        setSliderValue(newValue);
+        console.log(newValue);
+        updateSettings(activeTool, { sliderValue: newValue});
         const newColor = calculateColor(newValue);
         updateSettings(activeTool, {color: newColor});
         document.documentElement.style.setProperty("--thumb-color", newColor);
