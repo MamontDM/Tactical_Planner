@@ -5,7 +5,7 @@ import IconToolSettings from "../ToolSettings/ComponentSettings/IconTool/IconToo
 import BaseToolSettings from "./ComponentSettings/BaseTool/BaseToolSettings";
 import RadarToolSettings from "../ToolSettings/ComponentSettings/RadarTool/RadarToolSetting";
 import TextToolSettings from "../ToolSettings/ComponentSettings/TextTool/TextToolSettings";
-import useActiveToolStore from '../../../store/zustand/Toolbar/activeToolStore';
+import {useActiveToolStore} from '@/store/zustand/Toolbar/activeToolStore';
 
 
 const settingComponentsList = {

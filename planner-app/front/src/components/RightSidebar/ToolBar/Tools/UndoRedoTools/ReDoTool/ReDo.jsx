@@ -1,5 +1,5 @@
 import { useEffect, useRef } from 'react';
-import { useMapStore } from "../../../../../../store/zustand/MapStore/mapStore";
+import { useMapStore } from "@/store/zustand/MapStore/mapStore";
 
 const ReDoTool = ({ isActive,  onDeactivate }) => {
     const isCompleted = useRef(false)

@@ -1,7 +1,7 @@
 import React, {useState, useRef} from 'react';
 import styles from './commonSettings.module.css';
-import useToolSettings from '../../../../store/zustand/Toolbar/toolsettingStore';
-import useActiveToolStore from '../../../../store/zustand/Toolbar/activeToolStore';
+import {useToolSettings} from '@/store/zustand/Toolbar/toolsettingStore';
+import { useActiveToolStore } from '@/store/zustand/Toolbar/activeToolStore';
 
 
 const ColorAndWidthSettings = ({  }) => {

@@ -1,6 +1,6 @@
 import React from 'react';
-import useActiveToolStore from '../../../../../store/zustand/Toolbar/activeToolStore';
-import useToolSettings from '../../../../../store/zustand/Toolbar/toolsettingStore';
+import { useActiveToolStore } from '@/store/zustand/Toolbar/activeToolStore';
+import { useToolSettings } from '@/store/zustand/Toolbar/toolsettingStore';
 
 const TextToolSettings = () => {
     const activeTool = useActiveToolStore((state) => state.activeTool);

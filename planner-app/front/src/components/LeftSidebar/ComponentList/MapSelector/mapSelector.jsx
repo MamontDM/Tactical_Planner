@@ -4,21 +4,23 @@ import DropdownWithSearch from '../../../shared/DropDownSearch';
 import CanvasContext from '../../../contexts/CanvasContext';
 import avaliableMaps from "./mapConfig.json";
 import { useMapStore } from '../../../../store/zustand/MapStore/mapStore';
+import {prittyJsonParser} from "../../../../utils/mapJsonParser";
 
 
 const  MapSelector = () => {
     const [isEditing, setIsEditing] = useState(false);
     const { backgroundCanvasRef, clearBackground, getBackgroundCanvasContext } = useContext(CanvasContext);
-    
     const maps = useMapStore((state) => state.maps);
     const mapList = Object.values(maps);
     const addMap = useMapStore((state) => state.addMap);
     const removeMap = useMapStore((state) => state.removeMap);
     const removeAllMap = useMapStore((state) => state.removeAllMap);
     const selectMap = useMapStore((state) => state.selectMap);
-   
+    const selectedMapId = useMapStore((state) => state.selectedMapId);
+    
+    // prittyJsonParser(maps);
 
-   
+    
 
 
 
@@ -42,6 +44,7 @@ const  MapSelector = () => {
      };
 
     const handleSelect = (item) => {
+        console.log(item)
         addMap(item);
         renderMap(item.url);
     };
@@ -83,7 +86,7 @@ const  MapSelector = () => {
             <div className="mapselector-list">
                 {mapList.map(item =>(
                     <React.Fragment key={item.name}>
-                        <button className="list-item"
+                        <button className={`list-item ${selectedMapId === item.id ? 'active' : ""}`}
                             key={item.name}
                             id={item.id}
                             onClick={() => changeContext(item)}

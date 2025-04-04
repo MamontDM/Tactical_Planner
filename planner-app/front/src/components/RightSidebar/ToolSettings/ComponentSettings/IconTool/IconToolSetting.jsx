@@ -2,8 +2,8 @@ import {useState} from 'react';
 import { IconBattleship, IconCruiser, IconDestroyer, IconAircraft_carrier, IconSubmarine, switch_arrow, leftLavr, rightLavr} from '../../../../../assets/exportIcon';
 import { useShipContext } from '../../../../../hooks/useShipContext';
 import './IconToolSetting.css';
-import useToolSettings from "../../../../../store/zustand/Toolbar/toolsettingStore";
-import useActiveToolStore from "../../../../../store/zustand/Toolbar/activeToolStore";
+import {useToolSettings} from "@/store/zustand/Toolbar/toolsettingStore";
+import {useActiveToolStore} from "@/store/zustand/Toolbar/activeToolStore";
 
 const IconToolSettings = () => {
     const activeTool = useActiveToolStore((state) => state.activeTool);

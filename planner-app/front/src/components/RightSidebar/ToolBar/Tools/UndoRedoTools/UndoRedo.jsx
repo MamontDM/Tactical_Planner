@@ -4,7 +4,7 @@ import ReDoTool from './ReDoTool/ReDo.jsx';
 import ToolbarButton from '../../../../shared/ToolbarButton.jsx';
 import LeftArrow from "../../../../../assets/Icon/IconLeft.png";
 import RightArrow from "../../../../../assets/Icon/IconRight.png";
-import { useMapStore } from "../../../../../store/zustand/MapStore/mapStore.js"
+import { useMapStore } from "@/store/zustand/MapStore/mapStore.js"
 
 const UndoRedoControls = () => {
     const undo = useMapStore.getState().undo;

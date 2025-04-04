@@ -3,7 +3,7 @@ import { getCoordinates } from '../../../../../utils/commonHelpers';
 import CanvasContext from '../../../../contexts/CanvasContext';
 import { findClickedObject } from '../../../../../utils/commonHelpers';
 import { drawObjects } from '../../../../../factories/CanvasRender';
-import { useMapStore } from '../../../../../store/zustand/MapStore/mapStore';
+import { useMapStore } from '@/store/zustand/MapStore/mapStore';
 
 const MoveTool = ({isActive}) => {
     console.log('called MoveTool tool!')
@@ -11,6 +11,7 @@ const MoveTool = ({isActive}) => {
     const { canvasRef, getCanvasContext } = useContext(CanvasContext);
     const currentObjects = useMapStore.getState().getCurrentObjects;
     const updateObject = useMapStore.getState().updateObject;
+    console.log(objects);
 
     useEffect(() => {
         if (isActive) {
@@ -21,15 +22,18 @@ const MoveTool = ({isActive}) => {
 
     useEffect(() =>{
        if (isActive && canvasRef?.current){
-            let isDragging = false;
-            const mainCtx = getCanvasContext();
-            let offsetX = 0;
-            let offsetY = 0;
-            let initialX = 0;
-            let initialY = 0;
-            let initialPoints = [];
-            let selectedObject = null;
-            let animationFrame = null;
+        const mainCtx = getCanvasContext();
+
+        canvasRef.current.style.pointerEvents = 'auto';
+        
+        let isDragging = false;
+        let offsetX = 0;
+        let offsetY = 0;
+        let initialX = 0;
+        let initialY = 0;
+        let initialPoints = [];
+        let selectedObject = null;
+        let animationFrame = null;
 
 
             const calculateInitialData = (event) => {

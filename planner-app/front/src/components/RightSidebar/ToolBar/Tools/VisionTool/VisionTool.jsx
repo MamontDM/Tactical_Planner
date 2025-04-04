@@ -3,7 +3,7 @@ import { getCoordinates } from '../../../../../utils/commonHelpers';
 import CanvasContext from '../../../../contexts/CanvasContext';
 import { drawObjects } from '../../../../../factories/CanvasRender';
 import { drawArea} from '../../../../../utils/canvasHelpers';
-import useToolSettings from '../../../../../store/zustand/Toolbar/toolsettingStore';
+import {useToolSettings} from '../../../../../store/zustand/Toolbar/toolsettingStore';
 import { useMapStore } from "../../../../../store/zustand/MapStore/mapStore"
 
 const VisionTool = ({ isActive, type}) => {

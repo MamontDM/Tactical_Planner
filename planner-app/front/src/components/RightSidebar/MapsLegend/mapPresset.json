@@ -1,0 +1,1500 @@
+{
+    "Atlantic": {
+      "name": {
+        "id": 1743677540309,
+        "type": "text",
+        "textBody": "Atlantic",
+        "x": 302.10143799967807,
+        "y": 71.02236955658154,
+        "width": 958.77685546875,
+        "fontSize": 75,
+        "textColor": "#fff000"
+      },
+      "size": {
+        "id": 1743677540309,
+        "type": "text",
+        "textBody": "Size 24 x 24 km",
+        "x": 150.10143799967807,
+        "y": 20.02236955658154,
+        "width": 958.77685546875,
+        "fontSize": 40,
+        "textColor": "#fff000"
+    },
+      "baseArea": {
+       "Domination": [
+        {
+          "id": 1743786524240,
+          "type": "base",
+          "points": [
+            {
+              "x": 288.1622516556291,
+              "y": 891.3068588232177
+            }
+          ],
+          "radius": 118.10261531454327,
+          "color": "rgba(0,84,171, 0.15)",
+          "lineWidth": 2,
+          "textBody": "A",
+          "fontSize": "20"
+        },
+        {
+          "id": 1743786588550,
+          "type": "base",
+          "points": [
+            {
+              "x": 590,
+              "y": 588.2025061594298
+            }
+          ],
+          "radius": 127.72267336995365,
+          "color": "rgba(0,84,171, 0.15)",
+          "lineWidth": 2,
+          "textBody": "B",
+          "fontSize": "20"
+        },
+        {
+          "id": 1743786599652,
+          "type": "base",
+          "points": [
+            {
+              "x": 894.7682119205298,
+              "y": 290.0998754867936
+            }
+          ],
+          "radius": 115.02169348833038,
+          "color": "rgba(0,84,171, 0.15)",
+          "lineWidth": 2,
+          "textBody": "C",
+          "fontSize": "20"
+        }
+       ],
+       "Standart": [
+        {
+          "id": 1743786703504,
+          "type": "base",
+          "points": [
+            {
+              "x": 358.4933774834436,
+              "y": 364.1253609558375
+            }
+          ],
+          "radius": 151.23677502375153,
+          "color": "rgba(43,255,0, 0.15)",
+          "lineWidth": 2,
+          "textBody": "A",
+          "fontSize": "20"
+        },
+        {
+          "id": 1743786723463,
+          "type": "base",
+          "points": [
+            {
+              "x": 817.5993377483444,
+              "y": 820.2824065488649
+            }
+          ],
+          "radius": 150.90865971013156,
+          "color": "rgba(255,23,0, 0.15)",
+          "lineWidth": 2,
+          "textBody": "B",
+          "fontSize": "20"
+        }
+       ],
+       "Clans Domination": [
+        {
+          "id": 1743786320125,
+          "type": "base",
+          "points": [
+            {
+              "x": 342.864238410596,
+              "y": 595.204916947042
+            }
+          ],
+          "radius": 88.87458581739611,
+          "color": "rgba(0,92,163, 0.15)",
+          "lineWidth": 2,
+          "textBody": "A",
+          "fontSize": "20"
+        },
+        {
+          "id": 1743786362671,
+          "type": "base",
+          "points": [
+            {
+              "x": 602.6986754966888,
+              "y": 853.2937716904655
+            }
+          ],
+          "radius": 88.30958339645323,
+          "color": "rgba(0,92,163, 0.15)",
+          "lineWidth": 2,
+          "textBody": "B",
+          "fontSize": "20"
+        },
+        {
+          "id": 1743786369445,
+          "type": "base",
+          "points": [
+            {
+              "x": 789.271523178808,
+              "y": 420.14464725673565
+            }
+          ],
+          "radius": 89.02241359022284,
+          "color": "rgba(0,92,163, 0.15)",
+          "lineWidth": 2,
+          "textBody": "C",
+          "fontSize": "20"
+        }
+       ]
+      }
+    },
+    
+    "Warrior Path": {
+      "name": {
+        "id": 1743677540309,
+        "type": "text",
+        "textBody": "Warrior Path",
+        "x": 302.10143799967807,
+        "y": 71.02236955658154,
+        "width": 958.77685546875,
+        "fontSize": 75,
+        "textColor": "#fff000"
+      },
+      "size": {
+        "id": 1743677540309,
+        "type": "text",
+        "textBody": "Size 24 x 24 km",
+        "x": 150.10143799967807,
+        "y": 20.02236955658154,
+        "width": 958.77685546875,
+        "fontSize": 40,
+        "textColor": "#fff000"
+      },
+
+      "baseArea": {
+        "Tournament Domination": [
+          {
+            "id": 1743787173624,
+            "type": "base",
+            "points": [
+              {
+                "x": 306.72185430463577,
+                "y": 587.2021617611995
+              }
+            ],
+            "radius": 81.5745018412574,
+            "color": "rgba(0,107,148, 0.15)",
+            "lineWidth": 2,
+            "textBody": "A",
+            "fontSize": "20"
+          },
+          {
+            "id": 1743787187293,
+            "type": "base",
+            "points": [
+              {
+                "x": 665.2152317880794,
+                "y": 587.2021617611995
+              }
+            ],
+            "radius": 82.76495970139239,
+            "color": "rgba(0,107,148, 0.15)",
+            "lineWidth": 2,
+            "textBody": "B",
+            "fontSize": "20"
+          },
+          {
+            "id": 1743787215773,
+            "type": "base",
+            "points": [
+              {
+                "x": 955.3311258278145,
+                "y": 590.2031949558905
+              }
+            ],
+            "radius": 84.0304431875703,
+            "color": "rgba(0,107,148, 0.15)",
+            "lineWidth": 2,
+            "textBody": "C",
+            "fontSize": "20"
+          }
+        ],
+        "Tournament Domination(alternative)": [
+          {
+            "id": 1743787331324,
+            "type": "base",
+            "points": [
+              {
+                "x": 181.68874172185429,
+                "y": 587.2021617611996
+              }
+            ],
+            "radius": 73.32302968530448,
+            "color": "rgba(0,107,148, 0.15)",
+            "lineWidth": 2,
+            "textBody": "A",
+            "fontSize": "20"
+          },
+          {
+            "id": 1743787351163,
+            "type": "base",
+            "points": [
+              {
+                "x": 587.069536423841,
+                "y": 594.2045725488117
+              }
+            ],
+            "radius": 72.34703805745414,
+            "color": "rgba(0,107,148, 0.15)",
+            "lineWidth": 2,
+            "textBody": "B",
+            "fontSize": "20"
+          },
+          {
+            "id": 1743787383025,
+            "type": "base",
+            "points": [
+              {
+                "x": 939.7019867549669,
+                "y": 590.2031949558905
+              }
+            ],
+            "radius": 70.50875465560758,
+            "color": "rgba(0,107,148, 0.15)",
+            "lineWidth": 2,
+            "textBody": "C",
+            "fontSize": "20"
+          }
+        ],
+        "Cland Domination": [
+          {
+            "id": 1743786985427,
+            "type": "base",
+            "points": [
+              {
+                "x": 295,
+                "y": 572.1969957877446
+              }
+            ],
+            "radius": 86.24500506481807,
+            "color": "rgba(0,107,148, 0.15)",
+            "lineWidth": 2,
+            "textBody": "A",
+            "fontSize": "20"
+          },
+          {
+            "id": 1743787002636,
+            "type": "base",
+            "points": [
+              {
+                "x": 748.2450331125827,
+                "y": 334.1150290089278
+              }
+            ],
+            "radius": 87.6262873699866,
+            "color": "rgba(0,107,148, 0.15)",
+            "lineWidth": 2,
+            "textBody": "B",
+            "fontSize": "20"
+          },
+          {
+            "id": 1743787020223,
+            "type": "base",
+            "points": [
+              {
+                "x": 750.1986754966888,
+                "y": 814.2803401594828
+              }
+            ],
+            "radius": 90.92480808108955,
+            "color": "rgba(0,107,148, 0.15)",
+            "lineWidth": 2,
+            "textBody": "C",
+            "fontSize": "20"
+          }
+        ],
+        "Domination": [
+          {
+            "id": 1743787173624,
+            "type": "base",
+            "points": [
+              {
+                "x": 306.72185430463577,
+                "y": 587.2021617611995
+              }
+            ],
+            "radius": 81.5745018412574,
+            "color": "rgba(0,107,148, 0.15)",
+            "lineWidth": 2,
+            "textBody": "A",
+            "fontSize": "20"
+          },
+          {
+            "id": 1743787187293,
+            "type": "base",
+            "points": [
+              {
+                "x": 665.2152317880794,
+                "y": 587.2021617611995
+              }
+            ],
+            "radius": 82.76495970139239,
+            "color": "rgba(0,107,148, 0.15)",
+            "lineWidth": 2,
+            "textBody": "B",
+            "fontSize": "20"
+          },
+          {
+            "id": 1743787215773,
+            "type": "base",
+            "points": [
+              {
+                "x": 955.3311258278145,
+                "y": 590.2031949558905
+              }
+            ],
+            "radius": 84.0304431875703,
+            "color": "rgba(0,107,148, 0.15)",
+            "lineWidth": 2,
+            "textBody": "C",
+            "fontSize": "20"
+          }
+        ]
+      }
+    },
+
+    "Trap": {
+      "name": {
+        "id": 1743677540309,
+        "type": "text",
+        "textBody": "Trap",
+        "x": 302.10143799967807,
+        "y": 71.02236955658154,
+        "width": 958.77685546875,
+        "fontSize": 75,
+        "textColor": "#fff000"
+      },
+      "size": {
+        "id": 1743677540309,
+        "type": "text",
+        "textBody": "Size 24 x 24 km",
+        "x": 150.10143799967807,
+        "y": 20.02236955658154,
+        "width": 958.77685546875,
+        "fontSize": 40,
+        "textColor": "#fff000"
+      },
+          "baseArea": {
+        "Tournament Domination": [
+          {
+            "id": 1743787732513,
+            "type": "base",
+            "points": [
+              {
+                "x": 265.69536423841066,
+                "y": 922.3175351683577
+              }
+            ],
+            "radius": 145.9913214916814,
+            "color": "rgba(0,92,163, 0.15)",
+            "lineWidth": 2,
+            "textBody": "A",
+            "fontSize": "20"
+          },
+          {
+            "id": 1743787755462,
+            "type": "base",
+            "points": [
+              {
+                "x": 588.0463576158941,
+                "y": 593.2042281505815
+              }
+            ],
+            "radius": 146.84089402857737,
+            "color": "rgba(0,92,163, 0.15)",
+            "lineWidth": 2,
+            "textBody": "B",
+            "fontSize": "20"
+          },
+          {
+            "id": 1743787761414,
+            "type": "base",
+            "points": [
+              {
+                "x": 885,
+                "y": 298.10263067263617
+              }
+            ],
+            "radius": 147.01408480739454,
+            "color": "rgba(0,92,163, 0.15)",
+            "lineWidth": 2,
+            "textBody": "C",
+            "fontSize": "20"
+          }
+        ],
+        "Cland Domination": [
+          {
+            "id": 1743787621177,
+            "type": "base",
+            "points": [
+              {
+                "x": 344.81788079470186,
+                "y": 605.2083609293453
+              }
+            ],
+            "radius": 85.82706396204264,
+            "color": "rgba(0,92,163, 0.15)",
+            "lineWidth": 2,
+            "textBody": "A",
+            "fontSize": "20"
+          },
+          {
+            "id": 1743787632529,
+            "type": "base",
+            "points": [
+              {
+                "x": 575.3476821192053,
+                "y": 837.2882613187803
+              }
+            ],
+            "radius": 87.08084841782926,
+            "color": "rgba(0,92,163, 0.15)",
+            "lineWidth": 2,
+            "textBody": "B",
+            "fontSize": "20"
+          },
+          {
+            "id": 1743787638123,
+            "type": "base",
+            "points": [
+              {
+                "x": 694.5198675496689,
+                "y": 488.16806633639754
+              }
+            ],
+            "radius": 87.93666953970403,
+            "color": "rgba(0,92,163, 0.15)",
+            "lineWidth": 2,
+            "textBody": "C",
+            "fontSize": "20"
+          }
+        ],
+        "Domination": [
+          {
+            "id": 1743787732513,
+            "type": "base",
+            "points": [
+              {
+                "x": 265.69536423841066,
+                "y": 922.3175351683577
+              }
+            ],
+            "radius": 145.9913214916814,
+            "color": "rgba(0,92,163, 0.15)",
+            "lineWidth": 2,
+            "textBody": "A",
+            "fontSize": "20"
+          },
+          {
+            "id": 1743787755462,
+            "type": "base",
+            "points": [
+              {
+                "x": 588.0463576158941,
+                "y": 593.2042281505815
+              }
+            ],
+            "radius": 146.84089402857737,
+            "color": "rgba(0,92,163, 0.15)",
+            "lineWidth": 2,
+            "textBody": "B",
+            "fontSize": "20"
+          },
+          {
+            "id": 1743787761414,
+            "type": "base",
+            "points": [
+              {
+                "x": 885,
+                "y": 298.10263067263617
+              }
+            ],
+            "radius": 147.01408480739454,
+            "color": "rgba(0,92,163, 0.15)",
+            "lineWidth": 2,
+            "textBody": "C",
+            "fontSize": "20"
+          }
+        ],
+        "Tournament Domination 4 areas": [
+          {
+            "id": 1743787878684,
+            "type": "base",
+            "points": [
+              {
+                "x": 10.745033112582782,
+                "y": 1167.4019127347867
+              }
+            ],
+            "radius": 420.7289442741143,
+            "color": "rgba(0,92,163, 0.15)",
+            "lineWidth": 2,
+            "textBody": "A",
+            "fontSize": "20"
+          },
+          {
+            "id": 1743787895513,
+            "type": "base",
+            "points": [
+              {
+                "x": 589.023178807947,
+                "y": 591.2035393541208
+              }
+            ],
+            "radius": 137.96408785670505,
+            "color": "rgba(0,92,163, 0.15)",
+            "lineWidth": 2,
+            "textBody": "B",
+            "fontSize": "20"
+          },
+          {
+            "id": 1743787913251,
+            "type": "base",
+            "points": [
+              {
+                "x": 816.6225165562914,
+                "y": 128.04408297348132
+              }
+            ],
+            "radius": 110.09510801496222,
+            "color": "rgba(0,92,163, 0.15)",
+            "lineWidth": 2,
+            "textBody": "C",
+            "fontSize": "20"
+          },
+          {
+            "id": 1743787925841,
+            "type": "base",
+            "points": [
+              {
+                "x": 1051.0596026490066,
+                "y": 362.12467215937687
+              }
+            ],
+            "radius": 109.15369633407595,
+            "color": "rgba(0,92,163, 0.15)",
+            "lineWidth": 2,
+            "textBody": "D",
+            "fontSize": "20"
+          }
+        ]
+      }
+    },
+
+    "Sleeping Giant": {
+      "name": {
+        "id": 1743677540309,
+        "type": "text",
+        "textBody": "Sleeping Giant",
+        "x": 302.10143799967807,
+        "y": 71.02236955658154,
+        "width": 958.77685546875,
+        "fontSize": 75,
+        "textColor": "#fff000"
+      },
+      "size": {
+        "id": 1743677540309,
+        "type": "text",
+        "textBody": "Size 24 x 24 km",
+        "x": 150.10143799967807,
+        "y": 20.02236955658154,
+        "width": 958.77685546875,
+        "fontSize": 40,
+        "textColor": "#fff000"
+      
+    },
+      "baseArea": {
+        "Tournament Domination": [
+          {
+            "id": 1743788322445,
+            "type": "base",
+            "points": [
+              {
+                "x": 352.6324503311258,
+                "y": 589.2028505576601
+              }
+            ],
+            "radius": 90.89392673525171,
+            "color": "rgba(0,99,156, 0.15)",
+            "lineWidth": 2,
+            "textBody": "A",
+            "fontSize": "20"
+          },
+          {
+            "id": 1743788339054,
+            "type": "base",
+            "points": [
+              {
+                "x": 587.0695364238411,
+                "y": 588.2025061594298
+              }
+            ],
+            "radius": 89.91764389552922,
+            "color": "rgba(0,99,156, 0.15)",
+            "lineWidth": 2,
+            "textBody": "B",
+            "fontSize": "20"
+          },
+          {
+            "id": 1743788352715,
+            "type": "base",
+            "points": [
+              {
+                "x": 825.4139072847682,
+                "y": 589.2028505576601
+              }
+            ],
+            "radius": 89.87311707291919,
+            "color": "rgba(0,99,156, 0.15)",
+            "lineWidth": 2,
+            "textBody": "C",
+            "fontSize": "20"
+          }
+        ],
+        "Tournament Domination(alternative)": [
+          {
+            "id": 1743788425399,
+            "type": "base",
+            "points": [
+              {
+                "x": 187.5496688741722,
+                "y": 589.2028505576601
+              }
+            ],
+            "radius": 77.22720596550302,
+            "color": "rgba(0,99,156, 0.15)",
+            "lineWidth": 2,
+            "textBody": "A",
+            "fontSize": "20"
+          },
+          {
+            "id": 1743788439321,
+            "type": "base",
+            "points": [
+              {
+                "x": 574.3708609271523,
+                "y": 589.2028505576601
+              }
+            ],
+            "radius": 66.42384105960264,
+            "color": "rgba(0,99,156, 0.15)",
+            "lineWidth": 2,
+            "textBody": "B",
+            "fontSize": "20"
+          },
+          {
+            "id": 1743788450863,
+            "type": "base",
+            "points": [
+              {
+                "x": 957.2847682119206,
+                "y": 589.2028505576601
+              }
+            ],
+            "radius": 76.19861958226262,
+            "color": "rgba(0,99,156, 0.15)",
+            "lineWidth": 2,
+            "textBody": "C",
+            "fontSize": "20"
+          }
+        ],
+        "Cland Domination": [
+          {
+            "id": 1743788056202,
+            "type": "base",
+            "points": [
+              {
+                "x": 452.2682119205298,
+                "y": 591.2035393541208
+              }
+            ],
+            "radius": 90.89392673525171,
+            "color": "rgba(0,99,156, 0.15)",
+            "lineWidth": 2,
+            "textBody": "A",
+            "fontSize": "20"
+          },
+          {
+            "id": 1743788076848,
+            "type": "base",
+            "points": [
+              {
+                "x": 725.7781456953644,
+                "y": 352.12122817707353
+              }
+            ],
+            "radius": 64.22838473460205,
+            "color": "rgba(0,99,156, 0.15)",
+            "lineWidth": 2,
+            "textBody": "B",
+            "fontSize": "20"
+          },
+          {
+            "id": 1743788090413,
+            "type": "base",
+            "points": [
+              {
+                "x": 723.8245033112581,
+                "y": 824.2837841417861
+              }
+            ],
+            "radius": 64.71023537374117,
+            "color": "rgba(0,99,156, 0.15)",
+            "lineWidth": 2,
+            "textBody": "C",
+            "fontSize": "20"
+          }
+        ],
+        "Domination 4 areas": [
+          {
+            "id": 1743788206549,
+            "type": "base",
+            "points": [
+              {
+                "x": 352.6324503311258,
+                "y": 590.2031949558905
+              }
+            ],
+            "radius": 93.44813867032832,
+            "color": "rgba(0,99,156, 0.15)",
+            "lineWidth": 2,
+            "textBody": "A",
+            "fontSize": "20"
+          },
+          {
+            "id": 1743788219478,
+            "type": "base",
+            "points": [
+              {
+                "x": 819.5529801324503,
+                "y": 590.2031949558905
+              }
+            ],
+            "radius": 89.88981721612214,
+            "color": "rgba(0,99,156, 0.15)",
+            "lineWidth": 2,
+            "textBody": "D",
+            "fontSize": "20"
+          },
+          {
+            "id": 1743788239817,
+            "type": "base",
+            "points": [
+              {
+                "x": 590.976821192053,
+                "y": 339.11675100007943
+              }
+            ],
+            "radius": 91.77045354450763,
+            "color": "rgba(0,252,3, 0.15)",
+            "lineWidth": 2,
+            "textBody": "B",
+            "fontSize": "20"
+          },
+          {
+            "id": 1743788258149,
+            "type": "base",
+            "points": [
+              {
+                "x": 589.023178807947,
+                "y": 839.2889501152408
+              }
+            ],
+            "radius": 93.59011842349555,
+            "color": "rgba(255,31,0, 0.15)",
+            "lineWidth": 2,
+            "textBody": "C",
+            "fontSize": "20"
+          }
+        ],
+        "Tournament Domination 4 areas": [
+          {
+            "id": 1743788540812,
+            "type": "base",
+            "points": [
+              {
+                "x": 153.36092715231788,
+                "y": 589.2028505576601
+              }
+            ],
+            "radius": 87.96511407547004,
+            "color": "rgba(0,99,156, 0.15)",
+            "lineWidth": 2,
+            "textBody": "A",
+            "fontSize": "20"
+          },
+          {
+            "id": 1743788557918,
+            "type": "base",
+            "points": [
+              {
+                "x": 558.7417218543046,
+                "y": 589.2028505576601
+              }
+            ],
+            "radius": 85.00699065509058,
+            "color": "rgba(0,99,156, 0.15)",
+            "lineWidth": 2,
+            "textBody": "B",
+            "fontSize": "20"
+          },
+          {
+            "id": 1743788568350,
+            "type": "base",
+            "points": [
+              {
+                "x": 820.5298013245033,
+                "y": 475.16358915940333
+              }
+            ],
+            "radius": 79.70521303778536,
+            "color": "rgba(0,99,156, 0.15)",
+            "lineWidth": 2,
+            "textBody": "C",
+            "fontSize": "20"
+          },
+          {
+            "id": 1743788578973,
+            "type": "base",
+            "points": [
+              {
+                "x": 822.4834437086092,
+                "y": 703.2421119559169
+              }
+            ],
+            "radius": 83.3245561933873,
+            "color": "rgba(0,99,156, 0.15)",
+            "lineWidth": 2,
+            "textBody": "D",
+            "fontSize": "20"
+          }
+        ]
+      }
+    },
+    
+    "Island of Ice": {
+      "mapInfo":{
+        "name": {
+          "id": 1743677540309,
+          "type": "text",
+          "textBody": "Island of Ice",
+          "x": 302.10143799967807,
+          "y": 71.02236955658154,
+          "width": 958.77685546875,
+          "fontSize": 75,
+          "textColor": "#fff000"
+        },
+        "size": {
+          "id": 1743677540309,
+          "type": "text",
+          "textBody": "Size 24 x 24 km",
+          "x": 150.10143799967807,
+          "y": 20.02236955658154,
+          "width": 958.77685546875,
+          "fontSize": 40,
+          "textColor": "#fff000"
+        }
+      },
+      "baseArea": {
+        "Tournament Domination": [
+          {
+            "id": 1743789227858,
+            "type": "base",
+            "points": [
+              {
+                "x": 218.80794701986756,
+                "y": 584.2011285665085
+              }
+            ],
+            "radius": 127.96748615292876,
+            "color": "rgba(0,84,171, 0.15)",
+            "lineWidth": 2,
+            "textBody": "A",
+            "fontSize": "20"
+          },
+          {
+            "id": 1743789237112,
+            "type": "base",
+            "points": [
+              {
+                "x": 588.0463576158941,
+                "y": 584.2011285665085
+              }
+            ],
+            "radius": 128.06129019442875,
+            "color": "rgba(0,84,171, 0.15)",
+            "lineWidth": 2,
+            "textBody": "B",
+            "fontSize": "20"
+          },
+          {
+            "id": 1743789249246,
+            "type": "base",
+            "points": [
+              {
+                "x": 962.1688741721854,
+                "y": 584.2011285665085
+              }
+            ],
+            "radius": 124.20140190257062,
+            "color": "rgba(0,84,171, 0.15)",
+            "lineWidth": 2,
+            "textBody": "C",
+            "fontSize": "20"
+          }
+        ],
+        "Tournament Domination(alternative)": [
+          {
+            "id": 1743789131252,
+            "type": "base",
+            "points": [
+              {
+                "x": 242.25165562913907,
+                "y": 584.2011285665085
+              }
+            ],
+            "radius": 83.0298013245033,
+            "color": "rgba(0,84,171, 0.15)",
+            "lineWidth": 2,
+            "textBody": "A",
+            "fontSize": "20"
+          },
+          {
+            "id": 1743789146503,
+            "type": "base",
+            "points": [
+              {
+                "x": 588.046357615894,
+                "y": 584.2011285665086
+              }
+            ],
+            "radius": 64.50123466196828,
+            "color": "rgba(0,84,171, 0.15)",
+            "lineWidth": 2,
+            "textBody": "B",
+            "fontSize": "20"
+          },
+          {
+            "id": 1743789165731,
+            "type": "base",
+            "points": [
+              {
+                "x": 891.8377483443709,
+                "y": 585.2014729647389
+              }
+            ],
+            "radius": 83.0298013245033,
+            "color": "rgba(0,84,171, 0.15)",
+            "lineWidth": 2,
+            "textBody": "C",
+            "fontSize": "20"
+          }
+        ],
+        "Cland Domination": [
+          {
+            "id": 1743788948193,
+            "type": "base",
+            "points": [
+              {
+                "x": 339.9337748344371,
+                "y": 585.2014729647389
+              }
+            ],
+            "radius": 84.06020953385028,
+            "color": "rgba(0,92,163, 0.15)",
+            "lineWidth": 2,
+            "textBody": "A",
+            "fontSize": "20"
+          },
+          {
+            "id": 1743788959720,
+            "type": "base",
+            "points": [
+              {
+                "x": 821.5066225165563,
+                "y": 354.12191697353427
+              }
+            ],
+            "radius": 82.27220885304367,
+            "color": "rgba(0,92,163, 0.15)",
+            "lineWidth": 2,
+            "textBody": "B",
+            "fontSize": "20"
+          },
+          {
+            "id": 1743788970015,
+            "type": "base",
+            "points": [
+              {
+                "x": 824.4370860927153,
+                "y": 818.2817177524041
+              }
+            ],
+            "radius": 85.73977063760393,
+            "color": "rgba(0,92,163, 0.15)",
+            "lineWidth": 2,
+            "textBody": "C",
+            "fontSize": "20"
+          }
+        ],
+        "Standart": [
+          {
+            "id": 1743789039248,
+            "type": "base",
+            "points": [
+              {
+                "x": 585.115894039735,
+                "y": 221.07611200890133
+              }
+            ],
+            "radius": 156.35862789236106,
+            "color": "rgba(66,255,0, 0.15)",
+            "lineWidth": 2,
+            "textBody": "A",
+            "fontSize": "20"
+          },
+          {
+            "id": 1743789056628,
+            "type": "base",
+            "points": [
+              {
+                "x": 586.0927152317881,
+                "y": 951.327522717037
+              }
+            ],
+            "radius": 164.5232067454946,
+            "color": "rgba(255,15,0, 0.15)",
+            "lineWidth": 2,
+            "textBody": "B",
+            "fontSize": "20"
+          }
+        ]
+      }
+    },
+
+    "Haven": {
+      "mapInfo":{
+        "name": {
+          "id": 1743678083791,
+          "type": "text",
+          "textBody": "Haven",
+          "x": 975.0569565917261,
+          "y": 1095.3449952740373,
+          "width": 1086.61376953125,
+          "fontSize": 85,
+          "textColor": "rgba(43, 255, 0, 1)"
+        },
+        "size": {
+          "id": 1743678090656,
+          "type": "text",
+          "textBody": "Size 42x42 km",
+          "x": 150.27013467832805,
+          "y": 1109.3494061725182,
+          "width": 575.26611328125,
+          "fontSize": 45,
+          "textColor": "rgba(43, 255, 0, 1)"
+        }
+      },
+      "baseArea": {
+        "Cland Domination (domination)": [
+          {
+            "id": 1743601479826,
+            "type": "base",
+            "points": [
+              {
+                "x": 470.775656190154,
+                "y": 621.080054429564
+              }
+            ],
+            "radius": 100.367694278219,
+            "color": "rgba(0,122,133, 0.15)",
+            "lineWidth": 2,
+            "textBody": "A",
+            "fontSize": "20"
+          },
+          {
+            "id": 1743601506806,
+            "type": "base",
+            "points": [
+              {
+                "x": 606.459333108032,
+                "y": 209.026942634104
+              }
+            ],
+            "radius": 86.2083356575013,
+            "color": "rgba(0,122,133, 0.15)",
+            "lineWidth": 2,
+            "textBody": "B",
+            "fontSize": "20"
+          },
+          {
+            "id": 1743601519432,
+            "type": "base",
+            "points": [
+              {
+                "x": 879.793117044046,
+                "y": 489.063038029077
+              }
+            ],
+            "radius": 85.5455559070811,
+            "color": "rgba(0,122,133, 0.15)",
+            "lineWidth": 2,
+            "textBody": "C",
+            "fontSize": "20"
+          }
+        ],
+                
+        "Tournament Domination 4 areas": [
+            {
+                "id": 1743601989307,
+                "type": "base",
+                "points": [
+                  {
+                    "x": 343.9409147234426,
+                    "y": 358.04615054071473
+                  }
+                ],
+                "radius": 109.30171910293754,
+                "color": "rgba(36,255,0, 0.15)",
+                "lineWidth": 2,
+                "textBody": "A",
+                "fontSize": "20"
+              },
+              {
+                "id": 1743602060054,
+                "type": "base",
+                "points": [
+                  {
+                    "x": 732.3108595246141,
+                    "y": 747.0962973573014
+                  }
+                ],
+                "radius": 108.4428496310474,
+                "color": "rgba(255,8,0, 0.15)",
+                "lineWidth": 2,
+                "textBody": "D",
+                "fontSize": "20"
+              },
+              {
+                "id": 1743602111671,
+                "type": "base",
+                "points": [
+                  {
+                    "x": 456.0274304382111,
+                    "y": 631.0813435508128
+                  }
+                ],
+                "radius": 94.53697253210541,
+                "color": "rgba(0,115,140, 0.15)",
+                "lineWidth": 2,
+                "textBody": "B",
+                "fontSize": "20"
+              },
+              {
+                "id": 1743602148182,
+                "type": "base",
+                "points": [
+                  {
+                    "x": 627.1068491607524,
+                    "y": 459.05917066532976
+                  }
+                ],
+                "radius": 94.17668182954596,
+                "color": "rgba(0,115,140, 0.15)",
+                "lineWidth": 2,
+                "textBody": "C",
+                "fontSize": "20"
+              }
+        ]
+      }
+    },
+    "Zone Crash Alpha" : {
+      "mapInfo":{
+        "name": {
+          "id": 1743677540309,
+          "type": "text",
+          "textBody": "Zone Crash Alpha",
+          "x": 302.10143799967807,
+          "y": 71.02236955658154,
+          "width": 958.77685546875,
+          "fontSize": 75,
+          "textColor": "#fff000"
+        },
+        "size": {
+          "id": 1743677540309,
+          "type": "text",
+          "textBody": "Size 24 x 24 km",
+          "x": 150.10143799967807,
+          "y": 20.02236955658154,
+          "width": 958.77685546875,
+          "fontSize": 40,
+          "textColor": "#fff000"
+        }
+      },
+      "baseArea": {
+        "Tournament Domination": [
+            {
+            "id": 1743604337918,
+            "type": "base",
+            "points": [
+              {
+                "x": 544.5167849498704,
+                "y": 543.0699992838215
+              }
+            ],
+            "radius": 108.40797649147152,
+            "color": "rgba(0,138,117, 0.15)",
+            "lineWidth": 2,
+            "textBody": "B",
+            "fontSize": "20"
+          },
+          {
+            "id": 1743604343890,
+            "type": "base",
+            "points": [
+              {
+                "x": 277.0822913146333,
+                "y": 815.1050633817947
+              }
+            ],
+            "radius": 108.40797649147152,
+            "color": "rgba(0,138,117, 0.15)",
+            "lineWidth": 2,
+            "textBody": "A",
+            "fontSize": "20"
+          },
+          {
+            "id": 1743604353379,
+            "type": "base",
+            "points": [
+              {
+                "x": 813.9177086853667,
+                "y": 273.0351930100981
+              }
+            ],
+            "radius": 108.40797649147152,
+            "color": "rgba(0,138,117, 0.15)",
+            "lineWidth": 2,
+            "textBody": "C",
+            "fontSize": "20"
+          }
+        ],
+        "Tournament Domination(alternative)": [
+            {
+            "id": 1743604337918,
+            "type": "base",
+            "points": [
+              {
+                "x": 544.5167849498704,
+                "y": 543.0699992838215
+              }
+            ],
+            "radius": 108.40797649147152,
+            "color": "rgba(0,138,117, 0.15)",
+            "lineWidth": 2,
+            "textBody": "B",
+            "fontSize": "20"
+          },
+          {
+            "id": 1743604343890,
+            "type": "base",
+            "points": [
+              {
+                "x": 277.0822913146333,
+                "y": 815.1050633817947
+              }
+            ],
+            "radius": 108.40797649147152,
+            "color": "rgba(0,138,117, 0.15)",
+            "lineWidth": 2,
+            "textBody": "A",
+            "fontSize": "20"
+          },
+          {
+            "id": 1743604353379,
+            "type": "base",
+            "points": [
+              {
+                "x": 813.9177086853667,
+                "y": 273.0351930100981
+              }
+            ],
+            "radius": 108.40797649147152,
+            "color": "rgba(0,138,117, 0.15)",
+            "lineWidth": 2,
+            "textBody": "C",
+            "fontSize": "20"
+          }
+        ],
+        "Domination": [
+            {
+            "id": 1743604337918,
+            "type": "base",
+            "points": [
+              {
+                "x": 544.5167849498704,
+                "y": 543.0699992838215
+              }
+            ],
+            "radius": 108.40797649147152,
+            "color": "rgba(0,138,117, 0.15)",
+            "lineWidth": 2,
+            "textBody": "B",
+            "fontSize": "20"
+          },
+          {
+            "id": 1743604343890,
+            "type": "base",
+            "points": [
+              {
+                "x": 277.0822913146333,
+                "y": 815.1050633817947
+              }
+            ],
+            "radius": 108.40797649147152,
+            "color": "rgba(0,138,117, 0.15)",
+            "lineWidth": 2,
+            "textBody": "A",
+            "fontSize": "20"
+          },
+          {
+            "id": 1743604353379,
+            "type": "base",
+            "points": [
+              {
+                "x": 813.9177086853667,
+                "y": 273.0351930100981
+              }
+            ],
+            "radius": 108.40797649147152,
+            "color": "rgba(0,138,117, 0.15)",
+            "lineWidth": 2,
+            "textBody": "C",
+            "fontSize": "20"
+          }
+        ],
+        "Domination 4 areas": [
+            {
+                "id": 1743604089607,
+                "type": "base",
+                "points": [
+                  {
+                    "x": 230.87118395854455,
+                    "y": 633.0816013750627
+                  }
+                ],
+                "radius": 84.70423352000626,
+                "color": "rgba(0,245,10, 0.15)",
+                "lineWidth": 2,
+                "textBody": "A",
+                "fontSize": "20"
+              },
+              {
+                "id": 1743604121414,
+                "type": "base",
+                "points": [
+                  {
+                    "x": 448.1617100371747,
+                    "y": 860.1108644274153
+                  }
+                ],
+                "radius": 82.55365638984195,
+                "color": "rgba(255,8,0, 0.15)",
+                "lineWidth": 2,
+                "textBody": "B",
+                "fontSize": "20"
+              },
+              {
+                "id": 1743604133303,
+                "type": "base",
+                "points": [
+                  {
+                    "x": 544.5167849498704,
+                    "y": 543.0699992838215
+                  }
+                ],
+                "radius": 91.44446903469274,
+                "color": "rgba(0,115,140, 0.15)",
+                "lineWidth": 2,
+                "textBody": "C",
+                "fontSize": "20"
+              },
+              {
+                "id": 1743604141513,
+                "type": "base",
+                "points": [
+                  {
+                    "x": 733.2940745747436,
+                    "y": 350.0451192437155
+                  }
+                ],
+                "radius": 91.44446903469274,
+                "color": "rgba(0,115,140, 0.15)",
+                "lineWidth": 2,
+                "textBody": "D",
+                "fontSize": "20"
+              }
+        ],
+        "Cland Domination": [
+            {
+                "id": 1743603907927,
+                "type": "base",
+                "points": [
+                  {
+                    "x": 228.90475385828546,
+                    "y": 638.0822459356872
+                  }
+                ],
+                "radius": 81.70484658451849,
+                "color": "rgba(0,84,171, 0.15)",
+                "lineWidth": 2,
+                "textBody": "A",
+                "fontSize": "20"
+              },
+              {
+                "id": 1743603910877,
+                "type": "base",
+                "points": [
+                  {
+                    "x": 455.04421538808157,
+                    "y": 860.1108644274153
+                  }
+                ],
+                "radius": 81.70484658451849,
+                "color": "rgba(0,84,171, 0.15)",
+                "lineWidth": 2,
+                "textBody": "B",
+                "fontSize": "20"
+              },
+              {
+                "id": 1743603946043,
+                "type": "base",
+                "points": [
+                  {
+                    "x": 739.193364875521,
+                    "y": 348.04486141946575
+                  }
+                ],
+                "radius": 94.3492949265017,
+                "color": "rgba(0,84,171, 0.15)",
+                "lineWidth": 2,
+                "textBody": "C",
+                "fontSize": "20"
+              }
+              
+      ]
+    }
+  }
+}
+

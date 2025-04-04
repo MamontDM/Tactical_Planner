@@ -4,8 +4,8 @@ import CanvasContext from '../../../../contexts/CanvasContext';
 import { drawObjects } from '../../../../../factories/CanvasRender';
 import { drawTemporaryIcon} from '../../../../../utils/canvasHelpers';
 import { getSvgTemplate, convertSvgToImage } from '../../../../../factories/IconSVGCreator';
-import useToolSettings from '../../../../../store/zustand/Toolbar/toolsettingStore';
-import { useMapStore } from '../../../../../store/zustand/MapStore/mapStore';
+import { useToolSettings} from '@/store/zustand/Toolbar/toolsettingStore';
+import { useMapStore } from '@/store/zustand/MapStore/mapStore';
 
 const IconTool = ({isActive, type}) =>{ 
     const { canvasRef, drawingCanvasRef, getCanvasContext, getDrawingCanvasContext, clearDrawingCanvas } = useContext(CanvasContext);

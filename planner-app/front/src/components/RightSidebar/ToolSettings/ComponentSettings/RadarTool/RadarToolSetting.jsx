@@ -1,7 +1,7 @@
-import React, { useState } from  'react';
-import useActiveToolStore from '../../../../../store/zustand/Toolbar/activeToolStore';
-import useToolSettings from '../../../../../store/zustand/Toolbar/toolsettingStore';
-import { useMapStore } from "../../../../../store/zustand/MapStore/mapStore"
+import React from  'react';
+import { useActiveToolStore } from '@/store/zustand/Toolbar/activeToolStore';
+import { useToolSettings } from '@/store/zustand/Toolbar/toolsettingStore';
+import { useMapStore } from "@/store/zustand/MapStore/mapStore"
 import { kmToPixels } from '../../../../../utils/mapScale';
 
 const RadarToolSettings = () =>{

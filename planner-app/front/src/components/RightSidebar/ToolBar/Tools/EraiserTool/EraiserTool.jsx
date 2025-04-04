@@ -2,7 +2,7 @@ import  { useEffect, useContext } from 'react';
 import { getCoordinates } from '../../../../../utils/commonHelpers';
 import CanvasContext from '../../../../contexts/CanvasContext';
 import { findClickedObject } from '../../../../../utils/commonHelpers';
-import { useMapStore } from '../../../../../store/zustand/MapStore/mapStore'; 
+import { useMapStore } from '@/store/zustand/MapStore/mapStore'; 
 
 const EraiserTool = ({isActive}) => {
     console.log('called Eraser tool!')
@@ -13,6 +13,7 @@ const EraiserTool = ({isActive}) => {
 
     useEffect(() =>{
          if(isActive && canvasRef.current){
+            canvasRef.current.style.pointerEvents = 'auto';
             const handleMouseDown = (event) => {
             const { x, y } = getCoordinates(event, canvasRef.current);
             const clickedObject = findClickedObject(x, y, allObjects);

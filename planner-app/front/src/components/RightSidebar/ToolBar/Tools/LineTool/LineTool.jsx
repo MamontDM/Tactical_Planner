@@ -1,8 +1,8 @@
 import  { useEffect, useRef, useContext, useState} from 'react';
 import { getCoordinates } from "../../../../../utils/commonHelpers";
 import CanvasContext from "../../../../contexts/CanvasContext";
-import useToolSettings from "../../../../../store/zustand/Toolbar/toolsettingStore";
-import { useMapStore } from  "../../../../../store/zustand/MapStore/mapStore";
+import {useToolSettings} from "@/store/zustand/Toolbar/toolsettingStore";
+import { useMapStore } from  "@/store/zustand/MapStore/mapStore";
 
 
 const LineTool = ({isActive, type}) => {

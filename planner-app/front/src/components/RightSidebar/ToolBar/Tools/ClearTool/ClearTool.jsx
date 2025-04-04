@@ -1,6 +1,6 @@
 import { useContext, useEffect, useRef } from 'react';
 import CanvasContext from '../../../../contexts/CanvasContext';
-import { useMapStore } from '../../../../../store/zustand/MapStore/mapStore';
+import { useMapStore } from '@/store/zustand/MapStore/mapStore';
 
 const ClearTool = ({isActive, onDeactivate})=> {
     const clearObjects = useMapStore((state) => state.clearObjects);
