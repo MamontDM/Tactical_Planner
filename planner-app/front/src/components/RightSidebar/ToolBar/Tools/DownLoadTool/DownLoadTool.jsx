@@ -4,7 +4,7 @@ import CanvasContext from '../../../../contexts/CanvasContext';
 
 const DownLoadTool = ({onDeactivate, isActive}) => {
     console.log('ya rendernulsa', isActive );
-    const { canvasRef, backgroundCanvasRef, drawingCanvasRef, getDrawingCanvasContext } = useContext(CanvasContext);
+    const { canvasRef, backgroundCanvasRef, drawingCanvasRef, getDrawingCanvasContext, mapInfoCanvasRef, getMapInfoCanvasContext } = useContext(CanvasContext);
     const fileName = useRef('planner-app'); 
 
     const handleSetName = (value) => {
@@ -23,6 +23,7 @@ const DownLoadTool = ({onDeactivate, isActive}) => {
         const temporaryCanvasCtx = getDrawingCanvasContext();
         temporaryCanvasCtx.drawImage(backgroundCanvasRef.current, 0, 0);
         temporaryCanvasCtx.drawImage(canvasRef.current, 0, 0);
+        temporaryCanvasCtx.drawImage(mapInfoCanvasRef.current, 0, 0);
         downloadCanvas(fileName.current, temporaryCanvas);
         temporaryCanvasCtx.clearRect(0, 0, temporaryCanvas.width, temporaryCanvas.height);
     }

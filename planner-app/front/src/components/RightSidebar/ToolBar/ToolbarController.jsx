@@ -4,7 +4,7 @@ import ToolbarButton from '../../shared/ToolbarButton.jsx';
 import toolsConfig from './toolsConfig.jsx';
 import AuthContext from '../../contexts/AuthContext';
 import ToolSettings from '../ToolSettings/ToolSetting';
-import useActiveToolStore from '../../../store/zustand/Toolbar/activeToolStore';
+import {useActiveToolStore} from '@/store/zustand/Toolbar/activeToolStore';
 import { useMapStore } from '../../../store/zustand/MapStore/mapStore';
 import UndoRedoControls from './Tools/UndoRedoTools/UndoRedo';
 

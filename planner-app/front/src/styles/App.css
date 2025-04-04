@@ -17,10 +17,19 @@
 
 
 footer {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  margin-top: 15px;
   position: sticky;
   flex: 1;
   height: 100%;
   z-index: 3;
+}
+footer span{
+  color: aqua;
+  font-size: 1.2rem;
+  font-weight: 500;
 }
 
 /* MOdal save window */

@@ -2,8 +2,8 @@ import { useEffect, useContext, useRef, useState } from 'react';
 import { getCoordinates } from '../../../../../utils/commonHelpers';
 import { drawCircle, setAlphaChannel } from '../../../../../utils/canvasHelpers';
 import CanvasContext from '../../../../contexts/CanvasContext';
-import useToolSettings from '../../../../../store/zustand/Toolbar/toolsettingStore';
-import {useMapStore} from "../../../../../store/zustand/MapStore/mapStore";
+import {useToolSettings} from '@/store/zustand/Toolbar/toolsettingStore';
+import {useMapStore} from "@/store/zustand/MapStore/mapStore";
 
 const BaseAreaTool = ({isActive, type}) => {
     console.log('called Base Area tool!')

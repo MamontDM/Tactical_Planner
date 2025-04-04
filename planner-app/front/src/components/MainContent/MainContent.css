@@ -19,19 +19,20 @@
     align-items: center;
     box-shadow: 0px 0px 25px rgb(14, 8, 8);
 }
-  
-#backgroundCanvas,
-#canvas,
-#drawingCanvas {
-    position: absolute;
-    top: 0;
-    left: 0;
-    max-width: 100%;
-    max-height: 100%;
-}
-#backgroundCanvas {
-  z-index: 1;
-}
+    
+  #backgroundCanvas,
+  #canvas,
+  #drawingCanvas,
+  #infoCanvas {
+      position: absolute;
+      top: 0;
+      left: 0;
+      max-width: 100%;
+      max-height: 100%;
+  }
+  #backgroundCanvas {
+    z-index: 1;
+  }
 
   #canvas{
     z-index: 2;
@@ -39,8 +40,10 @@
   
   #drawingCanvas{
     z-index: 3;
-    pointer-events: none;
     background-color: transparent;
+  }
+  #infoCanvas{
+    z-index: 4;
   }
 
   .right-sidebar{

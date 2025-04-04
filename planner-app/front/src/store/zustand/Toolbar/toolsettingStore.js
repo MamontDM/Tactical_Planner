@@ -13,13 +13,13 @@ const defaultSettings = {
              lineWidth: 2, 
              range: 100, 
              textColor: '#000',
-             fontSize: '25',
+             fontSize: '20',
              sliderValue: 50  
         },
 };
 
 
-const useToolSettings = create((set, get) =>({
+export const useToolSettings = create((set, get) =>({
     activeToolKey: null,
     settings: {},
 
@@ -39,5 +39,3 @@ const useToolSettings = create((set, get) =>({
             settings: {...state.settings, [key]: { ...defaultSettings[key]}},
         })),
 }));
-
-export default useToolSettings;

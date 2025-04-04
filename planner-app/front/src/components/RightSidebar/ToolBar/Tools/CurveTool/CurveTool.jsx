@@ -3,8 +3,8 @@ import { getCoordinates } from '../../../../../utils/commonHelpers';
 import CanvasContext from '../../../../contexts/CanvasContext';
 import { drawObjects } from '../../../../../factories/CanvasRender';
 import { curveEndDrawArrow , drawSmoothCurve} from '../../../../../utils/canvasHelpers';
-import useToolSettings from '../../../../../store/zustand/Toolbar/toolsettingStore';
-import { useMapStore } from '../../../../../store/zustand/MapStore/mapStore';
+import {useToolSettings} from '@/store/zustand/Toolbar/toolsettingStore';
+import { useMapStore } from '@/store/zustand/MapStore/mapStore';
 
 
 

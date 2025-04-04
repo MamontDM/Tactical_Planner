@@ -93,25 +93,13 @@ export const drawObject = (canvas, object) => {
             if(object.type === 'base') { 
                 context.fillStyle = object.color;
                 context.fill();
-                const textWidth = drawingText(context, object.textBody, x, y, object.fontSize, textColor);
-                const textHight = object.fontSize;
-
-                const diamondFigurePoints = [
-                    {x: x, y: y - textHight},
-                    {x: x + textWidth, y: y},
-                    {x: x, y: y + textHight / 0.9},
-                    {x: x - textWidth, y: y}
-                ];
-
+                drawingText(context, object.textBody, x, y, object.fontSize, textColor);
                 context.save();
-                context.strokeStyle = textColor;
-                context.lineWidth = 2;
                 context.beginPath();
-                context.moveTo(diamondFigurePoints[0].x, diamondFigurePoints[0].y);
-                diamondFigurePoints.forEach((point, index) => {
-                    if(index !== 0) context.lineTo(point.x, point.y);
-                });
-                context.closePath();
+                context.arc(x, y, 15, 0, Math.PI * 2);
+                context.arc(x, y, 18, 0, Math.PI * 2);
+                context.strokeStyle = textColor;
+                context.lineWidth = 0.5;
                 context.stroke();
                 context.restore();
             }

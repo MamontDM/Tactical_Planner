@@ -1,40 +1,45 @@
 import { create } from "zustand";
+import { subscribeWithSelector } from "zustand/middleware"
 
 const initState = { 
     selectedMapId: null,
     maps: {},
 };
 
-export const useMapStore = create((set, get) => ({
+export const useMapStore = create(
+    subscribeWithSelector((set, get) => ({
     ...initState,
 
-    addMap: (newMap) => 
-        set((state) => ({
-            ...state,
-            selectedMapId: newMap.id,
-            maps: {
-                ...state.maps,
-                [newMap.id]: {
-                    id: newMap.id,
-                    name: newMap.name,
-                    value: newMap.value,
-                    size: newMap.size,
-                    objects: newMap.objects || [],
-                    url: newMap.url,
-                    future: [],
-                },
+    addMap: (newMap) => set((state) => {
+        return {
+            
+          selectedMapId: newMap.id,
+          maps: {
+            ...state.maps,
+            [newMap.id]: {
+              id: newMap.id,
+              name: newMap.name,
+              value: newMap.value,
+              size: newMap.size,
+              objects: newMap.objects || [],
+              url: newMap.url,
+              future: [],
             },
-        })),
+          },
+        };
+      }),
        
-    selectMap: (mapId) => 
-        set((state) => ({
-            ...state,
-            selectedMapId: mapId,
-        })),
+    selectMap: (mapId) => {
+        set({ selectedMapId: mapId });
+    },
         
     getMapSize: () => {
         const {selectedMapId, maps} = get();
         return selectedMapId && maps[selectedMapId] ? maps[selectedMapId].size : null;
+    },
+    getActiveMap: () => {
+        const {selectedMapId, maps} = get();
+        return maps[selectedMapId].name;
     },
 
     removeMap: (mapId) => 
@@ -57,16 +62,20 @@ export const useMapStore = create((set, get) => ({
         }),
 
     addObject: (obj) => 
-        set((state) => ({
-            ...state,
-            maps: {
-                ...state.maps,
-                [state.selectedMapId]: {
-                    ...state.maps[state.selectedMapId],
-                    objects: [...state.maps[state.selectedMapId].objects, obj]
+        set((state) => {
+            const { selectedMapId, maps } = state;
+                const map = maps[selectedMapId];
+                if (!map) return state;
+            return {
+                maps: {
+                ...maps,
+                [selectedMapId]: {
+                    ...map,
+                    objects: [...map.objects, obj]
                 },
             },
-        })),
+        };
+    }),
 
     getCurrentObjects: () => {
         const {selectedMapId, maps} = get();
@@ -112,39 +121,48 @@ export const useMapStore = create((set, get) => ({
 
     undo: () => 
         set((state) => {
-            const map = state.maps[state.selectedMapId];
-            if(!map || map.objects.length === 0) return state;
-                const lastObject = map.objects[map.objects.length - 1];
+            const { selectedMapId, maps } = state;
+            const map = maps[selectedMapId];
+            if (!map || map.objects.length === 0) return state;
+            const last = map.objects.at(-1);
+            if (!last) return state;
+
+
                 return {
-                    ...state,
                     maps: {
                     ...state.maps,
-                    [state.selectedMapId]: {
+                    [selectedMapId]: {
                         ...map,
-                        future: [...map.future, lastObject],
+                        future: [...map.future, last],
                         objects: map.objects.slice(0, -1),
-                    }
-                }
-            } 
+                    },
+                },
+            };
         }),
         redo: () => 
             set((state) => {
-                const map = state.maps[state.selectedMapId];
+                const { selectedMapId, maps } = state;
+                const map = maps[selectedMapId];
                 if (!map || map.future.length === 0) return state;
-        
-                const lastFutureObject = map.future[map.future.length - 1];
+
+                const last = map.future.at(-1);
+                if (!last) return state;
         
                 return {
-                    ...state,
                     maps: {
-                        ...state.maps,
-                        [state.selectedMapId]: {
+                        ...maps,
+                        [selectedMapId]: {
                             ...map,
-                            objects: [...map.objects, lastFutureObject],
+                            objects: [...map.objects, last],
                             future: map.future.slice(0, -1),
                         }
                     }
                 };
             }),
-        
-}));
+
+            
+    })
+));
+
+  
+  

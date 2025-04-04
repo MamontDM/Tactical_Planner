@@ -16,7 +16,7 @@ import SaveTool from './Tools/SaveTool/SaveTool.jsx';
  
  
  const toolsConfig = [
-        { id: 'select', label: 'Select', icon: select, component: MoveTool },
+        { id: 'select', label: 'Move', icon: select, component: MoveTool },
         { id: 'line', label: 'Pen', icon: line, component: LineTool },
         { id: 'tech', label: 'Ruler', icon: technical, component: StraightLine},
         { id: 'curve', label: 'Curve', icon: curves, component: CurveTool },

@@ -1,0 +1,16 @@
+
+fieldset {
+  display: flex;
+  flex-direction: column;
+}
+
+.preset-item {
+  display: flex;
+  font-size: 1.1rem;
+  font-weight: 500;
+  gap: 15px;
+  justify-content: space-between;
+  margin: 5px;
+  width: 60%;
+}
+

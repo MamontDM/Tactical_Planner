@@ -28,12 +28,10 @@ function DropdownSearch({dataSource, onSelect, placeholder = `Search...`}) {
     }, [dataSource]);
 
     useEffect(() => {
-        console.log(data);
         const results = data.filter(item => 
         item.name.toLowerCase().startsWith(searchReq.toLowerCase())
         
     );
-    console.log(results);
         setFilteredData(results);
     }, [searchReq, data]);
    

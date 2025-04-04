@@ -1,9 +1,8 @@
 import { useEffect, useContext, useRef, useState } from "react";
 import CanvasContext from "../../../../contexts/CanvasContext";
 import { getCoordinates } from "../../../../../utils/commonHelpers";
-import { drawObjects } from "../../../../../factories/CanvasRender";
-import useToolSettings from '../../../../../store/zustand/Toolbar/toolsettingStore';
-import { useMapStore } from "../../../../../store/zustand/MapStore/mapStore";
+import {useToolSettings} from '@/store/zustand/Toolbar/toolsettingStore';
+import { useMapStore } from "@/store/zustand/MapStore/mapStore";
 import {pixelsToKilometers} from "../../../../../utils/mapScale";
 
 const StraightTool = ({ isActive, type}) => {
