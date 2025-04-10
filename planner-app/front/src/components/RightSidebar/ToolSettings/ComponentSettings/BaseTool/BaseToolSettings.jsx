@@ -27,7 +27,7 @@ const BaseToolSettings = () =>{
                className="radar-settings-input"
                type="text"
                name="textBody"
-               value={textBody}
+               value={textBody ?? ""}
                onChange={handleInputChange}
             />
         </div>
