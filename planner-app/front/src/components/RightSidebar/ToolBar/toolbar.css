@@ -93,7 +93,6 @@
   [class^="toolbar-button-"]:hover{
     scale: 1.1;
     background-color: rgb(193, 193, 231);
-    border: none;
   }
   
   .toolbar-icon{

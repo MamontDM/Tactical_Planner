@@ -3,8 +3,7 @@ import './mapSelector.css';
 import DropdownWithSearch from '../../../shared/DropDownSearch';
 import CanvasContext from '../../../contexts/CanvasContext';
 import avaliableMaps from "./mapConfig.json";
-import { useMapStore } from '../../../../store/zustand/MapStore/mapStore';
-import {prittyJsonParser} from "../../../../utils/mapJsonParser";
+import { useMapStore } from '@/store/zustand/MapStore/mapStore';
 
 
 const  MapSelector = () => {
@@ -18,7 +17,6 @@ const  MapSelector = () => {
     const selectMap = useMapStore((state) => state.selectMap);
     const selectedMapId = useMapStore((state) => state.selectedMapId);
     
-    // prittyJsonParser(maps);
 
     
 

@@ -1,16 +1,23 @@
 
 fieldset {
   display: flex;
+  width: 100%;
   flex-direction: column;
+  margin-top: 25px;
 }
 
 .preset-item {
   display: flex;
+  width: 100%;
   font-size: 1.1rem;
-  font-weight: 500;
-  gap: 15px;
-  justify-content: space-between;
+  font-weight: 700;
+  gap: 25px;
+  justify-content: flex-start;
   margin: 5px;
-  width: 60%;
+  color: rgba(255, 255, 255, 0.815);
 }
+.active{
+  background-color: aqua;
+}
+
 
