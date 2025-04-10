@@ -2,6 +2,7 @@ import  {useContext, useEffect} from 'react';
 import CanvasContext from '../components/contexts/CanvasContext';
 import { curveEndDrawArrow , drawSmoothCurve, drawArea, drawTemporaryIcon, drawingText, getContrastTextColor  } from '../utils/canvasHelpers';
 import { useMapStore } from "../store/zustand/MapStore/mapStore"
+import { object } from 'prop-types';
 
 export const drawObject = (canvas, object) => {
     if(!canvas || !object){
@@ -144,6 +145,72 @@ export const drawObject = (canvas, object) => {
             break;
 
     }
+};
+
+export const drawStaticObjects = (canvas, objects) => {
+    if(!objects){
+       
+        return;
+    }
+    if (!canvas || !objects) return;
+
+    const context = canvas.getContext('2d');
+    const { width, height } = canvas;
+
+    context.clearRect(0, 0, width, height);
+
+    objects.forEach(obj => {
+        let x;
+        let y;
+        const scale = width / 1200;
+
+        switch (obj.type) {
+            case 'base':
+                x = obj.points[0].x / 1200 * width;
+                y = obj.points[0].y / 1200 * height;
+
+                const textColor = "#fff";
+                const lineWidth = obj.lineWidth;    
+                const strokeStyle = textColor;    
+                console.log(scale);
+                const radius = obj.radius * scale;
+                console.log(radius);
+                context.lineWidth = lineWidth;
+                context.strokeStyle = strokeStyle;
+                context.beginPath();
+                context.arc(x, y, radius, 0, 2 * Math.PI);
+                context.stroke();
+
+                context.fillStyle = obj.color;
+                context.fill();
+                drawingText(context, obj.textBody, x, y, obj.fontSize, textColor);
+                context.save();
+                context.beginPath();
+                context.arc(x, y, 15, 0, Math.PI * 2);
+                context.arc(x, y, 18, 0, Math.PI * 2);
+                context.strokeStyle = textColor;
+                context.lineWidth = 0.5;
+                context.stroke();
+                context.restore();
+            break;
+            case 'text':
+                x = obj.x / 1200 * width;
+                y = obj.y / 1200 * height;
+                const fontSize = obj.fontSize * scale;
+            drawingText(
+                context,
+                obj.textBody,
+                x,
+                y,
+                fontSize,
+                obj.textColor,
+            );
+            break;
+        default:
+            console.log('default case');
+            break;
+        }
+    });
 };
 
 export const drawObjects = (canvas, objects) =>{

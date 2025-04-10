@@ -1,17 +1,26 @@
-import React, { useContext, useRef } from 'react'
+import React, { useContext, useEffect, useRef } from 'react'
 import ReactDOM from 'react-dom'
 import CanvasContext from '../../../../contexts/CanvasContext';
+import { useMapLegendStore } from '../../../../../store/zustand/MapLegend/mapLegendStore';
 
 const DownLoadTool = ({onDeactivate, isActive}) => {
-    console.log('ya rendernulsa', isActive );
     const { canvasRef, backgroundCanvasRef, drawingCanvasRef, getDrawingCanvasContext, mapInfoCanvasRef, getMapInfoCanvasContext } = useContext(CanvasContext);
-    const fileName = useRef('planner-app'); 
+    
+    const mapName = useMapLegendStore((state) => state.activeMap || 'planner-app'); 
+    const fileName = useRef(mapName);
+
+    useEffect(() => {
+        fileName.current = mapName;
+    }, [mapName, isActive]);
+
+
 
     const handleSetName = (value) => {
         if(value){
-            fileName.current = value;
+            fileName.current = value || mapName;
         }
     };
+   
 
     const handleDownload = () => {
         mergeCanvases();
@@ -47,8 +56,9 @@ const DownLoadTool = ({onDeactivate, isActive}) => {
                 </label>
                 <input
                     type="text"
+                    defaultValue={mapName}
                     onChange={(e) => handleSetName(e.target.value)}
-                    placeholder="Type a file name..."   
+                    placeholder={mapName}   
                 />
                 <button 
                     className="saveModal-button-save"

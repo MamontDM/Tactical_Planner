@@ -36,7 +36,6 @@ export const useMapLegendStore = create((set, get) => ({
     setActiveCategory: (category) => {
         const { activeMap, mapData} = get();
         const current = mapData[activeMap]?.activeCategories || [];
-
         const isActive = current.includes(category);
         const update = isActive
         ? current.filter((c) => c !== category)

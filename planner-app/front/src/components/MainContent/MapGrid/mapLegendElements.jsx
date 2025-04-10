@@ -1,30 +1,48 @@
 import { useEffect, useRef, useContext } from "react";
 import { useMapLegendStore } from "@/store/zustand/MapLegend/mapLegendStore";
 import CanvasContext from "../../contexts/CanvasContext";
-import { drawObjects } from "../../../factories/CanvasRender";
+import { useMapStore } from "../../../store/zustand/MapStore/mapStore";
+import { drawStaticObjects } from "../../../factories/CanvasRender";
 
 
 const MapGrid = () => {
     const { mapInfoCanvasRef, clearMapInfoCanvasContext } = useContext(CanvasContext);
     const currentProps = useMapLegendStore((s) => s.currentProps);
-    const baseAreaCategory = currentProps?.baseAreaCategory;
+    const isActive = useMapStore((state) => state.selectedMapId);
     
-    console.log(currentProps);
    
 
     useEffect(()=>{
+        if(!isActive){
+            clearMapInfoCanvasContext();
+            return;
+        }
+
         if(!currentProps) {
+            console.log('called');            
             clearMapInfoCanvasContext();
             return;
         };
 
-        if(baseAreaCategory === null){
-            clearMapInfoCanvasContext()
-        }else {
-            const objects = currentProps.baseArea[baseAreaCategory];
-            drawObjects(mapInfoCanvasRef.current, objects);
+        const { baseAreaCategory, activeCategories } = currentProps;
+
+        const objectsToDraw = [];
+
+        if(baseAreaCategory){
+            const baseObject = currentProps.baseArea[baseAreaCategory];
+            objectsToDraw.push(...baseObject);
         }
-    },[baseAreaCategory, currentProps])
+        if (activeCategories.length > 0) {
+            const mapInfoObject = activeCategories
+            .map(key => currentProps.mapInfo[key])
+            .filter(Boolean);
+            objectsToDraw.push(...mapInfoObject);
+        }
+        console.log(objectsToDraw);
+
+       drawStaticObjects(mapInfoCanvasRef.current, objectsToDraw);
+
+    },[currentProps, isActive])
 
     return null;
 };

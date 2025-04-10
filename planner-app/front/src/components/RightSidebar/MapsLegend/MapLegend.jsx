@@ -5,13 +5,12 @@ import './mapLegendStyle.css';
 
 
 const MapLegend = () => {
-    const { setBaseAreaCategory } = useMapLegendStore();
+    const { setBaseAreaCategory, setActiveCategory  } = useMapLegendStore();
     const currentProps = useMapLegendStore((s) => s.currentProps);
 
 
     if (!currentProps || !currentProps.baseArea) return (
         <>
-        <h1>Support information</h1>
         <fieldset>
                 <legend>Pick some additional info:</legend>
                 <h3>Temporary unaveliable for this map</h3>
@@ -19,45 +18,57 @@ const MapLegend = () => {
         </>
     );
 
+  const { baseAreaCategory, activeCategories: mapInfoCategory } = currentProps;
+  const baseAreaKeys = Object.keys(currentProps.baseArea);
+  const mapInfoKeys = Object.keys(currentProps.mapInfo);
 
-    const baseAreaCategory = currentProps?.baseAreaCategory;
-    const baseAreaPreset = Object.keys(currentProps.baseArea);
 
-    const handleRenderAreas = (category) => {
-        if(baseAreaCategory === category){
-            setBaseAreaCategory(null)
-        }else {
-            setBaseAreaCategory(category);
-        }
-    };
+  const handleCheckboxChange = (category, type) => {
+    if (type === "area") {
+      setBaseAreaCategory(baseAreaCategory === category ? null : category);
+    } else if (type === "info") {
+      setActiveCategory(mapInfoCategory[category] ? null : category);
+    }
+  };
+
+
+
+  const renderCheckbox = (item, type) => {
+    const isChecked =
+      type === "area"
+        ? baseAreaCategory === item
+        : mapInfoCategory.includes(item);
+        
+
+    return (
+      <div className="preset-item" key={item}>
+        <input
+          type="checkbox"
+          value={item}
+          checked={isChecked}
+          onChange={() => handleCheckboxChange(item, type)}
+        />
+        <label>{item}</label>
+      </div>
+    );
+  };
+
+
 
     
-    return (
-        <> 
-            <h1>Support information</h1>
-                <fieldset>
-                    <h3> Base setup</h3>
-                    <legend>Pick some additional info:</legend>
-                  {baseAreaPreset.map((item, index) => (
-                    <div 
-                    className="preset-item" 
-                    key={index}>
-                    <label>
-                        {item}
-                    </label>
-                        <input
-                            type="checkbox"
-                            value={item}
-                            checked={baseAreaCategory === item}
-                            onChange={(e) => handleRenderAreas(e.target.value)}
-    >
-                        </input>
-                    </div>
-                  ))}
-                <h3> Support info</h3>
-                </fieldset>
-        </>
-    )
+  return (
+    <>
+      <fieldset>
+        <legend>Pick some additional info:</legend>
+
+        <h3>Base setup</h3>
+        {baseAreaKeys.map((item) => renderCheckbox(item, "area"))}
+
+        <h3>Support info</h3>
+        {mapInfoKeys.map((item) => renderCheckbox(item, "info"))}
+      </fieldset>
+    </>
+  );
 };
 
 
