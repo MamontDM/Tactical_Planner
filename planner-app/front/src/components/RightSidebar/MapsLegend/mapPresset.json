@@ -391,7 +391,7 @@
                 "fontSize": "20"
               }
             ],
-            "Cland Domination": [
+            "Clans Domination": [
               {
                 "id": 1743847806305,
                 "type": "base",
@@ -621,7 +621,7 @@
               }
           },
           "baseArea": {
-            "Cland Domination": [
+            "Clans Domination": [
               {
                 "id": 1743848403402,
                 "type": "base",
@@ -913,7 +913,7 @@
                 "fontSize": "20"
               }
             ],
-            "Cland Domination": [
+            "Clans Domination": [
               {
                 "id": 1743848810916,
                 "type": "base",
@@ -1096,7 +1096,7 @@
               }
           },
           "baseArea": {
-            "Cland Domination": [
+            "Clans Domination": [
               {
                 "id": 1743849477585,
                 "type": "base",
@@ -1326,7 +1326,7 @@
               }
           },
           "baseArea": {
-            "Cland Domination": [
+            "Clans Domination": [
               {
                 "id": 1743849934806,
                 "type": "base",
@@ -1494,7 +1494,7 @@
                 "fontSize": "20"
               }
             ],
-            "Cland Domination": [
+            "Clans Domination": [
               {
                 "id": 1743850314748,
                 "type": "base",
@@ -1740,7 +1740,7 @@
                 "fontSize": "20"
               }
             ],
-            "Cland Domination": [
+            "Clans Domination": [
               {
                 "id": 1743876385635,
                 "type": "base",
@@ -1986,7 +1986,7 @@
                 "fontSize": "20"
               }
             ],
-            "Cland Domination": [
+            "Clans Domination": [
               {
                 "id": 1744129630422,
                 "type": "base",
@@ -2230,7 +2230,7 @@
                 "fontSize": "20"
               }
             ],
-            "Cland Domination": [
+            "Clans Domination": [
               {
                 "id": 1743877639544,
                 "type": "base",
@@ -2398,7 +2398,7 @@
           },
           "baseArea": {
             "Tournament Domination": [],
-            "Cland Domination": [],
+            "Clans Domination": [],
             "Domination": [],
             "Tournament Domination 4 areas": []
           }
@@ -2489,7 +2489,7 @@
                 "fontSize": "20"
               }
             ],
-            "Cland Domination": [
+            "Clans Domination": [
               {
                 "id": 1743878294416,
                 "type": "base",
@@ -2562,7 +2562,7 @@
               }
           },
           "baseArea": {
-            "Cland Domination": [
+            "Clans Domination": [
               {
                 "id": 1744040187873,
                 "type": "base",
@@ -2683,7 +2683,7 @@
                 "fontSize": "20"
               }
             ],
-            "Cland Domination": [
+            "Clans Domination": [
               {
                 "id": 1744040646822,
                 "type": "base",
@@ -2912,7 +2912,7 @@
                 "fontSize": "20"
               }
             ],
-            "Cland Domination": [
+            "Clans Domination": [
               {
                 "id": 1744040784418,
                 "type": "base",
@@ -3202,7 +3202,7 @@
                 "fontSize": "20"
               }
             ],
-            "Cland Domination": [
+            "Clans Domination": [
               {
                 "id": 1744044124766,
                 "type": "base",
@@ -3324,7 +3324,7 @@
           },
           "baseArea": {
             "Tournament Domination": [],
-            "Cland Domination": [],
+            "Clans Domination": [],
             "Domination": [],
             "Tournament Domination 4 areas": []
           }
@@ -3554,7 +3554,7 @@
                 "fontSize": "20"
               }
             ],
-            "Cland Domination": [
+            "Clans Domination": [
               {
                 "id": 1744044606948,
                 "type": "base",
@@ -3967,7 +3967,7 @@
             "fontSize": "20"
           }
         ],
-        "Cland Domination": [
+        "Clans Domination": [
           {
             "id": 1743786985427,
             "type": "base",
@@ -4380,7 +4380,7 @@
             "fontSize": "20"
           }
         ],
-        "Cland Domination": [
+        "Clans Domination": [
           {
             "id": 1743787621177,
             "type": "base",
@@ -4658,7 +4658,7 @@
             "fontSize": "20"
           }
         ],
-        "Cland Domination": [
+        "Clans Domination": [
           {
             "id": 1743788056202,
             "type": "base",
@@ -4950,7 +4950,7 @@
             "fontSize": "20"
           }
         ],
-        "Cland Domination": [
+        "Clans Domination": [
           {
             "id": 1743788948193,
             "type": "base",
@@ -5193,254 +5193,161 @@
       },
       "baseArea": {
         "Tournament Domination": [
-            {
-            "id": 1743604337918,
-            "type": "base",
-            "points": [
-              {
-                "x": 544.5167849498704,
-                "y": 543.0699992838215
-              }
-            ],
-            "radius": 108.40797649147152,
-            "color": "rgba(0,138,117, 0.35)",
-            "lineWidth": 2,
-            "textBody": "B",
-            "fontSize": "20"
-          },
           {
-            "id": 1743604343890,
+            "id": 1744544472441,
             "type": "base",
             "points": [
               {
-                "x": 277.0822913146333,
-                "y": 815.1050633817947
+                "x": 308.8587390263367,
+                "y": 895
               }
             ],
-            "radius": 108.40797649147152,
-            "color": "rgba(0,138,117, 0.35)",
+            "radius": 116.50154899738853,
+            "color": "rgba(0,92,163, 0.35)",
             "lineWidth": 2,
             "textBody": "A",
             "fontSize": "20"
           },
           {
-            "id": 1743604353379,
+            "id": 1744544479401,
             "type": "base",
             "points": [
               {
-                "x": 813.9177086853667,
-                "y": 273.0351930100981
+                "x": 888.2681564245811,
+                "y": 303
               }
             ],
-            "radius": 108.40797649147152,
-            "color": "rgba(0,138,117, 0.35)",
+            "radius": 117.9055767455082,
+            "color": "rgba(0,92,163, 0.35)",
             "lineWidth": 2,
             "textBody": "C",
             "fontSize": "20"
-          }
-        ],
-        "Tournament Domination(alternative)": [
-            {
-            "id": 1743604337918,
+          },
+          {
+            "id": 1744544486895,
             "type": "base",
             "points": [
               {
-                "x": 544.5167849498704,
-                "y": 543.0699992838215
+                "x": 600,
+                "y": 599
               }
             ],
-            "radius": 108.40797649147152,
-            "color": "rgba(0,138,117, 0.35)",
+            "radius": 119.90896739667748,
+            "color": "rgba(0,92,163, 0.35)",
             "lineWidth": 2,
             "textBody": "B",
             "fontSize": "20"
-          },
-          {
-            "id": 1743604343890,
-            "type": "base",
-            "points": [
-              {
-                "x": 277.0822913146333,
-                "y": 815.1050633817947
-              }
-            ],
-            "radius": 108.40797649147152,
-            "color": "rgba(0,138,117, 0.35)",
-            "lineWidth": 2,
-            "textBody": "A",
-            "fontSize": "20"
-          },
-          {
-            "id": 1743604353379,
-            "type": "base",
-            "points": [
-              {
-                "x": 813.9177086853667,
-                "y": 273.0351930100981
-              }
-            ],
-            "radius": 108.40797649147152,
-            "color": "rgba(0,138,117, 0.35)",
-            "lineWidth": 2,
-            "textBody": "C",
-            "fontSize": "20"
           }
         ],
-        "Domination": [
-            {
-            "id": 1743604337918,
-            "type": "base",
-            "points": [
-              {
-                "x": 544.5167849498704,
-                "y": 543.0699992838215
-              }
-            ],
-            "radius": 108.40797649147152,
-            "color": "rgba(0,138,117, 0.35)",
-            "lineWidth": 2,
-            "textBody": "B",
-            "fontSize": "20"
-          },
-          {
-            "id": 1743604343890,
-            "type": "base",
-            "points": [
-              {
-                "x": 277.0822913146333,
-                "y": 815.1050633817947
-              }
-            ],
-            "radius": 108.40797649147152,
-            "color": "rgba(0,138,117, 0.35)",
-            "lineWidth": 2,
-            "textBody": "A",
-            "fontSize": "20"
-          },
-          {
-            "id": 1743604353379,
-            "type": "base",
-            "points": [
-              {
-                "x": 813.9177086853667,
-                "y": 273.0351930100981
-              }
-            ],
-            "radius": 108.40797649147152,
-            "color": "rgba(0,138,117, 0.35)",
-            "lineWidth": 2,
-            "textBody": "C",
-            "fontSize": "20"
-          }
-        ],
+           
         "Domination 4 areas": [
-            {
-                "id": 1743604089607,
-                "type": "base",
-                "points": [
-                  {
-                    "x": 230.87118395854455,
-                    "y": 633.0816013750627
-                  }
-                ],
-                "radius": 84.70423352000626,
-                "color": "rgba(0,245,10, 0.35)",
-                "lineWidth": 2,
-                "textBody": "A",
-                "fontSize": "20"
-              },
+          {
+            "id": 1744544716169,
+            "type": "base",
+            "points": [
               {
-                "id": 1743604121414,
-                "type": "base",
-                "points": [
-                  {
-                    "x": 448.1617100371747,
-                    "y": 860.1108644274153
-                  }
-                ],
-                "radius": 82.55365638984195,
-                "color": "rgba(255,8,0, 0.35)",
-                "lineWidth": 2,
-                "textBody": "B",
-                "fontSize": "20"
-              },
-              {
-                "id": 1743604133303,
-                "type": "base",
-                "points": [
-                  {
-                    "x": 544.5167849498704,
-                    "y": 543.0699992838215
-                  }
-                ],
-                "radius": 91.44446903469274,
-                "color": "rgba(0,115,140, 0.35)",
-                "lineWidth": 2,
-                "textBody": "C",
-                "fontSize": "20"
-              },
-              {
-                "id": 1743604141513,
-                "type": "base",
-                "points": [
-                  {
-                    "x": 733.2940745747436,
-                    "y": 350.0451192437155
-                  }
-                ],
-                "radius": 91.44446903469274,
-                "color": "rgba(0,115,140, 0.35)",
-                "lineWidth": 2,
-                "textBody": "D",
-                "fontSize": "20"
+                "x": 813.5674381484437,
+                "y": 382
               }
+            ],
+            "radius": 105.34766136912616,
+            "color": "rgba(0,69,186, 0.35)",
+            "lineWidth": 2,
+            "textBody": "D",
+            "fontSize": "20"
+          },
+          {
+            "id": 1744544726619,
+            "type": "base",
+            "points": [
+              {
+                "x": 600,
+                "y": 599
+              }
+            ],
+            "radius": 106.28810122557212,
+            "color": "rgba(0,69,186, 0.35)",
+            "lineWidth": 2,
+            "textBody": "C",
+            "fontSize": "20"
+          },
+          {
+            "id": 1744544738597,
+            "type": "base",
+            "points": [
+              {
+                "x": 246.60814046288905,
+                "y": 703
+              }
+            ],
+            "radius": 92.24313139583093,
+            "color": "rgba(5,255,0, 0.35)",
+            "lineWidth": 2,
+            "textBody": "A",
+            "fontSize": "20"
+          },
+          {
+            "id": 1744544756089,
+            "type": "base",
+            "points": [
+              {
+                "x": 497.5259377494014,
+                "y": 946
+              }
+            ],
+            "radius": 93.84380402998296,
+            "color": "rgba(255,0,0, 0.35)",
+            "lineWidth": 2,
+            "textBody": "B",
+            "fontSize": "20"
+          }
         ],
-        "Cland Domination": [
-            {
-                "id": 1743603907927,
-                "type": "base",
-                "points": [
-                  {
-                    "x": 228.90475385828546,
-                    "y": 638.0822459356872
-                  }
-                ],
-                "radius": 81.70484658451849,
-                "color": "rgba(0,84,171, 0.35)",
-                "lineWidth": 2,
-                "textBody": "A",
-                "fontSize": "20"
-              },
+        "Clans Domination": [
+          {
+            "id": 1744544825219,
+            "type": "base",
+            "points": [
               {
-                "id": 1743603910877,
-                "type": "base",
-                "points": [
-                  {
-                    "x": 455.04421538808157,
-                    "y": 860.1108644274153
-                  }
-                ],
-                "radius": 81.70484658451849,
-                "color": "rgba(0,84,171, 0.35)",
-                "lineWidth": 2,
-                "textBody": "B",
-                "fontSize": "20"
-              },
-              {
-                "id": 1743603946043,
-                "type": "base",
-                "points": [
-                  {
-                    "x": 739.193364875521,
-                    "y": 348.04486141946575
-                  }
-                ],
-                "radius": 94.3492949265017,
-                "color": "rgba(0,84,171, 0.35)",
-                "lineWidth": 2,
-                "textBody": "C",
-                "fontSize": "20"
+                "x": 253.3120510774142,
+                "y": 696
               }
+            ],
+            "radius": 90.02949644460278,
+            "color": "rgba(0,130,125, 0.35)",
+            "lineWidth": 2,
+            "textBody": "A",
+            "fontSize": "20"
+          },
+          {
+            "id": 1744544837432,
+            "type": "base",
+            "points": [
+              {
+                "x": 500.3990422984836,
+                "y": 945
+              }
+            ],
+            "radius": 92.2431313958309,
+            "color": "rgba(0,130,125, 0.35)",
+            "lineWidth": 2,
+            "textBody": "B",
+            "fontSize": "20"
+          },
+          {
+            "id": 1744544850761,
+            "type": "base",
+            "points": [
+              {
+                "x": 813.5674381484437,
+                "y": 385
+              }
+            ],
+            "radius": 102.59597182218971,
+            "color": "rgba(0,130,125, 0.35)",
+            "lineWidth": 2,
+            "textBody": "C",
+            "fontSize": "20"
+          }
         ]
       }
     }
