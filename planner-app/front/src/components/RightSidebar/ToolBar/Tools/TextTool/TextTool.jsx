@@ -1,8 +1,7 @@
 import { useContext,useEffect, useState} from 'react';
 import CanvasContext from '../../../../contexts/CanvasContext';
-// import { drawObjects } from '../../../../../factories/CanvasRender';
 import { getCoordinates } from '../../../../../utils/commonHelpers';
-// import { drawingText, getTextSize } from '../../../../../utils/canvasHelpers';
+import { getTextSize } from '../../../../../utils/canvasHelpers';
 import {useToolSettings} from '@/store/zustand/Toolbar/toolsettingStore';
 import { useMapStore } from "@/store/zustand/MapStore/mapStore";
 
