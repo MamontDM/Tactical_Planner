@@ -16,10 +16,8 @@ const  MapSelector = () => {
     const removeAllMap = useMapStore((state) => state.removeAllMap);
     const selectMap = useMapStore((state) => state.selectMap);
     const selectedMapId = useMapStore((state) => state.selectedMapId);
-    
-    
 
-
+    
 
     const renderMap = (source) => {
         clearBackground();
