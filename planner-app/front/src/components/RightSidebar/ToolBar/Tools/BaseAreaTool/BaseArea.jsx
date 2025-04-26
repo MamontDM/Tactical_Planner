@@ -6,7 +6,6 @@ import {useToolSettings} from '@/store/zustand/Toolbar/toolsettingStore';
 import {useMapStore} from "@/store/zustand/MapStore/mapStore";
 
 const BaseAreaTool = ({isActive, type}) => {
-    console.log('called Base Area tool!')
     const { canvasRef, drawingCanvasRef, getCanvasContext, getDrawingCanvasContext, clearDrawingCanvas } = useContext(CanvasContext);
     const settings = useToolSettings((state) => state.getSettings(type));
     const addObject = useMapStore((state)  => state.addObject);
@@ -67,7 +66,6 @@ const BaseAreaTool = ({isActive, type}) => {
                     textBody: settings.textBody,
                     fontSize: settings.fontSize,
                 };
-                console.log(newObject);
                 addObject(newObject);
                 points.current = [];
                 clearDrawingCanvas();

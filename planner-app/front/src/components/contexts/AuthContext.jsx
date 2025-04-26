@@ -22,10 +22,7 @@ useEffect(() => {
     const idFromUrl = urlParams.get("account_id");
     
     if(!idFromUrl) return;
-    
     setUserId(idFromUrl);
-    
-    console.log(API_BASE_URL);
     
     fetch( `${API_BASE_URL}/auth/status?account_id=${idFromUrl}`, {
             method: 'GET',
@@ -60,7 +57,7 @@ useEffect(() => {
                     if(data) {
                         setTimeout(() => {
                             setUser(data);
-                        }, 500)
+                        }, 200)
                         
                     }
                 })

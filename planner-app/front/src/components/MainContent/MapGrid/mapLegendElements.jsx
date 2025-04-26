@@ -38,8 +38,6 @@ const MapGrid = () => {
             .filter(Boolean);
             objectsToDraw.push(...mapInfoObject);
         }
-        console.log(objectsToDraw);
-
        drawStaticObjects(mapInfoCanvasRef.current, objectsToDraw);
 
     },[currentProps, isActive])

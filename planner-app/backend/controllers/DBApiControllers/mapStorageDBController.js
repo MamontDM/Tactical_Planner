@@ -2,29 +2,29 @@ const Map = require("../../models/mapDbModel");
 const User = require("../../models/UserDBModel");
 const moongose = require('mongoose');
 
-
-
-
 const createMap = async (req, res) => {
     try {
         const { snapshot, account_id } = req.body;
         if (!snapshot) {
             return res.status(400).json({ error: "Check object snapshot" });
         }
-
-        const existingUser = await User.findOne({id: account_id});
-        if(!existingUser){
-            return res.status(404).json({error: "User not Found"});
-        }
+        console.log('called');
         const newMap = new Map({
-            userId: existingUser._id,
-            title: snapshot.metadata.mapName,
-            data: snapshot.metadata,
+            userExternalId: account_id,
+            id: snapshot.id,
+            activeMap: snapshot.id,
+            name: snapshot.name,
+            img: snapshot.img,
+            mapData: snapshot.mapData,
+            objects: snapshot.objects,
+            size: snapshot.size,
+            url: snapshot.url,
+            value: snapshot.value,
+            miniImg: snapshot.mini
         });
 
-        console.log(newMap);
         const savedMap = await newMap.save();
-
+        
         return res.status(201).json({ message: "Карта сохранена!", map: savedMap });
 
     } catch (error) {
@@ -35,7 +35,7 @@ const createMap = async (req, res) => {
 
 const getUserMaps = async (req, res) => {
     try {
-        const maps = await Map.find({ userId: req.account_id });
+        const maps = await Map.find({ userExternalId: req.body.account_id });
         res.json(maps);
     } catch (error) {
         console.error("Ошибка при получении карт:", error.message);
@@ -45,12 +45,13 @@ const getUserMaps = async (req, res) => {
 
 
  const deleteMap = async (req, res) => {
+    console.log(req.params.id);
     try {
-        const deletedMap = await Map.findOneAndDelete({ _id: req.params.id, userId: req.account_id });
-
+        const deletedMap = await Map.findByIdAndDelete(req.params.id);
         if (!deletedMap) {
             return res.status(404).json({ error: "map is not found" });
         }
+        console.log(deleteMap);
 
         res.json({ message: "Delete is success!" });
     } catch (error) {

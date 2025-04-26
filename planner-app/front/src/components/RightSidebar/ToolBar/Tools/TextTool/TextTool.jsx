@@ -7,7 +7,6 @@ import { useMapStore } from "@/store/zustand/MapStore/mapStore";
 
 const TextTool = ({isActive, type}) => {
     const { canvasRef, drawingCanvasRef, getCanvasContext, getDrawingCanvasContext, clearDrawingCanvas } = useContext(CanvasContext);
-
     const addObject = useMapStore((state) => state.addObject);
     const settings = useToolSettings((state) => state.getSettings(type));
 
@@ -36,7 +35,6 @@ const newObject = {
         fontSize: fontSize,
         textColor: textColor,
     };
-    console.log(newObject);
     addObject(newObject);
     clearDrawingCanvas();
 };

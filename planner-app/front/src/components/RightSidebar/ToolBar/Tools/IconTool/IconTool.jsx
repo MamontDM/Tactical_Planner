@@ -20,6 +20,7 @@ const IconTool = ({isActive, type}) =>{
 
     const rotationAngle = useRef(0);
     const [img, setImg] = useState(null);
+    const [svgString, setSvgString] = useState(null);
     const isPlacing = useRef(false);
     const startX = useRef(null);
     const startY = useRef(null);
@@ -44,6 +45,7 @@ const IconTool = ({isActive, type}) =>{
         const svgString = getSvgTemplate(shipType.current, fillColor.current);
         convertSvgToImage(svgString, (img) => {
             setImg(img);
+            setSvgString(svgString);
         });
      };
   
@@ -102,7 +104,9 @@ const IconTool = ({isActive, type}) =>{
                     img: img,
                     color: fillColor.current,
                     label: shipLabel.current,
+                    svgString: svgString,
                 };
+                console.log(newObject);
                 addObject(newObject);
                 isPlacing.current = false;
                 clearDrawingCanvas();

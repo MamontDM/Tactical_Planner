@@ -29,7 +29,6 @@ const shipReducer = (state, action) => {
     switch(action.type) {
         case 'ADD_SHIP' :{
             const {key, ship} = action.payload;
-            console.log(key)
             return {
                 ...state,
                 [key]: [ship]
@@ -65,12 +64,10 @@ const ShipProvider = ({ children }) => {
 
 
     const addShip = useCallback((key, ship) => {
-        console.log('called method');
         dispatch({ type: 'ADD_SHIP', payload: { key, ship } });
     },[]);
 
     const removeShip = useCallback((key) => {
-        console.log(key);
         dispatch({ type: 'REMOVE_SHIP', payload: { key } });
     },[]);
 

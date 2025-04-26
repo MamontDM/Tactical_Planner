@@ -3,7 +3,6 @@ const path = require('path');
 
 const iconFolderPath = path.join(__dirname, '../assets/Icon/ShipCardIcon');
 const outputFilePath = path.join(__dirname, '../assets/exportShipCard.js');
-console.log(iconFolderPath);
 
 fs.readdir(iconFolderPath, (err, files) =>{
     if(err) throw err;
@@ -16,6 +15,5 @@ fs.readdir(iconFolderPath, (err, files) =>{
 
     const content = `${imports.join('\n')}\n\n${exports}`;
     fs.writeFileSync(outputFilePath, content);
-    console.log('Import was success');
 
 })

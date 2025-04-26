@@ -7,7 +7,6 @@ const UndoTool = ({isActive, onDeactivate}) => {
     
     useEffect (() =>  {
             if(isActive && !isCompleted.current) {
-                console.log('called')
 ;                undo();
                 isCompleted.current = true;
                 onDeactivate();

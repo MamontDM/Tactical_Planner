@@ -4,8 +4,6 @@ import { useMapStore } from '@/store/zustand/MapStore/mapStore';
 
 const ClearTool = ({isActive, onDeactivate})=> {
     const clearObjects = useMapStore((state) => state.clearObjects);
-
-    console.log('called Clear tool!')
     const isCompleted = useRef(false);
     const { clearMainCanvas } = useContext(CanvasContext);
 

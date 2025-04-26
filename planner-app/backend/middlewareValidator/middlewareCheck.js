@@ -2,6 +2,7 @@ const jwt = require('jsonwebtoken');
 const { jwt_secret } = require('../config');
 
 module.exports = async (req, res, next) => {
+    console.log('Called middlware')
     
     try {
         const token = req.cookies?.access_token;

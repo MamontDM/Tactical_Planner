@@ -136,7 +136,6 @@ export function findClickedObject(clickX, clickY, objects) {
     const endAngle = object.endAngle;
   
     if (normalizedAngle >= startAngle && normalizedAngle <= endAngle) {
-      console.log('kuku');
         return true; 
     }
     return false;

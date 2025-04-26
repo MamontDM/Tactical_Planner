@@ -1,8 +1,17 @@
-import  {useContext, useEffect} from 'react';
-import CanvasContext from '../components/contexts/CanvasContext';
 import { curveEndDrawArrow , drawSmoothCurve, drawArea, drawTemporaryIcon, drawingText, getContrastTextColor  } from '../utils/canvasHelpers';
-import { useMapStore } from "../store/zustand/MapStore/mapStore"
-import { object } from 'prop-types';
+import { convertSvgToImage } from './IconSVGCreator';
+
+
+export const drawObjects = (canvas, objects) => {
+    if(!objects){
+        return;
+    }
+    const context = canvas.getContext('2d');
+    context.clearRect(0, 0, canvas.width, canvas.height);
+    objects.forEach((object) => drawObject(canvas, object));
+};
+
+
 
 export const drawObject = (canvas, object) => {
     if(!canvas || !object){
@@ -120,6 +129,20 @@ export const drawObject = (canvas, object) => {
             );    
         break;
         case 'icon':
+            if(!object.img && object.svgString) {
+                convertSvgToImage(object.svgString, (img) => {
+                    object.img = img;
+                    drawTemporaryIcon(
+                        context,
+                        object.x, 
+                        object.y, 
+                        img,
+                        object.rotation, 
+                        object.color, 
+                        object.label, 
+                    );
+                });
+            }else if(object.img){
             drawTemporaryIcon(
                 context,
                 object.x, 
@@ -129,6 +152,7 @@ export const drawObject = (canvas, object) => {
                 object.color, 
                 object.label, 
             ); 
+        }
         break;
         case 'text':
             drawingText(
@@ -172,9 +196,7 @@ export const drawStaticObjects = (canvas, objects) => {
                 const textColor = "#fff";
                 const lineWidth = obj.lineWidth;    
                 const strokeStyle = textColor;    
-                console.log(scale);
                 const radius = obj.radius * scale;
-                console.log(radius);
                 context.lineWidth = lineWidth;
                 context.strokeStyle = strokeStyle;
                 context.beginPath();
@@ -212,29 +234,3 @@ export const drawStaticObjects = (canvas, objects) => {
         }
     });
 };
-
-export const drawObjects = (canvas, objects) =>{
-    if(!objects){
-        return;
-    }
-    const context = canvas.getContext('2d');
-    context.clearRect(0, 0, canvas.width, canvas.height);
-    objects.forEach((object) => drawObject(canvas, object));
-};
-
-
-const CanvasRenderer = () =>  {
-    const { canvasRef } = useContext(CanvasContext);
-    const objects = useMapStore((state) => state.maps[state.selectedMapId]?.objects);
-
-    useEffect(() => {
-        const canvas = canvasRef.current;
-        if (!canvas) return;
-       
-        drawObjects(canvas, objects);
-    }, [canvasRef, objects]);
-    
-    return null;
-};
-
-export default CanvasRenderer;
