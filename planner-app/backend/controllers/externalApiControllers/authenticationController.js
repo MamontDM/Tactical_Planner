@@ -75,10 +75,11 @@ exports.checkAuthStatus = async (req, res) => {
             secure: isProduction,
             sameSite: isProduction ? 'None' : 'Lax',
             maxAge: 60*60*1000,
-            domain: isProduction ? domainPROD : domainDEV,
+            // domain: isProduction ? domainPROD : domainDEV,
             path: "/",
         });
-
+        console.log({domainDEV})
+        console.log({domainPROD})
         res.status(200).json({
             isAuthenticated: true,
             account_id: userData.account_id,
