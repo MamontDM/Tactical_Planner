@@ -32,8 +32,14 @@ exports.response = async (req, res) => {
         account_id,
         nickname
     };
-
-    await saveToCache(`auth:${account_id}`, cookieData, 600)
+   
+    try {
+        await saveToCache(`auth:${account_id}`, cookieData, 600);
+        console.log(`Токен успешно сохранен в Redis для аккаунта ${account_id}`);
+      } catch (err) {
+        console.error(`Ошибка сохранения токена в Redis для аккаунта ${account_id}`, err);
+      }
+      
     
     
   console.log(` Cookies сохранены в Redis: cookies:${account_id}`);
