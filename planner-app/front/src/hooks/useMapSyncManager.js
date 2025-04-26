@@ -39,7 +39,11 @@ import { useMapStoreListDb } from "@/store/zustand/MapStore/mapStoreDbList";
 
     useEffect(() => {
         if (isAuthenticated) {
+          const timeout = setTimeout(() => {
             syncMapsFromDb();
+        }, 300);
+
+        return () => clearTimeout(timeout);
         }
       }, [isAuthenticated, syncMapsFromDb]);
 
