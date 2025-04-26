@@ -32,7 +32,7 @@ app.use(cors({
 }));
 
 app.use(cookieParser());
-app.use(bodyParser.json());
+app.use(bodyParser.json({ limit: "350kb"}));
 
 mongoose
     .connect(mongoUri)

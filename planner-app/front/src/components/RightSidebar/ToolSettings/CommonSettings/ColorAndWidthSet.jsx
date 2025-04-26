@@ -38,7 +38,6 @@ const ColorAndWidthSettings = ({  }) => {
 
     const handleSliderChange = (e) => {
         const newValue = e.target.value;
-        console.log(newValue);
         updateSettings(activeTool, { sliderValue: newValue});
         const newColor = calculateColor(newValue);
         updateSettings(activeTool, {color: newColor});

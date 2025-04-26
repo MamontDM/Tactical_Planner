@@ -2,9 +2,10 @@ import React, { useContext, useEffect, useRef } from 'react'
 import ReactDOM from 'react-dom'
 import CanvasContext from '../../../../contexts/CanvasContext';
 import { useMapLegendStore } from '../../../../../store/zustand/MapLegend/mapLegendStore';
+import { downloadCanvasAsImage, mergeCanvases } from '../../../../../utils/MergeCanvasFactory/canvasMergin';
 
 const DownLoadTool = ({onDeactivate, isActive}) => {
-    const { canvasRef, backgroundCanvasRef, drawingCanvasRef, getDrawingCanvasContext, mapInfoCanvasRef, getMapInfoCanvasContext } = useContext(CanvasContext);
+    const { canvasRef, backgroundCanvasRef, drawingCanvasRef, getDrawingCanvasContext, mapInfoCanvasRef } = useContext(CanvasContext);
     
     const mapName = useMapLegendStore((state) => state.activeMap || 'planner-app'); 
     const fileName = useRef(mapName);
@@ -23,26 +24,16 @@ const DownLoadTool = ({onDeactivate, isActive}) => {
    
 
     const handleDownload = () => {
-        mergeCanvases();
+        const mergedCanvases = mergeCanvases([
+            backgroundCanvasRef.current,
+            canvasRef.current,
+            mapInfoCanvasRef.current
+        ]);
+        downloadCanvasAsImage(fileName.current, mergedCanvases ); 
         if(onDeactivate) onDeactivate();   
     };
 
-    const mergeCanvases = () => {
-        const temporaryCanvas = drawingCanvasRef.current;
-        const temporaryCanvasCtx = getDrawingCanvasContext();
-        temporaryCanvasCtx.drawImage(backgroundCanvasRef.current, 0, 0);
-        temporaryCanvasCtx.drawImage(canvasRef.current, 0, 0);
-        temporaryCanvasCtx.drawImage(mapInfoCanvasRef.current, 0, 0);
-        downloadCanvas(fileName.current, temporaryCanvas);
-        temporaryCanvasCtx.clearRect(0, 0, temporaryCanvas.width, temporaryCanvas.height);
-    }
-
-    const downloadCanvas = (fileName, mergedCanvas) => {
-        const link = document.createElement('a');
-        link.href = mergedCanvas.toDataURL('image/png');
-        link.download = fileName;
-        link.click();
-    }
+    
     if (!isActive) return null;
 
     return ReactDOM.createPortal(

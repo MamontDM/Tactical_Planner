@@ -8,7 +8,6 @@ const MapLegend = () => {
     const { setBaseAreaCategory, setActiveCategory  } = useMapLegendStore();
     const currentProps = useMapLegendStore((s) => s.currentProps);
 
-
     if (!currentProps || !currentProps.baseArea) return (
         <>
         <fieldset>

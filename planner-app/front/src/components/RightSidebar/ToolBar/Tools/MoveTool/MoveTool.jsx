@@ -6,12 +6,10 @@ import { drawObjects } from '../../../../../factories/CanvasRender';
 import { useMapStore } from '@/store/zustand/MapStore/mapStore';
 
 const MoveTool = ({isActive}) => {
-    console.log('called MoveTool tool!')
     const [objects, setObjects] = useState([]);
     const { canvasRef, getCanvasContext } = useContext(CanvasContext);
     const currentObjects = useMapStore.getState().getCurrentObjects;
     const updateObject = useMapStore.getState().updateObject;
-    console.log(objects);
 
     useEffect(() => {
         if (isActive) {

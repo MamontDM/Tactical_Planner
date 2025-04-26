@@ -4,6 +4,7 @@ import { subscribeWithSelector } from "zustand/middleware"
 const initState = { 
     selectedMapId: null,
     maps: {},
+    mapStoreList: [],
 };
 
 export const useMapStore = create(
@@ -12,7 +13,6 @@ export const useMapStore = create(
 
     addMap: (newMap) => set((state) => {
         return {
-            
           selectedMapId: newMap.id,
           maps: {
             ...state.maps,
@@ -159,8 +159,17 @@ export const useMapStore = create(
                     }
                 };
             }),
-
-            
+    
+    getCurrentSnapShot: () => {
+        const { selectedMapId, maps } = get();
+        const activeMap = maps[selectedMapId];
+        if(!activeMap) return null;
+            const {future, ...mapData} = activeMap;
+            return {
+                id: selectedMapId,
+                ...mapData,
+            }
+        },
     })
 ));
 

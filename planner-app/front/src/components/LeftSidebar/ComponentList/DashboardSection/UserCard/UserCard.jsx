@@ -2,6 +2,7 @@ import React, {useContext, useState, useEffect} from 'react';
 import './UserCard.css';
 import AuthContext from '../../../../contexts/AuthContext';
 import { commander, com_officer, recruiter, executive_officer } from '../../../../../assets/exportUserCardIcon';
+import UserDashboardController from '../UserDashboard/UserDashboard';
 
 
 const UserCard = () => {
@@ -41,10 +42,7 @@ return (
                     </div>
                         <div className="user-card-block">
                             <img className="user-avatar" src={avatarByRole[user?.role]} alt={'Error Avatar'}></img>
-                        <div className="user-card-nav">
-                            <button>Map Storage</button>
-                            <button>Join Session</button>
-                    </div>
+                      <UserDashboardController />
                 </div>
                 <span>{user?.role}</span>
             </div>

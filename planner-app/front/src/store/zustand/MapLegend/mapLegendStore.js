@@ -10,6 +10,7 @@ export const useMapLegendStore = create((set, get) => ({
     setActiveMapName: (name) => {
         const preset = mapPresets[name];
         if (!preset) {
+          console.log(preset);
           console.warn(`Map ${name} is not found`);
           get().resetActiveMap();
           return;
@@ -52,6 +53,25 @@ export const useMapLegendStore = create((set, get) => ({
             mapData: newMap,
             currentProps: newMap[activeMap],
         });
+    },
+
+    loadFromSnapshot: (snapshot) => {
+      const {name, mapData } = snapshot || {};
+      if(!name && !mapData) return;
+      set({
+        activeMap: name,
+        mapData,
+        currentProps: mapData[name]
+      })
+    },
+
+    getLegendSnapShot: () => {
+      const { activeMap, mapData } = get();
+      const snapshot = {
+        activeMap: activeMap,
+        mapData: mapData,
+      }
+      return snapshot;
     },
 
     setBaseAreaCategory: (category) => {

@@ -6,7 +6,6 @@ import { useMapStore } from  "@/store/zustand/MapStore/mapStore";
 
 
 const LineTool = ({isActive, type}) => {
-    console.log('called Line tool!')
     const { canvasRef, drawingCanvasRef, getCanvasContext, getDrawingCanvasContext, clearDrawingCanvas } = useContext(CanvasContext);
     const settings = useToolSettings((state) => state.getSettings(type));
     const addObject = useMapStore((state) => state.addObject);
@@ -33,7 +32,6 @@ const LineTool = ({isActive, type}) => {
                 isDrawing.current = true;
                 pointRef.current = [];
                 const { x, y } = getCoordinates(event, drawingCanvas);
-                console.log(x , y)
                 pointRef.current.push({x , y});
                 drawingCtx.beginPath();
                 drawingCtx.moveTo(x , y);
@@ -59,7 +57,6 @@ const LineTool = ({isActive, type}) => {
                         lineWidth: settings.lineWidth,
                         color: settings.color,
                     };
-                    console.log(newObject)
                     addObject(newObject);
                 }
                 clearDrawingCanvas();

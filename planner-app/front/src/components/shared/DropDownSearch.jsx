@@ -39,7 +39,6 @@ function DropdownSearch({dataSource, onSelect, placeholder = `Search...`}) {
     useEffect(() => {
         const hanadleOutsideClick = (event) => {
             if(dropdownRef.current && !dropdownRef.current.contains(event.target)){
-                console.log('popal')
                 setIsOpen(false);
             }
         };

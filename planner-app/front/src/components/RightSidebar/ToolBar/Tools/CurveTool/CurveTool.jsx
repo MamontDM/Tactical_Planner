@@ -9,7 +9,6 @@ import { useMapStore } from '@/store/zustand/MapStore/mapStore';
 
 
 const CurveTool = ({ isActive, type }) => {
-    console.log('called Curve tool!')
     const { canvasRef, drawingCanvasRef, getCanvasContext, getDrawingCanvasContext, clearDrawingCanvas } = useContext(CanvasContext);
 
     const settings = useToolSettings((state) => state.getSettings(type));
@@ -22,7 +21,6 @@ const CurveTool = ({ isActive, type }) => {
 
     useEffect(() => {
         if (isActive && canvasRef?.current && drawingCanvasRef?.current && settings) {
-            console.log("called");
             const mainCtx = getCanvasContext();
             const drawingCtx = getDrawingCanvasContext(); 
             const drawingCanvas = drawingCanvasRef.current;

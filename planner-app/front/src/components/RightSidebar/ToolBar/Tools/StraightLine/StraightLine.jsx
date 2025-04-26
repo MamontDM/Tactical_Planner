@@ -6,7 +6,6 @@ import { useMapStore } from "@/store/zustand/MapStore/mapStore";
 import {pixelsToKilometers} from "../../../../../utils/mapScale";
 
 const StraightTool = ({ isActive, type}) => {
-    console.log('called STRLine tool!')
     const { canvasRef, drawingCanvasRef, getCanvasContext, getDrawingCanvasContext, clearDrawingCanvas } = useContext(CanvasContext);
 
     const settings = useToolSettings((state) => state.getSettings(type));
@@ -88,7 +87,6 @@ const StraightTool = ({ isActive, type}) => {
                     lineWidth: settings.lineWidth,
                     distanceKm: distance.current,
                 };
-                console.log(newObject);
                 distance.current = null;
                 addObject(newObject);
                 clearDrawingCanvas();
