@@ -10,6 +10,7 @@ export const useMapLegendStore = create((set, get) => ({
     setActiveMapName: (name) => {
         const preset = mapPresets[name];
         if (!preset) {
+          console.log({name});
           console.log(preset);
           console.warn(`Map ${name} is not found`);
           get().resetActiveMap();
